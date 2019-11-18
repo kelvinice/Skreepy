@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#log file
+geckodriver.log
+
+#ide file
+.idea/
+.vscode/
+
+
