@@ -1,5 +1,6 @@
 # Skreepy
 Automated Web Testing
 
-## Geckodriver for firefox 
+## Geckodriver for Firefox 
 https://github.com/mozilla/geckodriver/releases
+
