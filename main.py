@@ -9,7 +9,7 @@ def init():
     app = QApplication(sys.argv)
     width = app.desktop().screenGeometry().width()
     height = app.desktop().screenGeometry().height()
-    w = ReportWindow(width, height, "Main Window")
+    w = MainWindow(width, height, "Main Window")
     sys.exit(app.exec_())
 
 
