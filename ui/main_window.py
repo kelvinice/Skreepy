@@ -1,25 +1,26 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QScrollArea, QLineEdit, QGroupBox, \
-    QGridLayout
+import sys
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, QLabel, QScrollArea, QLineEdit, QGridLayout
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QRect, QSize
-from PyQt5 import QtCore, QtGui
+from PyQt5.QtCore import QSize, QRect
 
 
-####################################
-class MainWindow(QWidget):
+class MainWindow(QMainWindow):
 
     def __init__(self, width, height, title):
         super(MainWindow, self).__init__()
-        self.move(0, 0)
-        self.resize(width, height)
+        self.move((width/2)/2, (height/2)/2)
+        self.resize(width/2, height/2)
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon("assets/logoBINUS.png"))
-        self.setStyleSheet("background-color : #242423")
+        self.setStyleSheet("background-color : #949494;"
+                           "color: white;")
 
         self.top_group_box = QGroupBox("Scrapper")
         self.toolbar_group_box = QGroupBox("Menu Bar")
         self.main_h_layout = QGroupBox()
 
+        self.init_menu_bar()
         self.init_toolbar_attribute()
         self.init_top_attribute()
         self.init_bottom_attribute()
@@ -29,8 +30,19 @@ class MainWindow(QWidget):
         v_box.addWidget(self.toolbar_group_box)
         v_box.addWidget(self.main_h_layout)
 
-        self.setLayout(v_box)
-        self.showMaximized()
+        widget = QWidget()
+        widget.setLayout(v_box)
+        self.setCentralWidget(widget)
+
+    def init_menu_bar(self):
+        menu_bar = self.menuBar()
+        setting_menu = menu_bar.addMenu("Settings")
+        change_user_action = QAction(QIcon("assets/user.png"), 'Change User', self)
+        exit_button = QAction(QIcon("assets/exit.png"), 'Exit', self)
+        setting_menu.triggered[QAction].connect(self.setting_listener)
+        exit_button.triggered.connect(self.close)
+        setting_menu.addAction(change_user_action)
+        setting_menu.addAction(exit_button)
 
     def init_toolbar_attribute(self):
         self.toolbar_group_box.setStyleSheet(
@@ -58,8 +70,8 @@ class MainWindow(QWidget):
                     QPushButton:hover:!pressed
                         {
                           background-color: #4d4d4d;
-                        }
-                    QPushButton:pressed
+                        }pressed
+                    QPushButton:
                         {
                           background-color: #5b5c5e;
                           border: 1px solid black;
@@ -215,7 +227,7 @@ class MainWindow(QWidget):
                 background-color : white;
                 border-radius: 5px;
             }
-            
+
         """)
         right_v_layout.addWidget(main_scroll_area)
         box_right.setLayout(right_v_layout)
@@ -225,3 +237,13 @@ class MainWindow(QWidget):
         main_h_layout.setColumnStretch(1, 1)
 
         self.main_h_layout.setLayout(main_h_layout)
+
+    def setting_listener(self, q):
+        if q.text() == "Change User":
+            print("Change User")
+            return
+        if q.text() == "Exit":
+            sys.exit()
+            return
+
+        return

@@ -12,7 +12,8 @@ def init():
     height = app.desktop().screenGeometry().height()
     # fake = Faker()
     # print(fake.address())
-    w = MainWindow(width, height, "Main Window")
+    w = ReportWindow(width, height, "Skreepy")
+    w.setVisible(True)
 
     sys.exit(app.exec_())
 
