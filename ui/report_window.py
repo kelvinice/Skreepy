@@ -12,7 +12,7 @@ class ReportWindow(QDialog):
         self.move((width / 2) / 2, (height / 2) / 2)
         self.setWindowTitle("Report")
         self.setWindowIcon(QIcon("assets/report.png"))
-        self.setStyleSheet("background-color : #5b5c5e;")
+        self.setStyleSheet("background-color :  #949494;")
         self.box_title = QGroupBox()
         self.box_header = QGroupBox("Description")
         self.box_table = QScrollArea()
