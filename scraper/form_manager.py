@@ -8,23 +8,22 @@ import scraper.input_manager
 
 
 class form_manager(PyQt5.QtWidgets.QMainWindow):
-    def on_click(self,args=0):
+    def on_click(self, args=0):
 
-        if(self.comboAuto.currentText() == "Manual"):
+        if self.comboAuto.currentText() == "Manual":
             dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)
             dialog.show()
-        elif(self.comboAuto.currentText() == "Automated"):
+        elif self.comboAuto.currentText() == "Automated":
             scraper.automator.Automator(url=self.url, result=self.forms[int(args)])
 
-
-    def __init__(self,url,result, parent=None):
-        super(form_manager,self).__init__(parent)
+    def __init__(self, url, result, parent=None):
+        super(form_manager, self).__init__(parent)
         self.url = url
         self.tblForm = PyQt5.QtWidgets.QTableWidget()
 
-        from scraper.scraper import getheader, findallform
+        from scraper.scraper import getheader, find_all_form
 
-        self.forms = findallform(result)
+        self.forms = find_all_form(result)
         self.tblForm.setRowCount(len(self.forms))
 
         self.tblForm.setColumnCount(3)
@@ -42,10 +41,10 @@ class form_manager(PyQt5.QtWidgets.QMainWindow):
             button = PyQt5.QtWidgets.QPushButton("Input", self)
 
             curr = self.rowcount
-            button.clicked.connect(partial(self.on_click,curr))
+            button.clicked.connect(partial(self.on_click, curr))
             self.tblForm.setCellWidget(self.rowcount, 2, button)
             # self.tblForm.setCellWidget(self.rowcount, 3, comboAuto)
-            self.rowcount+=1
+            self.rowcount += 1
 
         layout = PyQt5.QtWidgets.QVBoxLayout()
         layout.addWidget(self.tblForm)
@@ -71,5 +70,6 @@ class form_manager(PyQt5.QtWidgets.QMainWindow):
         self.setWindowTitle("Form Manager")
         self.statusBar().showMessage("Active")
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main.main()

@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 import main
 from scraper.resultter import Result_displayer
-from scraper.scraper import getheader, findallinput, findallbutton, findalltextarea
+from scraper.scraper import getheader, find_all_input, find_all_button, find_all_textarea
 
 
 class Automator():
@@ -84,7 +84,7 @@ class Automator():
         self.url = url
         self.listofinputed = []
         self.inputs = result
-        self.inputs = findallinput(result) + findallbutton(result) + findalltextarea(result)
+        self.inputs = find_all_input(result) + find_all_button(result) + find_all_textarea(result)
         self.rowCount = len(self.inputs)
 
         self.define_rule()

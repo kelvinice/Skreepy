@@ -1,16 +1,23 @@
 import sys
+from functools import partial
+
+import PyQt5
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, QLabel, QScrollArea, QLineEdit, QGridLayout
+from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, QLabel, \
+    QScrollArea, QLineEdit, QGridLayout
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QSize, QRect
+from PyQt5.QtCore import QSize, QRect, Qt
+
+from scraper import scraper
+from scraper.scraper import getheader, find_all_form
 
 
 class MainWindow(QMainWindow):
 
     def __init__(self, width, height, title):
         super(MainWindow, self).__init__()
-        self.move((width/2)/2, (height/2)/2)
-        self.resize(width/2, height/2)
+        self.move((width / 2) / 2, (height / 2) / 2)
+        self.resize(width / 2, height / 2)
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon("assets/logoBINUS.png"))
         self.setStyleSheet("background-color : #949494;"
@@ -159,8 +166,8 @@ class MainWindow(QMainWindow):
                   border: 1px solid black;
                 }
         """)
-        url_line_edit = QLineEdit()
-        url_line_edit.setStyleSheet("""
+        self.url_line_edit = QLineEdit()
+        self.url_line_edit.setStyleSheet("""
                 QLineEdit
                 {
                     border-radius: 5px; 
@@ -175,16 +182,17 @@ class MainWindow(QMainWindow):
                     border-right : 1px solid grey;
                 }
         """)
-        top_h_box_layout.addWidget(url_line_edit)
+        top_h_box_layout.addWidget(self.url_line_edit)
         top_h_box_layout.addWidget(get_forms_button)
         self.top_group_box.setLayout(top_h_box_layout)
+        get_forms_button.clicked.connect(self.click_insert_form_result)
 
     def init_bottom_attribute(self):
         main_h_layout = QGridLayout()
         box_left = QGroupBox()
         box_right = QGroupBox()
         left_v_layout = QVBoxLayout()
-        right_v_layout = QVBoxLayout()
+        self.right_v_layout = QVBoxLayout()
 
         url_scroll_area = QScrollArea()
         url_scroll_area.setStyleSheet("""
@@ -229,8 +237,8 @@ class MainWindow(QMainWindow):
             }
 
         """)
-        right_v_layout.addWidget(main_scroll_area)
-        box_right.setLayout(right_v_layout)
+
+        box_right.setLayout(self.right_v_layout)
 
         main_h_layout.addWidget(box_left, 0, 0)
         main_h_layout.addWidget(box_right, 0, 1)
@@ -247,3 +255,46 @@ class MainWindow(QMainWindow):
             return
 
         return
+
+    def click_insert_form_result(self):
+        text = self.url_line_edit.text()
+        result = scraper.scrape(text)
+
+        self.forms = find_all_form(result)
+
+        self.tblForm = PyQt5.QtWidgets.QTableWidget()
+        self.tblForm.setRowCount(len(self.forms))
+
+        self.tblForm.setColumnCount(3)
+
+        header = ("Method", "Action", "Event")
+        self.tblForm.setHorizontalHeaderLabels(header)
+
+        self.rowcount = 0
+
+        main_scroll_widged = QWidget()
+        main_scroll_vbox = QVBoxLayout()
+
+        header = ("Method", "Action", "Event")
+        self.tblForm.setHorizontalHeaderLabels(header)
+
+        self.rowcount = 0
+
+        for f in self.forms:
+            header = getheader(f)
+            methoditem = PyQt5.QtWidgets.QTableWidgetItem(header["method"])
+
+            self.tblForm.setItem(self.rowcount, 0, methoditem)
+            self.tblForm.setItem(self.rowcount, 1, PyQt5.QtWidgets.QTableWidgetItem(header["action"]))
+            button = PyQt5.QtWidgets.QPushButton("Input", self)
+
+            curr = self.rowcount
+        #     button.clicked.connect(partial(self.on_click, curr))
+            self.tblForm.setCellWidget(self.rowcount, 2, button)
+            # self.tblForm.setCellWidget(self.rowcount, 3, comboAuto)
+            self.rowcount += 1
+
+        main_scroll_vbox.addWidget(self.tblForm)
+        main_scroll_widged.setLayout(main_scroll_vbox)
+
+        self.right_v_layout.addWidget(main_scroll_widged)

@@ -2,18 +2,18 @@ import sys
 from PyQt5.QtWidgets import *
 import scraper.form_manager
 
+
 class InputURLWindow(QMainWindow):
     def on_click(self):
         import scraper
         text = self.txtUrl.text()
         result = scraper.scrape(text)
 
-        dialog = scraper.form_manager.form_manager(url=text,result=result, parent=self)
+        dialog = scraper.form_manager.form_manager(url=text, result=result, parent=self)
         dialog.show()
 
-
     def __init__(self, parent=None):
-        super(InputURLWindow,self).__init__(parent)
+        super(InputURLWindow, self).__init__(parent)
 
         layout = QVBoxLayout()
         self.txtUrl = QLineEdit()
@@ -25,7 +25,7 @@ class InputURLWindow(QMainWindow):
         layout.addWidget(QLabel("\n"))
         layout.addWidget(self.btnSubmit)
 
-        central  = QWidget()
+        central = QWidget()
         central.setLayout(layout)
         self.setCentralWidget(central)
 
@@ -35,6 +35,7 @@ class InputURLWindow(QMainWindow):
         self.setWindowTitle("Scaper")
         self.statusBar().showMessage("Scraper Application v0.1")
 
+
 def legacy_main():
     app = QApplication(sys.argv)
 
@@ -42,5 +43,6 @@ def legacy_main():
     window.show()
     sys.exit(app.exec_())
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     legacy_main()
