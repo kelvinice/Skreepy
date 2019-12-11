@@ -235,7 +235,6 @@ class MainWindow(QMainWindow):
                 background-color : white;
                 border-radius: 5px;
             }
-
         """)
 
         box_right.setLayout(self.right_v_layout)
@@ -272,13 +271,13 @@ class MainWindow(QMainWindow):
 
         self.rowcount = 0
 
-        main_scroll_widged = QWidget()
+        self.main_scroll_widged = QWidget()
         main_scroll_vbox = QVBoxLayout()
 
         header = ("Method", "Action", "Event")
         self.tblForm.setHorizontalHeaderLabels(header)
 
-        self.rowcount = 0
+        rowcount = 0
 
         for f in self.forms:
             header = getheader(f)
@@ -289,12 +288,17 @@ class MainWindow(QMainWindow):
             button = PyQt5.QtWidgets.QPushButton("Input", self)
 
             curr = self.rowcount
-        #     button.clicked.connect(partial(self.on_click, curr))
+            button.clicked.connect(partial(self.click_insert_input_result, curr))
             self.tblForm.setCellWidget(self.rowcount, 2, button)
-            # self.tblForm.setCellWidget(self.rowcount, 3, comboAuto)
-            self.rowcount += 1
+            rowcount += 1
 
         main_scroll_vbox.addWidget(self.tblForm)
-        main_scroll_widged.setLayout(main_scroll_vbox)
+        self.main_scroll_widged.setLayout(main_scroll_vbox)
 
-        self.right_v_layout.addWidget(main_scroll_widged)
+        self.right_v_layout.addWidget(self.main_scroll_widged)
+
+    def click_insert_input_result(self, args=0):
+        self.main_scroll_widged.setParent(None)
+
+        # dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)
+        # dialog.show()

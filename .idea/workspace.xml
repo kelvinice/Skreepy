@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
+    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="add scraping tool to ui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/input_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/input_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_window.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +22,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TSnPqpLCsUwcSrAZeZqKfo7mQO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -32,18 +38,6 @@
       <recent name="C:\Users\Kelvin.DESKTOP-2IHI3E8\PycharmProjects\Skreepy\util" />
       <recent name="C:\Users\Kelvin.DESKTOP-2IHI3E8\PycharmProjects\Skreepy\meta" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="MainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -74,6 +68,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -88,7 +94,9 @@
       <workItem from="1574077594252" duration="4610000" />
       <workItem from="1574138994574" duration="3868000" />
       <workItem from="1574910599592" duration="103000" />
-      <workItem from="1574910833149" duration="1343000" />
+      <workItem from="1574910833149" duration="5345000" />
+      <workItem from="1575858163938" duration="8461000" />
+      <workItem from="1575878237225" duration="8631000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -146,7 +154,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574911135368</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="edit workspace">
+      <created>1574919124097</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1574919124097</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add scraping tool to ui">
+      <created>1575879361255</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1575879361255</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,9 +196,53 @@
     <MESSAGE value="update util" />
     <MESSAGE value="workspace" />
     <MESSAGE value="edit gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit gitignore" />
+    <MESSAGE value="edit workspace" />
+    <MESSAGE value="add scraping tool to ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="add scraping tool to ui" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1575964441725">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1575964441725" />
+    <state width="811" height="234" key="GridCell.Tab.0.bottom" timestamp="1576029040481">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="811" height="234" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576029040481" />
+    <state width="1151" height="380" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024991995" />
+    <state width="811" height="234" key="GridCell.Tab.0.center" timestamp="1576029040480">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="811" height="234" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
+    <state width="1151" height="380" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024991995" />
+    <state width="811" height="234" key="GridCell.Tab.0.left" timestamp="1576029040480">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="811" height="234" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
+    <state width="1151" height="380" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024991995" />
+    <state width="811" height="234" key="GridCell.Tab.0.right" timestamp="1576029040480">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="811" height="234" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
+    <state width="1151" height="380" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024991995" />
+    <state x="498" y="161" key="SettingsEditor" timestamp="1575880929160">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="498" y="161" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1575880929160" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1575879520179">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1575879520179" />
+    <state x="699" y="310" key="git4idea.merge.GitPullDialog" timestamp="1576023998040">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="699" y="310" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576023998040" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576024766128">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024766128" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1574911346548" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1576029040421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

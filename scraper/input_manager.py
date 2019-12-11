@@ -114,9 +114,9 @@ class input_manager(QMainWindow):
         self.expected["text_after"] = None
         self.expected["element_after"] = None
 
-        from scraper import getheader, findallinput,findallbutton,findalltextarea
+        from scraper.scraper import getheader, find_all_input,find_all_button,find_all_textarea
 
-        self.inputs = findallinput(result)+findallbutton(result)+findalltextarea(result)
+        self.inputs = find_all_input(result)+find_all_button(result)+find_all_textarea(result)
 
         self.tblForm.setRowCount(len(self.inputs))
 
