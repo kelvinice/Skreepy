@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLay
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize, QRect, Qt
 
+from components.input_result_table import InputResultTable
 from scraper import scraper
 from scraper.scraper import getheader, find_all_form
 
@@ -40,6 +41,7 @@ class MainWindow(QMainWindow):
         widget = QWidget()
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
+
 
     def init_menu_bar(self):
         menu_bar = self.menuBar()
@@ -167,6 +169,7 @@ class MainWindow(QMainWindow):
                 }
         """)
         self.url_line_edit = QLineEdit()
+        self.url_line_edit.setText("http://industry.socs.binus.ac.id/learning-plan/auth/login")
         self.url_line_edit.setStyleSheet("""
                 QLineEdit
                 {
@@ -272,7 +275,7 @@ class MainWindow(QMainWindow):
         self.rowcount = 0
 
         self.main_scroll_widged = QWidget()
-        main_scroll_vbox = QVBoxLayout()
+        self.main_scroll_vbox = QVBoxLayout()
 
         header = ("Method", "Action", "Event")
         self.tblForm.setHorizontalHeaderLabels(header)
@@ -292,13 +295,16 @@ class MainWindow(QMainWindow):
             self.tblForm.setCellWidget(self.rowcount, 2, button)
             rowcount += 1
 
-        main_scroll_vbox.addWidget(self.tblForm)
-        self.main_scroll_widged.setLayout(main_scroll_vbox)
+        self.main_scroll_vbox.addWidget(self.tblForm)
+        self.main_scroll_widged.setLayout(self.main_scroll_vbox)
 
         self.right_v_layout.addWidget(self.main_scroll_widged)
 
     def click_insert_input_result(self, args=0):
-        self.main_scroll_widged.setParent(None)
+        self.tblForm.setParent(None)
+        self.tblInput = InputResultTable()
+        self.main_scroll_vbox.addWidget(self.tblInput)
 
+        # self.main_scroll_vbox.addWidget()
         # dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)
         # dialog.show()
