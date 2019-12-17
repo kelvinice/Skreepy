@@ -259,10 +259,10 @@ class MainWindow(QMainWindow):
         return
 
     def click_insert_form_result(self):
-        text = self.url_line_edit.text()
-        result = scraper.scrape(text)
+        self.url = self.url_line_edit.text()
+        self.result = scraper.scrape(self.url)
 
-        self.forms = find_all_form(result)
+        self.forms = find_all_form(self.result)
 
         self.tblForm = PyQt5.QtWidgets.QTableWidget()
         self.tblForm.setRowCount(len(self.forms))
@@ -302,7 +302,9 @@ class MainWindow(QMainWindow):
 
     def click_insert_input_result(self, args=0):
         self.tblForm.setParent(None)
-        self.tblInput = InputResultTable()
+
+        self.tblInput = InputResultTable(self.url, self.forms[int(args)], self)
+
         self.main_scroll_vbox.addWidget(self.tblInput)
 
         # self.main_scroll_vbox.addWidget()

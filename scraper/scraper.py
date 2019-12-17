@@ -69,10 +69,10 @@ def getheader(htmldata):
 list_of_input = []
 
 
-def getInputed(inputs, choose):
-    list_of_input.append({"id": getheader(inputs[choose])["id"], "class": getheader(inputs[choose])["class"],
-                          "name": getheader(inputs[choose])["name"], "value": value})
-    inputs[choose]['value'] = value
+# def getInputed(inputs, choose):
+#     list_of_input.append({"id": getheader(inputs[choose])["id"], "class": getheader(inputs[choose])["class"],
+#                           "name": getheader(inputs[choose])["name"], "value": value})
+#     inputs[choose]['value'] = value
 
 
 def get_browser():

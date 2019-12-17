@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="adding form click">
-      <change afterPath="$PROJECT_DIR$/components/input_result_table.py" afterDir="false" />
+    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/input_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/input_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/input_result_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/input_result_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +98,7 @@
       <workItem from="1574910833149" duration="5345000" />
       <workItem from="1575858163938" duration="8461000" />
       <workItem from="1575878237225" duration="8970000" />
-      <workItem from="1576553801418" duration="9527000" />
+      <workItem from="1576553801418" duration="10757000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -177,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576050859981</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="input table(on progress)">
+      <created>1576571893375</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1576571893375</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,41 +215,42 @@
     <MESSAGE value="edit workspace" />
     <MESSAGE value="add scraping tool to ui" />
     <MESSAGE value="adding form click" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding form click" />
+    <MESSAGE value="input table(on progress)" />
+    <option name="LAST_COMMIT_MESSAGE" value="input table(on progress)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1576557970477">
+    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1576571891242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576557970477" />
-    <state width="1150" height="234" key="GridCell.Tab.0.bottom" timestamp="1576569166111">
+    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576571891242" />
+    <state width="1150" height="234" key="GridCell.Tab.0.bottom" timestamp="1576573110703">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="811" height="234" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576029040481" />
-    <state width="1150" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576569166111" />
-    <state width="1150" height="234" key="GridCell.Tab.0.center" timestamp="1576569166111">
+    <state width="1150" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
+    <state width="1150" height="234" key="GridCell.Tab.0.center" timestamp="1576573110703">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="811" height="234" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
-    <state width="1150" height="234" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576569166111" />
-    <state width="1150" height="234" key="GridCell.Tab.0.left" timestamp="1576569166111">
+    <state width="1150" height="234" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
+    <state width="1150" height="234" key="GridCell.Tab.0.left" timestamp="1576573110703">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="811" height="234" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
-    <state width="1150" height="234" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576569166111" />
-    <state width="1150" height="234" key="GridCell.Tab.0.right" timestamp="1576569166111">
+    <state width="1150" height="234" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
+    <state width="1150" height="234" key="GridCell.Tab.0.right" timestamp="1576573110703">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="811" height="234" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
-    <state width="1150" height="234" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576569166111" />
+    <state width="1150" height="234" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
     <state x="498" y="161" key="SettingsEditor" timestamp="1575880929160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="498" y="161" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1575880929160" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576050862871">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576571896736">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576050862871" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576571896736" />
     <state x="699" y="310" key="git4idea.merge.GitPullDialog" timestamp="1576023998040">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -253,6 +261,6 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024766128" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1576569166100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1576573110692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
