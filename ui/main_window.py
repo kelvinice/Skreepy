@@ -1,16 +1,24 @@
 import sys
+from functools import partial
+
+import PyQt5
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, QLabel, QScrollArea, QLineEdit, QGridLayout
+from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, QLabel, \
+    QScrollArea, QLineEdit, QGridLayout
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QSize, QRect
+from PyQt5.QtCore import QSize, QRect, Qt
+
+from components.input_result_table import InputResultTable
+from scraper import scraper
+from scraper.scraper import getheader, find_all_form
 
 
 class MainWindow(QMainWindow):
 
     def __init__(self, width, height, title):
         super(MainWindow, self).__init__()
-        self.move((width/2)/2, (height/2)/2)
-        self.resize(width/2, height/2)
+        self.move((width / 2) / 2, (height / 2) / 2)
+        self.resize(width / 2, height / 2)
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon("assets/logoBINUS.png"))
         self.setStyleSheet("background-color : #949494;"
@@ -33,6 +41,7 @@ class MainWindow(QMainWindow):
         widget = QWidget()
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
+
 
     def init_menu_bar(self):
         menu_bar = self.menuBar()
@@ -159,8 +168,9 @@ class MainWindow(QMainWindow):
                   border: 1px solid black;
                 }
         """)
-        url_line_edit = QLineEdit()
-        url_line_edit.setStyleSheet("""
+        self.url_line_edit = QLineEdit()
+        self.url_line_edit.setText("http://industry.socs.binus.ac.id/learning-plan/auth/login")
+        self.url_line_edit.setStyleSheet("""
                 QLineEdit
                 {
                     border-radius: 5px; 
@@ -175,16 +185,17 @@ class MainWindow(QMainWindow):
                     border-right : 1px solid grey;
                 }
         """)
-        top_h_box_layout.addWidget(url_line_edit)
+        top_h_box_layout.addWidget(self.url_line_edit)
         top_h_box_layout.addWidget(get_forms_button)
         self.top_group_box.setLayout(top_h_box_layout)
+        get_forms_button.clicked.connect(self.click_insert_form_result)
 
     def init_bottom_attribute(self):
         main_h_layout = QGridLayout()
         box_left = QGroupBox()
         box_right = QGroupBox()
         left_v_layout = QVBoxLayout()
-        right_v_layout = QVBoxLayout()
+        self.right_v_layout = QVBoxLayout()
 
         url_scroll_area = QScrollArea()
         url_scroll_area.setStyleSheet("""
@@ -227,10 +238,9 @@ class MainWindow(QMainWindow):
                 background-color : white;
                 border-radius: 5px;
             }
-
         """)
-        right_v_layout.addWidget(main_scroll_area)
-        box_right.setLayout(right_v_layout)
+
+        box_right.setLayout(self.right_v_layout)
 
         main_h_layout.addWidget(box_left, 0, 0)
         main_h_layout.addWidget(box_right, 0, 1)
@@ -247,3 +257,56 @@ class MainWindow(QMainWindow):
             return
 
         return
+
+    def click_insert_form_result(self):
+        self.url = self.url_line_edit.text()
+        self.result = scraper.scrape(self.url)
+
+        self.forms = find_all_form(self.result)
+
+        self.tblForm = PyQt5.QtWidgets.QTableWidget()
+        self.tblForm.setRowCount(len(self.forms))
+
+        self.tblForm.setColumnCount(3)
+
+        header = ("Method", "Action", "Event")
+        self.tblForm.setHorizontalHeaderLabels(header)
+
+        self.rowcount = 0
+
+        self.main_scroll_widged = QWidget()
+        self.main_scroll_vbox = QVBoxLayout()
+
+        header = ("Method", "Action", "Event")
+        self.tblForm.setHorizontalHeaderLabels(header)
+
+        rowcount = 0
+
+        for f in self.forms:
+            header = getheader(f)
+            methoditem = PyQt5.QtWidgets.QTableWidgetItem(header["method"])
+
+            self.tblForm.setItem(self.rowcount, 0, methoditem)
+            self.tblForm.setItem(self.rowcount, 1, PyQt5.QtWidgets.QTableWidgetItem(header["action"]))
+            button = PyQt5.QtWidgets.QPushButton("Input", self)
+
+            curr = self.rowcount
+            button.clicked.connect(partial(self.click_insert_input_result, curr))
+            self.tblForm.setCellWidget(self.rowcount, 2, button)
+            rowcount += 1
+
+        self.main_scroll_vbox.addWidget(self.tblForm)
+        self.main_scroll_widged.setLayout(self.main_scroll_vbox)
+
+        self.right_v_layout.addWidget(self.main_scroll_widged)
+
+    def click_insert_input_result(self, args=0):
+        self.tblForm.setParent(None)
+
+        self.tblInput = InputResultTable(self.url, self.forms[int(args)], self)
+
+        self.main_scroll_vbox.addWidget(self.tblInput)
+
+        # self.main_scroll_vbox.addWidget()
+        # dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)
+        # dialog.show()

@@ -10,23 +10,24 @@ from scraper.resultter import Result_displayer
 
 
 class input_manager(QMainWindow):
-    def cellChanged(self,row, col):
+    def cellChanged(self, row, col):
 
-        #Value changed
-        if col==3:
-            print("Value Change To : "+str(self.tblForm.item(row,col).text()))
+        # Value changed
+        if col == 3:
+            print("Value Change To : " + str(self.tblForm.item(row, col).text()))
             import scraper
-            text = str(self.tblForm.item(row,col).text())
+            text = str(self.tblForm.item(row, col).text())
             self.listofinputed.append(
-                {"tag": scraper.getheader(self.inputs[row])["tag"], "id": scraper.getheader(self.inputs[row])["id"], "class": scraper.getheader(self.inputs[row])["class"],
+                {"tag": scraper.getheader(self.inputs[row])["tag"], "id": scraper.getheader(self.inputs[row])["id"],
+                 "class": scraper.getheader(self.inputs[row])["class"],
                  "name": scraper.getheader(self.inputs[row])["name"], "value": text})
 
-
-    def on_click(self,args=0):
+    def on_click(self, args=0):
         # TODO VALIDASI JIKA BUTTON
         import scraper
         self.listofinputed.append(
-            {"tag": scraper.getheader(self.inputs[args])["tag"],"id": scraper.getheader(self.inputs[args])["id"], "class": scraper.getheader(self.inputs[args])["class"],
+            {"tag": scraper.getheader(self.inputs[args])["tag"], "id": scraper.getheader(self.inputs[args])["id"],
+             "class": scraper.getheader(self.inputs[args])["class"],
              "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}"})
         # print(self.listofinputed)
         # if(str(self.tblForm.item(args,0).text()).lower()=="submit"):
@@ -39,7 +40,7 @@ class input_manager(QMainWindow):
     def executeAllClick(self):
         print("executed")
 
-        if self.exUrlLbl.text() != "" :
+        if self.exUrlLbl.text() != "":
             self.expected["url_after"] = self.exUrlLbl.text()
         if self.exTextLbl.text() != "":
             self.expected["text_after"] = self.exTextLbl.text()
@@ -77,21 +78,21 @@ class input_manager(QMainWindow):
             result_window.show()
             # scraper.browser.close()
 
-
     def save_click(self):
         import pickle
         with open('saved.pkl', 'wb') as f:
             pickle.dump(self.listofinputed, f)
 
-    def setValueByInput(self,inputed):
+    def setValueByInput(self, inputed):
         i = 0
         for input in self.inputs:
             import scraper
             head = scraper.getheader(input)
-            if head["id"]==inputed["id"] and head["class"] == inputed["class"] and head["tag"] == inputed["tag"] and head["name"] == inputed["name"]:
+            if head["id"] == inputed["id"] and head["class"] == inputed["class"] and head["tag"] == inputed["tag"] and \
+                    head["name"] == inputed["name"]:
                 # print(head)
                 self.tblForm.item(i, 3).setText(inputed["value"])
-            i+=1
+            i += 1
             # self.tblForm.item(row, col).text()
             # print(i["value"])
 
@@ -103,10 +104,10 @@ class input_manager(QMainWindow):
             if inputed["value"] != "{button.click}":
                 self.setValueByInput(inputed)
 
-    def __init__(self, url,result, parent=None):
+    def __init__(self, url, result, parent=None):
         super(input_manager, self).__init__(parent)
         self.url = url
-        self.listofinputed= []
+        self.listofinputed = []
         self.inputs = result
         self.tblForm = QTableWidget()
         self.expected = {}
@@ -114,21 +115,21 @@ class input_manager(QMainWindow):
         self.expected["text_after"] = None
         self.expected["element_after"] = None
 
-        from scraper import getheader, findallinput,findallbutton,findalltextarea
+        from scraper.scraper import getheader, find_all_input, find_all_button, find_all_textarea
 
-        self.inputs = findallinput(result)+findallbutton(result)+findalltextarea(result)
+        self.inputs = find_all_input(result) + find_all_button(result) + find_all_textarea(result)
 
         self.tblForm.setRowCount(len(self.inputs))
 
         self.tblForm.setColumnCount(6)
 
-        header = ("Type", "Id", "Name", "Value", "Action","Inner")
+        header = ("Type", "Id", "Name", "Value", "Action", "Inner")
         self.tblForm.setHorizontalHeaderLabels(header)
 
         self.rowcount = 0
         for inp in self.inputs:
             header = getheader(inp)
-            if header["innerHTML"]!= None and header["innerHTML"].lower()=="submit":
+            if header["innerHTML"] != None and header["innerHTML"].lower() == "submit":
                 itemtype = QTableWidgetItem(header["innerHTML"])
             else:
                 itemtype = QTableWidgetItem(header["type"])
@@ -177,7 +178,6 @@ class input_manager(QMainWindow):
         leftright1.setLayout(gridAction1)
         layout.addWidget(leftright1)
 
-
         self.exTextLbl = QLineEdit()
         gridAction2 = QGridLayout()
         gridAction2.setColumnStretch(1, 2)
@@ -203,5 +203,6 @@ class input_manager(QMainWindow):
         self.setWindowTitle("Input Manager")
         self.statusBar().showMessage("Active")
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main.main()
