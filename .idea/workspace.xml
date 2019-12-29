@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
+    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="input">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/input_result_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/input_result_table.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +98,9 @@
       <workItem from="1575858163938" duration="8461000" />
       <workItem from="1575878237225" duration="8970000" />
       <workItem from="1576553801418" duration="10757000" />
-      <workItem from="1576604613398" duration="2855000" />
+      <workItem from="1576604613398" duration="2900000" />
+      <workItem from="1577379809176" duration="949000" />
+      <workItem from="1577648073652" duration="1065000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -184,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576571893375</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="input">
+      <created>1576667749763</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1576667749763</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +213,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="SHOW_UNVERSIONED_FILES_WHILE_COMMIT" value="false" />
     <MESSAGE value="edit gitigone and readme" />
     <MESSAGE value="delete ide file" />
     <MESSAGE value="edit readme" />
@@ -216,7 +226,8 @@
     <MESSAGE value="add scraping tool to ui" />
     <MESSAGE value="adding form click" />
     <MESSAGE value="input table(on progress)" />
-    <option name="LAST_COMMIT_MESSAGE" value="input table(on progress)" />
+    <MESSAGE value="input" />
+    <option name="LAST_COMMIT_MESSAGE" value="input" />
   </component>
   <component name="WindowStateProjectService">
     <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1576571891242">
