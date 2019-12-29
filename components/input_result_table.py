@@ -44,12 +44,15 @@ class InputResultTable(QTableWidget):
         except TimeoutException:
             print("Timeout")
         finally:
+            from util.super_global import super_global
+            print(super_global.expected["text_after"])
             result = {
                 "url_after": scraper.browser.current_url,
-                "text_found": scraper.find_text(self.expected["text_after"]),
-                "element_found": scraper.find_element(self.expected["element_after"])
+                "text_found": scraper.find_text(super_global.expected["text_after"]),
+                "element_found": scraper.find_element(super_global.expected["element_after"])
             }
-            result_window = Result_displayer(url=self.url, expected=self.expected, result=result, parent=self.parent())
+            print("aaa")
+            result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
             result_window.show()
 
     def cellChangedReaction(self, row, col):
