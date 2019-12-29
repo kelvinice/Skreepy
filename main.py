@@ -14,6 +14,9 @@ def init():
     # print(fake.address())
     w = MainWindow(width, height, "Skreepy")
     w.setVisible(True)
+    from util.super_global import super_global
+
+    print(super_global.expected)
 
     sys.exit(app.exec_())
 

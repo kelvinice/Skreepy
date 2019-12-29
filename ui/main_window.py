@@ -33,6 +33,8 @@ class MainWindow(QMainWindow):
         self.init_top_attribute()
         self.init_bottom_attribute()
 
+        self.tblInput = None
+
         v_box = QVBoxLayout()
         v_box.addWidget(self.top_group_box)
         v_box.addWidget(self.toolbar_group_box)
@@ -42,6 +44,9 @@ class MainWindow(QMainWindow):
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
 
+    def execute_click(self):
+        if self.tblInput is not None:
+            self.tblInput.executeAllClick()
 
     def init_menu_bar(self):
         menu_bar = self.menuBar()
@@ -64,6 +69,7 @@ class MainWindow(QMainWindow):
         prev_button = QPushButton()
         home_button = QPushButton()
         report_button = QPushButton()
+        execute_button = QPushButton("Execute")
         prev_button.setIcon(QIcon("assets/prev.png"))
         prev_button.setStyleSheet("""
                     QPushButton
@@ -134,10 +140,38 @@ class MainWindow(QMainWindow):
                           border: 1px solid black;
                         }
                 """)
+
+        execute_button.setStyleSheet("""
+                            QPushButton
+                            {
+                                background-color: #5b5c5e;
+                                padding: 2px;
+                                min-height: 45px;
+                                min-width: 45px;
+                                border-radius: 10px;
+                                border-bottom: 1.5px solid black;
+                                border-right: 1px solid black;
+                                margin-left:100%;
+                            }
+                            QPushButton:hover:!pressed
+                                {
+                                  background-color: #4d4d4d;
+                                }
+                            QPushButton:pressed
+                                {
+                                  background-color: #5b5c5e;
+                                  border: 1px solid black;
+                                }
+                        """)
+
         report_button.setIconSize(QSize(40, 40))
+
+        execute_button.clicked.connect(self.execute_click)
+
         toolbar_h_box_layout.addWidget(prev_button)
         toolbar_h_box_layout.addWidget(home_button)
         toolbar_h_box_layout.addWidget(report_button)
+        toolbar_h_box_layout.addWidget(execute_button)
         self.toolbar_group_box.setLayout(toolbar_h_box_layout)
 
     def init_top_attribute(self):
