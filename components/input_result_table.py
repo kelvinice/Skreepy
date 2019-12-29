@@ -10,46 +10,51 @@ from scraper.scraper import find_all_input, find_all_button, find_all_textarea, 
 
 
 class InputResultTable(QTableWidget):
-    # def executeAllClick(self):
-    #     print("executed")
-    #
-    #     if self.exUrlLbl.text() != "":
-    #         self.expected["url_after"] = self.exUrlLbl.text()
-    #     if self.exTextLbl.text() != "":
-    #         self.expected["text_after"] = self.exTextLbl.text()
-    #     if self.exElementLbl.text() != "":
-    #         self.expected["element_after"] = self.exElementLbl.text()
-    #
-    #     print(self.expected)
-    #
-    #     import scraper
-    #     scraper.browser = scraper.dive_plus(self.url, self.listofinputed)
-    #     wait = WebDriverWait(scraper.browser, 5)
-    #     try:
-    #         page_loaded = wait.until_not(
-    #             lambda browser: browser.current_url == self.url
-    #         )
-    #         print("Page is ready!")
-    #         cookies = scraper.browser.get_cookies()
-    #
-    #         for cookie in cookies:
-    #             print(cookie['name'], " : ", cookie['value'])
-    #             scraper.session.cookies.set(cookie['name'], cookie['value'])
-    #
-    #         # loginResult = scraper.scrape(self.expected["url_after"])
-    #         # self.browser_shower.setText(str(loginResult))
-    #
-    #     except TimeoutException:
-    #         print("Timeout")
-    #     finally:
-    #         result = {
-    #             "url_after": scraper.browser.current_url,
-    #             "text_found": scraper.find_text(self.expected["text_after"]),
-    #             "element_found": scraper.find_element(self.expected["element_after"])
-    #         }
-    #         result_window = Result_displayer(url=self.url, expected=self.expected, result=result, parent=None)
-    #         result_window.show()
-    #
+    def executeAllClick(self):
+        print("executed")
+
+        # TODO
+        # if self.exUrlLbl.text() != "":
+        #     self.expected["url_after"] = self.exUrlLbl.text()
+        # if self.exTextLbl.text() != "":
+        #     self.expected["text_after"] = self.exTextLbl.text()
+        # if self.exElementLbl.text() != "":
+        #     self.expected["element_after"] = self.exElementLbl.text()
+        self.expected = None
+        # print(self.expected)
+
+        from scraper import scraper
+        scraper.browser = scraper.dive_plus(self.url, self.listofinputed)
+
+        wait = WebDriverWait(scraper.browser, 5)
+        try:
+            page_loaded = wait.until_not(
+                lambda browser: browser.current_url == self.url
+            )
+            print("Page is ready!")
+            cookies = scraper.browser.get_cookies()
+
+            for cookie in cookies:
+                print(cookie['name'], " : ", cookie['value'])
+                scraper.session.cookies.set(cookie['name'], cookie['value'])
+
+            # loginResult = scraper.scrape(self.expected["url_after"])
+            # self.browser_shower.setText(str(loginResult))
+
+        except TimeoutException:
+            print("Timeout")
+        finally:
+            from util.super_global import super_global
+            print(super_global.expected["text_after"])
+            result = {
+                "url_after": scraper.browser.current_url,
+                "text_found": scraper.find_text(super_global.expected["text_after"]),
+                "element_found": scraper.find_element(super_global.expected["element_after"])
+            }
+            print("aaa")
+            result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
+            result_window.show()
+
     def cellChangedReaction(self, row, col):
         # Value changed
         if col == 3:
@@ -63,23 +68,20 @@ class InputResultTable(QTableWidget):
 
     def on_click(self, args=0):
         # TODO VALIDASI JIKA BUTTON
-        import scraper
+        from scraper import scraper
         self.listofinputed.append(
             {"tag": scraper.getheader(self.inputs[args])["tag"], "id": scraper.getheader(self.inputs[args])["id"],
              "class": scraper.getheader(self.inputs[args])["class"],
              "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}"})
 
+
     def __init__(self,  url, result, parent=None):
         super(InputResultTable, self).__init__(parent)
-        # pass
 
         self.url = url
         self.listofinputed = []
 
-        # self.setRowCount(2)
         self.setColumnCount(6)
-        # find_all_input(result)
-        print(result)
 
         header = ("Type", "Id", "Name", "Value", "Action", "Inner")
         self.setHorizontalHeaderLabels(header)
@@ -90,7 +92,7 @@ class InputResultTable(QTableWidget):
         self.rowcount = 0
         for inp in self.inputs:
             header = getheader(inp)
-            if header["innerHTML"] != None and header["innerHTML"].lower() == "submit":
+            if header["innerHTML"] is not None and header["innerHTML"].lower() == "submit":
                 itemtype = QTableWidgetItem(header["innerHTML"])
             else:
                 itemtype = QTableWidgetItem(header["type"])
@@ -108,10 +110,11 @@ class InputResultTable(QTableWidget):
             self.setItem(self.rowcount, 3, QTableWidgetItem(header["value"]))
             self.setItem(self.rowcount, 4, iteminner)
             input_button = QPushButton("Click")
-            # input_button.clicked.connect(partial(self.on_click, self.rowcount))
+            input_button.clicked.connect(partial(self.on_click, self.rowcount))
             self.setCellWidget(self.rowcount, 4, input_button)
 
             self.rowcount += 1
 
         self.cellChanged.connect(self.cellChangedReaction)
+
 

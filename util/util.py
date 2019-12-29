@@ -1,6 +1,7 @@
 import meta
 import uuid
 from faker import Faker
+from meta import meta
 
 
 def uuid():
@@ -9,5 +10,9 @@ def uuid():
 
 class Util(metaclass=meta.Singleton):
 
+
     def fake(self, type):
         pass
+
+    def get_expected(self):
+        return self.expected
