@@ -110,5 +110,6 @@ geckodriver.log
 .idea/
 .vscode/
 
-workspace.xml
+.idea/workspace.xml
+.idea/*
 
