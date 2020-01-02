@@ -11,21 +11,12 @@ def init():
     width = app.desktop().screenGeometry().width()
     height = app.desktop().screenGeometry().height()
 
-    import requests
-    #
-
-
-    # session = requests.Session()
-    # headers = {"User-Agent": UA}
-    # q = session.get(url="https://www.tokopedia.com/", verify=False, headers=headers)
-    # print(q)
 
     # fake = Faker()
     # print(fake.address())
     w = MainWindow(width, height, "Skreepy")
     w.setVisible(True)
-    # w = ReportWindow(width, height, "Skreepy")
-    # w.setVisible(True)
+
     from util.super_global import super_global
 
     # print(super_global.expected)

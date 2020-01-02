@@ -13,20 +13,6 @@ class InputResultTable(QTableWidget):
     def executeAllClick(self):
         print("executed")
 
-        from ui.report_window import ReportWindow
-        w = ReportWindow(800, 1000, "Skreepy")
-        w.show()
-
-        # TODO
-        # if self.exUrlLbl.text() != "":
-        #     self.expected["url_after"] = self.exUrlLbl.text()
-        # if self.exTextLbl.text() != "":
-        #     self.expected["text_after"] = self.exTextLbl.text()
-        # if self.exElementLbl.text() != "":
-        #     self.expected["element_after"] = self.exElementLbl.text()
-
-        # print(self.expected)
-
         from scraper import scraper
         scraper.browser = scraper.dive_plus(self.url, self.listofinputed)
 
@@ -55,16 +41,10 @@ class InputResultTable(QTableWidget):
                 "text_found": scraper.find_text(super_global.expected["text_after"]),
                 "element_found": scraper.find_element(super_global.expected["element_after"])
             }
-
-            # OLD
-            result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
-            result_window.show()
-
             # NEW
-            # from ui.report_window import ReportWindow
-            # w = ReportWindow(800, 1000, "Skreepy")
-            # w.show()
-            # w.setVisible(True)
+            from ui.report_window import ReportWindow
+            o = ReportWindow(1000, 800, "Skreepy", self)
+            o.setVisible(True)
             print("show report")
 
     def cellChangedReaction(self, row, col):

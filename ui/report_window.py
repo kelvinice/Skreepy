@@ -6,8 +6,8 @@ from PyQt5 import QtCore
 
 
 class ReportWindow(QDialog):
-    def __init__(self, width, height, title):
-        super(ReportWindow, self).__init__()
+    def __init__(self, width, height, title, parent):
+        super(ReportWindow, self).__init__(parent)
         self.resize(width / 2, height / 2)
         self.move((width / 2) / 2, (height / 2) / 2)
         self.setWindowTitle("Report")
