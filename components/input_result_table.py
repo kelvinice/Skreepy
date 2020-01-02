@@ -12,8 +12,10 @@ from scraper.scraper import find_all_input, find_all_button, find_all_textarea, 
 class InputResultTable(QTableWidget):
     def executeAllClick(self):
         print("executed")
+
         from ui.report_window import ReportWindow
         w = ReportWindow(800, 1000, "Skreepy")
+        w.show()
 
         # TODO
         # if self.exUrlLbl.text() != "":
@@ -55,12 +57,14 @@ class InputResultTable(QTableWidget):
             }
 
             # OLD
-            # result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
-            # result_window.show()
+            result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
+            result_window.show()
 
             # NEW
-
-            w.show()
+            # from ui.report_window import ReportWindow
+            # w = ReportWindow(800, 1000, "Skreepy")
+            # w.show()
+            # w.setVisible(True)
             print("show report")
 
     def cellChangedReaction(self, row, col):

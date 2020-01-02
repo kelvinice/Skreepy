@@ -11,6 +11,15 @@ def init():
     width = app.desktop().screenGeometry().width()
     height = app.desktop().screenGeometry().height()
 
+    import requests
+    #
+
+
+    # session = requests.Session()
+    # headers = {"User-Agent": UA}
+    # q = session.get(url="https://www.tokopedia.com/", verify=False, headers=headers)
+    # print(q)
+
     # fake = Faker()
     # print(fake.address())
     w = MainWindow(width, height, "Skreepy")
@@ -23,7 +32,7 @@ def init():
 
     # Initializing database connection
     from util.connection import Connection
-    Connection()
+    # Connection()
 
     sys.exit(app.exec_())
 
