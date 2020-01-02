@@ -3,11 +3,31 @@
   <component name="ChangeListManager">
     <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/input_result_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/input_result_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/report_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/report_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/connection.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -29,7 +49,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/util" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -39,15 +59,15 @@
   </component>
   <component name="RunManager">
     <configuration name="MainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Program" />
+      <module name="Skreepy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\Kelvin.DESKTOP-2IHI3E8\PycharmProjects\Skreepy\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -97,7 +117,10 @@
       <workItem from="1575878237225" duration="8970000" />
       <workItem from="1576553801418" duration="13952000" />
       <workItem from="1576817417640" duration="2996000" />
-      <workItem from="1577933451593" duration="222000" />
+      <workItem from="1577933451593" duration="477000" />
+      <workItem from="1577933997964" duration="88000" />
+      <workItem from="1577934606040" duration="289000" />
+      <workItem from="1577934920145" duration="5988000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -190,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576573147736</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="workspace">
+      <created>1577933845058</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1577933845058</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,59 +246,81 @@
     <MESSAGE value="adding meta and util" />
     <MESSAGE value="adding faker" />
     <MESSAGE value="update util" />
-    <MESSAGE value="workspace" />
     <MESSAGE value="edit gitignore" />
     <MESSAGE value="edit workspace" />
     <MESSAGE value="add scraping tool to ui" />
     <MESSAGE value="adding form click" />
     <MESSAGE value="input table(on progress)" />
     <MESSAGE value="lagi bikin input manager, argument belom sesuai form yg dipilih" />
-    <option name="LAST_COMMIT_MESSAGE" value="lagi bikin input manager, argument belom sesuai form yg dipilih" />
+    <MESSAGE value="workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1576573145959">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573145959" />
-    <state width="811" height="234" key="GridCell.Tab.0.bottom" timestamp="1576629997722">
+    <state x="275" y="21" key="#SQL_Dialects" timestamp="1577940172760">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="811" height="234" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576629997722" />
+    <state x="275" y="21" key="#SQL_Dialects/0.0.1366.728@0.0.1366.728" timestamp="1577940172760" />
+    <state x="274" y="36" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577939543583">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="274" y="36" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1577939543583" />
+    <state x="552" y="177" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577934636632" />
+    <state x="443" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1577938122632">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="443" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1577938122632" />
+    <state x="321" y="158" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1577943673099">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="321" y="158" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577943673099" />
+    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577933842248" />
+    <state width="1323" height="205" key="GridCell.Tab.0.bottom" timestamp="1577943592247">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="205" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1577943592247" />
     <state width="1150" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="811" height="234" key="GridCell.Tab.0.center" timestamp="1576629997722">
+    <state width="1323" height="205" key="GridCell.Tab.0.center" timestamp="1577943592246">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="811" height="234" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576629997722" />
+    <state width="1323" height="205" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1577943592246" />
     <state width="1150" height="234" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="811" height="234" key="GridCell.Tab.0.left" timestamp="1576629997722">
+    <state width="1323" height="205" key="GridCell.Tab.0.left" timestamp="1577943592246">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="811" height="234" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576629997722" />
+    <state width="1323" height="205" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1577943592246" />
     <state width="1150" height="234" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="811" height="234" key="GridCell.Tab.0.right" timestamp="1576629997722">
+    <state width="1323" height="205" key="GridCell.Tab.0.right" timestamp="1577943592246">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="811" height="234" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576629997722" />
+    <state width="1323" height="205" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1577943592246" />
     <state width="1150" height="234" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state x="498" y="161" key="SettingsEditor" timestamp="1575880929160">
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1577934997195">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="498" y="161" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1575880929160" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576573149721">
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577934997195" />
+    <state x="672" y="235" key="MultipleFileMergeDialog" timestamp="1577933889900">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573149721" />
-    <state x="699" y="310" key="git4idea.merge.GitPullDialog" timestamp="1577933797787">
+    <state x="672" y="235" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577933889900" />
+    <state x="95" y="169" key="SettingsEditor" timestamp="1577934902144">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="497" y="217" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1576629983064" />
-    <state x="699" y="310" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577933797787" />
+    <state x="95" y="169" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577934902144" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1577934055346">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577934055346" />
+    <state x="497" y="217" key="git4idea.merge.GitPullDialog" timestamp="1577939876817">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="497" y="217" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1577939876817" />
+    <state x="699" y="310" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577934036148" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576024766128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024766128" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1576573110692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1577943592229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

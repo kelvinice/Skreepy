@@ -12,6 +12,8 @@ from scraper.scraper import find_all_input, find_all_button, find_all_textarea, 
 class InputResultTable(QTableWidget):
     def executeAllClick(self):
         print("executed")
+        from ui.report_window import ReportWindow
+        w = ReportWindow(800, 1000, "Skreepy")
 
         # TODO
         # if self.exUrlLbl.text() != "":
@@ -51,9 +53,15 @@ class InputResultTable(QTableWidget):
                 "text_found": scraper.find_text(super_global.expected["text_after"]),
                 "element_found": scraper.find_element(super_global.expected["element_after"])
             }
-            print("aaa")
-            result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
-            result_window.show()
+
+            # OLD
+            # result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
+            # result_window.show()
+
+            # NEW
+
+            w.show()
+            print("show report")
 
     def cellChangedReaction(self, row, col):
         # Value changed
@@ -74,8 +82,7 @@ class InputResultTable(QTableWidget):
              "class": scraper.getheader(self.inputs[args])["class"],
              "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}"})
 
-
-    def __init__(self,  url, result, parent=None):
+    def __init__(self, url, result, parent=None):
         super(InputResultTable, self).__init__(parent)
 
         self.url = url
@@ -116,5 +123,3 @@ class InputResultTable(QTableWidget):
             self.rowcount += 1
 
         self.cellChanged.connect(self.cellChangedReaction)
-
-

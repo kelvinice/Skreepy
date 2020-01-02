@@ -10,17 +10,20 @@ def init():
     app = QApplication(sys.argv)
     width = app.desktop().screenGeometry().width()
     height = app.desktop().screenGeometry().height()
+
     # fake = Faker()
     # print(fake.address())
-    w = ReportWindow(width, height, "Skreepy")
+    w = MainWindow(width, height, "Skreepy")
     w.setVisible(True)
+    # w = ReportWindow(width, height, "Skreepy")
+    # w.setVisible(True)
     from util.super_global import super_global
 
-    print(super_global.expected)
+    # print(super_global.expected)
 
     # Initializing database connection
     from util.connection import Connection
-    Connection();
+    Connection()
 
     sys.exit(app.exec_())
 

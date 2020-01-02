@@ -203,7 +203,7 @@ class MainWindow(QMainWindow):
                 }
         """)
         self.url_line_edit = QLineEdit()
-        self.url_line_edit.setText("http://industry.socs.binus.ac.id/learning-plan/auth/login")
+        self.url_line_edit.setText("https://www.kompas.com/")
         self.url_line_edit.setStyleSheet("""
                 QLineEdit
                 {
@@ -293,8 +293,12 @@ class MainWindow(QMainWindow):
         return
 
     def click_insert_form_result(self):
+
         self.url = self.url_line_edit.text()
-        self.result = scraper.scrape(self.url)
+
+        from scraper.scraper import scrape
+        self.result = scrape(self.url)
+        print(self.result)
 
         self.forms = find_all_form(self.result)
 
