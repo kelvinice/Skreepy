@@ -7,16 +7,19 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from scraper.resultter import Result_displayer
 from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, find_all_form
+from util.util import get_today, get_uuid
 
 
 class InputResultTable(QTableWidget):
-    def executeAllClick(self):
+    def execute_all_click(self):
         print("executed")
 
         from scraper import scraper
+        from util.superglobal import SuperGlobal
+
         scraper.browser = scraper.dive_plus(self.url, self.listofinputed)
 
-        wait = WebDriverWait(scraper.browser, 5)
+        wait = WebDriverWait(scraper.browser, SuperGlobal.timeout)
         try:
             page_loaded = wait.until_not(
                 lambda browser: browser.current_url == self.url
@@ -30,22 +33,28 @@ class InputResultTable(QTableWidget):
 
             # loginResult = scraper.scrape(self.expected["url_after"])
             # self.browser_shower.setText(str(loginResult))
-
         except TimeoutException:
             print("Timeout")
         finally:
-            from util.super_global import super_global
-            print(super_global.expected["text_after"])
+
             result = {
                 "url_after": scraper.browser.current_url,
-                "text_found": scraper.find_text(super_global.expected["text_after"]),
-                "element_found": scraper.find_element(super_global.expected["element_after"])
+                "text_found": scraper.find_text(SuperGlobal.expected["text_after"]),
+                "element_found": scraper.find_element(SuperGlobal.expected["element_after"])
             }
             # NEW
+
+            data = {
+                "result": result,
+                "expected": SuperGlobal.expected,
+                "id": str(get_uuid()),
+                "date": get_today(),
+                "title": "Skreepy"
+            }
+
             from ui.report_window import ReportWindow
-            o = ReportWindow(1000, 800, "Skreepy", self)
+            o = ReportWindow(1000, 800, data=data, parent=self)
             o.setVisible(True)
-            print("show report")
 
     def cellChangedReaction(self, row, col):
         # Value changed

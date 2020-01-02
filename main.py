@@ -5,19 +5,24 @@ from ui.report_window import ReportWindow
 from faker import Faker
 import scraper.main
 
+
 ############################################
+from util.util import get_today
+
+
 def init():
     app = QApplication(sys.argv)
     width = app.desktop().screenGeometry().width()
     height = app.desktop().screenGeometry().height()
-
 
     # fake = Faker()
     # print(fake.address())
     w = MainWindow(width, height, "Skreepy")
     w.setVisible(True)
 
-    from util.super_global import super_global
+    print(get_today())
+
+    from util.superglobal import SuperGlobal
 
     # print(super_global.expected)
 
@@ -30,5 +35,4 @@ def init():
 
 if __name__ == '__main__':
     init()
-    #scraper.main.legacy_main()
-
+    # scraper.main.legacy_main()

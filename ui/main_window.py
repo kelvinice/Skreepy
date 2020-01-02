@@ -47,7 +47,7 @@ class MainWindow(QMainWindow):
 
     def execute_click(self):
         if self.tblInput is not None:
-            self.tblInput.executeAllClick()
+            self.tblInput.execute_all_click()
 
     def init_menu_bar(self):
         menu_bar = self.menuBar()

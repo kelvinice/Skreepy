@@ -6,11 +6,11 @@ from PyQt5 import QtCore
 
 
 class ReportWindow(QDialog):
-    def __init__(self, width, height, title, parent):
+    def __init__(self, width, height, data, parent):
         super(ReportWindow, self).__init__(parent)
         self.resize(width / 2, height / 2)
         self.move((width / 2) / 2, (height / 2) / 2)
-        self.setWindowTitle("Report")
+        self.setWindowTitle("Report "+data["title"])
         self.setWindowIcon(QIcon("assets/report.png"))
         self.setStyleSheet("background-color :  #949494;")
         self.box_title = QGroupBox()
@@ -18,7 +18,7 @@ class ReportWindow(QDialog):
         self.box_table = QScrollArea()
         self.box_result = QGroupBox()
 
-        self.init_title_description()
+        self.init_title_description(data)
         self.init_main_table()
         self.init_result()
 
@@ -31,8 +31,8 @@ class ReportWindow(QDialog):
         self.setLayout(v_box)
         self.show()
 
-    def init_title_description(self):
-        title = QLabel("REPORT OF TEST XXXXX")
+    def init_title_description(self, data):
+        title = QLabel("Report of test "+data["title"])
         title.setStyleSheet("""
             QLabel
             {
@@ -48,9 +48,9 @@ class ReportWindow(QDialog):
 
         form_layout = QFormLayout()
         label_test_id = QLabel("Test ID")
-        test_id = QLabel("89708952-de52-4b00-b7a4-bf7b40df4637")
+        test_id = QLabel(data['id'])
         label_date = QLabel("Date")
-        date = QLabel("10 Oktober 2019")
+        date = QLabel(data["date"])
         label_test_name = QLabel("Tester Name")
         name = QLabel("Kelvin")
         label_tester = QLabel("Tester")

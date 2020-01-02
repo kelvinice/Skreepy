@@ -21,20 +21,21 @@ class Connection(metaclass=Singleton):
 
         cursor = self.get_cursor()
 
-        sql = 'CREATE TABLE IF NOT EXISTS test(' \
-              'id TEXT PRIMARY_KEY,' \
-              'text_date TEXT,' \
-              'tester_name TEXT,' \
-              'test_title TEXT,' \
-              'description TEXT,' \
-              'overall_result TEXT,' \
-              'url_result TEXT,' \
-              'text_result TEXT,' \
-              'element_result TEXT,' \
-              'url_expected TEXT,' \
-              'text_expected TEXT,' \
-              'element_expected TEXT' \
-              ')'
+        sql = ('CREATE TABLE IF NOT EXISTS test('
+               'id TEXT PRIMARY_KEY,'
+               'text_date TEXT,'
+               'tester_name TEXT,'
+               'test_title TEXT,'
+               'description TEXT,'
+               'overall_result TEXT,'
+               'url_result TEXT,'
+               'text_result TEXT,'
+               'element_result TEXT,'
+               'url_expected TEXT,'
+               'text_expected TEXT,'
+               'element_expected TEXT'
+               ')'
+               )
         cursor.execute(sql)
 
         self.close_connection()
