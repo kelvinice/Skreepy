@@ -21,8 +21,9 @@ def scrape(url):
         " (KHTML, like Gecko) Ubuntu Chromium/60.0.3112.78"
         " Chrome/60.0.3112.78 Safari/537.36"
     )
-    req = session.get(url, verify=False)
     headers = {"User-Agent": UA}
+    req = session.get(url, verify=False,  headers=headers)
+
     if req.status_code != requests.codes.ok:
         print(url, " Unreachable")
         return

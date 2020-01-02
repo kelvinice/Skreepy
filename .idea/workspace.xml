@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/input_result_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/input_result_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +115,7 @@
       <workItem from="1577933451593" duration="477000" />
       <workItem from="1577933997964" duration="88000" />
       <workItem from="1577934606040" duration="289000" />
-      <workItem from="1577934920145" duration="13423000" />
+      <workItem from="1577934920145" duration="13483000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -231,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577950636369</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="adding User agent at scraping module">
+      <created>1577955899414</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1577955899414</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +271,8 @@
     <MESSAGE value="workspace" />
     <MESSAGE value="verify false to no validate certificate" />
     <MESSAGE value="TODO: tampilin report window" />
-    <option name="LAST_COMMIT_MESSAGE" value="TODO: tampilin report window" />
+    <MESSAGE value="adding User agent at scraping module" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding User agent at scraping module" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="21" key="#SQL_Dialects" timestamp="1577940172760">
@@ -282,10 +288,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="443" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1577938122632" />
-    <state x="321" y="0" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1577950634148">
+    <state x="321" y="0" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1577955897346">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577950634148" />
+    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577955897346" />
     <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577933842248" />
     <state width="1323" height="165" key="GridCell.Tab.0.bottom" timestamp="1577955874602">
       <screen x="0" y="0" width="1366" height="728" />
@@ -319,10 +325,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="95" y="169" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577934902144" />
-    <state x="393" y="176" key="Vcs.Push.Dialog.v2" timestamp="1577950639350">
+    <state x="393" y="176" key="Vcs.Push.Dialog.v2" timestamp="1577955901305">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="393" y="176" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1577950639350" />
+    <state x="393" y="176" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1577955901305" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577934055346" />
     <state x="497" y="217" key="git4idea.merge.GitPullDialog" timestamp="1577939876817">
       <screen x="0" y="0" width="1366" height="728" />
