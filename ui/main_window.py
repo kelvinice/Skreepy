@@ -24,6 +24,9 @@ class MainWindow(QMainWindow):
         self.setStyleSheet("background-color : #949494;"
                            "color: white;")
 
+        self.tblInput = None
+        self.default_url_text = "https://industry.socs.binus.ac.id/learning-plan/auth/login"
+
         self.top_group_box = QGroupBox("Scrapper")
         self.toolbar_group_box = QGroupBox("Menu Bar")
         self.main_h_layout = QGroupBox()
@@ -32,8 +35,6 @@ class MainWindow(QMainWindow):
         self.init_toolbar_attribute()
         self.init_top_attribute()
         self.init_bottom_attribute()
-
-        self.tblInput = None
 
         v_box = QVBoxLayout()
         v_box.addWidget(self.top_group_box)
@@ -203,7 +204,7 @@ class MainWindow(QMainWindow):
                 }
         """)
         self.url_line_edit = QLineEdit()
-        self.url_line_edit.setText("https://www.kompas.com/")
+        self.url_line_edit.setText(self.default_url_text)
         self.url_line_edit.setStyleSheet("""
                 QLineEdit
                 {

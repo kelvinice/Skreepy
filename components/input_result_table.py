@@ -22,7 +22,7 @@ class InputResultTable(QTableWidget):
         #     self.expected["text_after"] = self.exTextLbl.text()
         # if self.exElementLbl.text() != "":
         #     self.expected["element_after"] = self.exElementLbl.text()
-        self.expected = None
+
         # print(self.expected)
 
         from scraper import scraper

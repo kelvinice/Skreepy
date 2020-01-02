@@ -17,7 +17,6 @@ browser = None
 
 def scrape(url):
     req = session.get(url, verify=False)
-    print(req)
     if req.status_code != requests.codes.ok:
         print(url, " Unreachable")
         return

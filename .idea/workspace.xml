@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
+    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="verify false to no validate certificate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/input_result_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/input_result_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/scraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_window.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/report_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/report_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/connection.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +118,7 @@
       <workItem from="1577933451593" duration="477000" />
       <workItem from="1577933997964" duration="88000" />
       <workItem from="1577934606040" duration="289000" />
-      <workItem from="1577934920145" duration="5988000" />
+      <workItem from="1577934920145" duration="9242000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -220,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577933845058</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="verify false to no validate certificate">
+      <created>1577943695995</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1577943695995</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +258,8 @@
     <MESSAGE value="input table(on progress)" />
     <MESSAGE value="lagi bikin input manager, argument belom sesuai form yg dipilih" />
     <MESSAGE value="workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
+    <MESSAGE value="verify false to no validate certificate" />
+    <option name="LAST_COMMIT_MESSAGE" value="verify false to no validate certificate" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="21" key="#SQL_Dialects" timestamp="1577940172760">
@@ -269,30 +275,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="443" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1577938122632" />
-    <state x="321" y="158" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1577943673099">
+    <state x="321" y="0" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1577945814789">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="158" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577943673099" />
+    <state x="321" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1577945814789" />
     <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577933842248" />
-    <state width="1323" height="205" key="GridCell.Tab.0.bottom" timestamp="1577943592247">
+    <state width="1323" height="237" key="GridCell.Tab.0.bottom" timestamp="1577946455343">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="205" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1577943592247" />
+    <state width="1323" height="237" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1577946455343" />
     <state width="1150" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="1323" height="205" key="GridCell.Tab.0.center" timestamp="1577943592246">
+    <state width="1323" height="237" key="GridCell.Tab.0.center" timestamp="1577946455342">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="205" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1577943592246" />
+    <state width="1323" height="237" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1577946455342" />
     <state width="1150" height="234" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="1323" height="205" key="GridCell.Tab.0.left" timestamp="1577943592246">
+    <state width="1323" height="237" key="GridCell.Tab.0.left" timestamp="1577946455342">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="205" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1577943592246" />
+    <state width="1323" height="237" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1577946455342" />
     <state width="1150" height="234" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="1323" height="205" key="GridCell.Tab.0.right" timestamp="1577943592246">
+    <state width="1323" height="237" key="GridCell.Tab.0.right" timestamp="1577946455343">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="205" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1577943592246" />
+    <state width="1323" height="237" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1577946455343" />
     <state width="1150" height="234" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1577934997195">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -321,6 +327,6 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024766128" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1577943592229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1577946455334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -29,7 +29,7 @@ class ReportWindow(QDialog):
         v_box.addWidget(self.box_result)
 
         self.setLayout(v_box)
-        # self.show()
+        self.show()
 
     def init_title_description(self):
         title = QLabel("REPORT OF TEST XXXXX")
