@@ -294,12 +294,10 @@ class MainWindow(QMainWindow):
         return
 
     def click_insert_form_result(self):
-
         self.url = self.url_line_edit.text()
 
         from scraper.scraper import scrape
         self.result = scrape(self.url)
-        print(self.result)
 
         self.forms = find_all_form(self.result)
 
@@ -345,6 +343,7 @@ class MainWindow(QMainWindow):
         self.tblInput = InputResultTable(self.url, self.forms[int(args)], self)
 
         self.main_scroll_vbox.addWidget(self.tblInput)
+
 
         # self.main_scroll_vbox.addWidget()
         # dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)

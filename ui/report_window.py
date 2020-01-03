@@ -1,16 +1,19 @@
 from email import header
 
-from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox, QPushButton, QFormLayout, QTableWidget, QScrollArea, QGridLayout
+from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox, QPushButton, QFormLayout, \
+    QTableWidget, QScrollArea, QGridLayout, QWidget, QTextEdit
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtCore
+
+from components.result_report_table import ResultReportTable
 
 
 class ReportWindow(QDialog):
     def __init__(self, width, height, data, parent):
         super(ReportWindow, self).__init__(parent)
-        self.resize(width / 2, height / 2)
+        self.resize(width / 2, height)
         self.move((width / 2) / 2, (height / 2) / 2)
-        self.setWindowTitle("Report "+data["title"])
+        self.setWindowTitle("Report " + data["title"])
         self.setWindowIcon(QIcon("assets/report.png"))
         self.setStyleSheet("background-color :  #949494;")
         self.box_title = QGroupBox()
@@ -18,9 +21,9 @@ class ReportWindow(QDialog):
         self.box_table = QScrollArea()
         self.box_result = QGroupBox()
 
-        self.init_title_description(data)
-        self.init_main_table()
-        self.init_result()
+        self.init_title_description(data=data)
+        self.init_main_table(data["expected"],data["result"])
+        self.init_result(data=data)
 
         v_box = QVBoxLayout()
         v_box.addWidget(self.box_title)
@@ -32,7 +35,7 @@ class ReportWindow(QDialog):
         self.show()
 
     def init_title_description(self, data):
-        title = QLabel("Report of test "+data["title"])
+        title = QLabel("Report of test " + data["title"])
         title.setStyleSheet("""
             QLabel
             {
@@ -46,13 +49,14 @@ class ReportWindow(QDialog):
         h_title_layout.addWidget(title)
         self.box_title.setLayout(h_title_layout)
 
+        print(data)
         form_layout = QFormLayout()
         label_test_id = QLabel("Test ID")
         test_id = QLabel(data['id'])
         label_date = QLabel("Date")
         date = QLabel(data["date"])
-        label_test_name = QLabel("Tester Name")
-        name = QLabel("Kelvin")
+        label_test_name = QLabel("Test Name")
+        name = QLabel(data["title"])
         label_tester = QLabel("Tester")
         tester = QLabel("FJDSKLJFDKLSFSD")
         form_layout.addRow(label_test_id, test_id)
@@ -73,17 +77,14 @@ class ReportWindow(QDialog):
         """)
         self.box_header.setLayout(form_layout)
 
-    def init_main_table(self):
+    def init_main_table(self, expected, result):
+        pass
         h_box = QHBoxLayout()
-        main_table = QTableWidget()
-        table_header = ["Parameter", "Expected", "Result"]
-        main_table.setColumnCount(3)
-        main_table.setHorizontalHeaderLabels(table_header)
-        main_table.setMinimumWidth(self.sizeHint().width())
+        main_table = ResultReportTable(expected=expected, result=result, parent=self)
         h_box.addWidget(main_table)
         self.box_table.setLayout(h_box)
 
-    def init_result(self):
+    def init_result(self, data):
         self.box_result.setStyleSheet("""
             QGroupBox
             {
@@ -102,22 +103,34 @@ class ReportWindow(QDialog):
         form_box.setStyleSheet("border: none;")
         label_result = QLabel("Overall Result")
         result = QLabel("FAILED")
-        form_layout.addRow(label_result,result)
+        form_layout.addRow(label_result, result)
         form_box.setLayout(form_layout)
 
         result.setStyleSheet("color : red;")
         label_additional_desc = QLabel("Additional Description")
         scroll_area_description = QScrollArea()
+        description_text_edit = QTextEdit()
+        description_text_edit.setText(data["description"])
+        description_text_edit.setStyleSheet("""
+                    QTextEdit
+                    {
+                        color: black;
+                        font-size : 14px;
+                    }
+                    """)
+
+        # scroll_area_description.setWidget(description_text_edit)
+
         scroll_area_description.setStyleSheet("background: white;")
         button_save = QPushButton("Save Test Result")
         generate_button = QPushButton("Generate Test Result")
 
         v_box = QGridLayout()
-        v_box.addWidget(form_box,0,0)
-        v_box.addWidget(label_additional_desc,1,0)
-        v_box.addWidget(scroll_area_description,2,0)
-        v_box.addWidget(button_save,3,0)
-        v_box.addWidget(generate_button,3,1)
+        v_box.addWidget(form_box, 0, 0)
+        v_box.addWidget(label_additional_desc, 1, 0)
+        v_box.addWidget(description_text_edit, 2, 0)
+        v_box.addWidget(button_save, 3, 0)
+        v_box.addWidget(generate_button, 3, 1)
         self.box_result.setStyleSheet("""
             QPushButton
             {

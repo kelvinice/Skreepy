@@ -2,7 +2,8 @@ from PyQt5.QtWidgets import *
 
 
 def condition_message(condition):
-    if condition: return "Success"
+    if condition:
+        return "Success"
     return "Error"
 
 

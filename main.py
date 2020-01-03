@@ -20,8 +20,6 @@ def init():
     w = MainWindow(width, height, "Skreepy")
     w.setVisible(True)
 
-    print(get_today())
-
     from util.superglobal import SuperGlobal
 
     # print(super_global.expected)

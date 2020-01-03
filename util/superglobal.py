@@ -8,7 +8,8 @@ class SuperGlobal(metaclass=meta.Singleton):
         "element_after": None
     }
     title = ""
-    timeout = 2
+    timeout = 1
+    close_browser_after_test = True
 
 
 
