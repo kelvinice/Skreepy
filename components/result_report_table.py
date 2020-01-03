@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QLabel
 
 from scraper.resultter import condition_message
 
@@ -15,6 +15,7 @@ class ResultReportTable(QTableWidget):
 
         self.setHorizontalHeaderLabels(header)
         self.setItem(0, 0, QTableWidgetItem("Url"))
+        print(result)
         if expected["url_after"] is not None:
             self.setItem(0, 1, QTableWidgetItem(expected["url_after"]))
             self.setItem(0, 2, QTableWidgetItem(result["url_after"]))
@@ -37,3 +38,15 @@ class ResultReportTable(QTableWidget):
             condition = result["element_found"]
             self.setItem(2, 3, QTableWidgetItem(condition_message(condition)))
             self.all_condition = self.all_condition and condition
+
+    def get_condition_label(self):
+        if self.all_condition:
+            result = QLabel("SUCCESS")
+            result.setStyleSheet("color : green;")
+        else:
+            result = QLabel("FAILED")
+            result.setStyleSheet("color : red;")
+        return result
+
+    def save_all(self):
+        pass

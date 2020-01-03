@@ -22,7 +22,7 @@ class ReportWindow(QDialog):
         self.box_result = QGroupBox()
 
         self.init_title_description(data=data)
-        self.init_main_table(data["expected"],data["result"])
+        self.init_main_table(data["expected"], data["result"])
         self.init_result(data=data)
 
         v_box = QVBoxLayout()
@@ -80,8 +80,8 @@ class ReportWindow(QDialog):
     def init_main_table(self, expected, result):
         pass
         h_box = QHBoxLayout()
-        main_table = ResultReportTable(expected=expected, result=result, parent=self)
-        h_box.addWidget(main_table)
+        self.main_table = ResultReportTable(expected=expected, result=result, parent=self)
+        h_box.addWidget(self.main_table)
         self.box_table.setLayout(h_box)
 
     def init_result(self, data):
@@ -101,12 +101,11 @@ class ReportWindow(QDialog):
         form_box = QGroupBox()
         form_layout = QFormLayout()
         form_box.setStyleSheet("border: none;")
-        label_result = QLabel("Overall Result")
-        result = QLabel("FAILED")
+        label_result = QLabel("Overall Result : ")
+        result = self.main_table.get_condition_label()
         form_layout.addRow(label_result, result)
         form_box.setLayout(form_layout)
 
-        result.setStyleSheet("color : red;")
         label_additional_desc = QLabel("Additional Description")
         scroll_area_description = QScrollArea()
         description_text_edit = QTextEdit()

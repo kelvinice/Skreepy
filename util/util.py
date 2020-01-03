@@ -10,7 +10,7 @@ def get_uuid():
 
 def get_today():
     from datetime import datetime
-    return datetime.today().strftime('%d-%b-%Y')
+    return datetime.today().strftime('%d %b %Y')
 
 
 class Util(metaclass=meta.Singleton):
