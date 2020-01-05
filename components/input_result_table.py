@@ -7,26 +7,20 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from scraper.resultter import Result_displayer
 from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, find_all_form
+from util.util import get_today, get_uuid
 
 
 class InputResultTable(QTableWidget):
-    def executeAllClick(self):
+    def execute_all_click(self):
         print("executed")
-
-        # TODO
-        # if self.exUrlLbl.text() != "":
-        #     self.expected["url_after"] = self.exUrlLbl.text()
-        # if self.exTextLbl.text() != "":
-        #     self.expected["text_after"] = self.exTextLbl.text()
-        # if self.exElementLbl.text() != "":
-        #     self.expected["element_after"] = self.exElementLbl.text()
-        self.expected = None
-        # print(self.expected)
+        description = ""
 
         from scraper import scraper
-        scraper.browser = scraper.dive_plus(self.url, self.listofinputed)
+        from util.superglobal import SuperGlobal
 
-        wait = WebDriverWait(scraper.browser, 5)
+        scraper.browser = scraper.dive_plus(self.url, self.list_of_input)
+
+        wait = WebDriverWait(scraper.browser, SuperGlobal.timeout)
         try:
             page_loaded = wait.until_not(
                 lambda browser: browser.current_url == self.url
@@ -40,26 +34,36 @@ class InputResultTable(QTableWidget):
 
             # loginResult = scraper.scrape(self.expected["url_after"])
             # self.browser_shower.setText(str(loginResult))
-
         except TimeoutException:
             print("Timeout")
+            description = "Timeout\n"
         finally:
-            from util.super_global import super_global
             result = {
                 "url_after": scraper.browser.current_url,
-                "text_found": scraper.find_text(super_global.expected["text_after"]),
-                "element_found": scraper.find_element(super_global.expected["element_after"])
+                "text_found": scraper.find_text(SuperGlobal.expected["text_after"]),
+                "element_found": scraper.find_element(SuperGlobal.expected["element_after"])
             }
-            result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
-            result_window.show()
+            data = {
+                "result": result,
+                "expected": SuperGlobal.expected,
+                "id": str(get_uuid()),
+                "date": get_today(),
+                "title": "Skreepy",
+                "description": description
+            }
+            if SuperGlobal.close_browser_after_test:
+                scraper.browser.close()
+            from ui.report_window import ReportWindow
+            o = ReportWindow(1000, 680, data=data, parent=self)
+            o.setVisible(True)
 
-    def cellChangedReaction(self, row, col):
+    def cell_changed_reaction(self, row, col):
         # Value changed
         if col == 3:
             print("Value Change To : " + str(self.item(row, col).text()))
             from scraper import scraper
             text = str(self.item(row, col).text())
-            self.listofinputed.append(
+            self.list_of_input.append(
                 {"tag": scraper.getheader(self.inputs[row])["tag"], "id": scraper.getheader(self.inputs[row])["id"],
                  "class": scraper.getheader(self.inputs[row])["class"],
                  "name": scraper.getheader(self.inputs[row])["name"], "value": text})
@@ -67,17 +71,16 @@ class InputResultTable(QTableWidget):
     def on_click(self, args=0):
         # TODO VALIDASI JIKA BUTTON
         from scraper import scraper
-        self.listofinputed.append(
+        self.list_of_input.append(
             {"tag": scraper.getheader(self.inputs[args])["tag"], "id": scraper.getheader(self.inputs[args])["id"],
              "class": scraper.getheader(self.inputs[args])["class"],
              "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}"})
 
-
-    def __init__(self,  url, result, parent=None):
+    def __init__(self, url, result, parent=None):
         super(InputResultTable, self).__init__(parent)
 
         self.url = url
-        self.listofinputed = []
+        self.list_of_input = []
 
         self.setColumnCount(6)
 
@@ -113,6 +116,4 @@ class InputResultTable(QTableWidget):
 
             self.rowcount += 1
 
-        self.cellChanged.connect(self.cellChangedReaction)
-
-
+        self.cellChanged.connect(self.cell_changed_reaction)

@@ -24,6 +24,9 @@ class MainWindow(QMainWindow):
         self.setStyleSheet("background-color : #949494;"
                            "color: white;")
 
+        self.tblInput = None
+        self.default_url_text = "https://industry.socs.binus.ac.id/learning-plan/auth/login"
+
         self.top_group_box = QGroupBox("Scrapper")
         self.toolbar_group_box = QGroupBox("Menu Bar")
         self.main_h_layout = QGroupBox()
@@ -32,8 +35,6 @@ class MainWindow(QMainWindow):
         self.init_toolbar_attribute()
         self.init_top_attribute()
         self.init_bottom_attribute()
-
-        self.tblInput = None
 
         v_box = QVBoxLayout()
         v_box.addWidget(self.top_group_box)
@@ -46,7 +47,7 @@ class MainWindow(QMainWindow):
 
     def execute_click(self):
         if self.tblInput is not None:
-            self.tblInput.executeAllClick()
+            self.tblInput.execute_all_click()
 
     def init_menu_bar(self):
         menu_bar = self.menuBar()
@@ -203,7 +204,7 @@ class MainWindow(QMainWindow):
                 }
         """)
         self.url_line_edit = QLineEdit()
-        self.url_line_edit.setText("http://industry.socs.binus.ac.id/learning-plan/auth/login")
+        self.url_line_edit.setText(self.default_url_text)
         self.url_line_edit.setStyleSheet("""
                 QLineEdit
                 {
@@ -294,7 +295,9 @@ class MainWindow(QMainWindow):
 
     def click_insert_form_result(self):
         self.url = self.url_line_edit.text()
-        self.result = scraper.scrape(self.url)
+
+        from scraper.scraper import scrape
+        self.result = scrape(self.url)
 
         self.forms = find_all_form(self.result)
 
@@ -340,6 +343,7 @@ class MainWindow(QMainWindow):
         self.tblInput = InputResultTable(self.url, self.forms[int(args)], self)
 
         self.main_scroll_vbox.addWidget(self.tblInput)
+
 
         # self.main_scroll_vbox.addWidget()
         # dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)

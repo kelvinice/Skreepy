@@ -10,13 +10,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 # url2 = 'https://thin-skinned-passes.000webhostapp.com'
 
 url = 'http://industry.socs.binus.ac.id/learning-plan/auth/login'
-url2 = 'http://industry.socs.binus.ac.id/learning-plan/'
+url2 = 'https://industry.socs.binus.ac.id/learning-plan/'
 session = requests.Session()
 browser = None
 
 
 def scrape(url):
-    req = session.get(url)
+    user_agent = (
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+        " (KHTML, like Gecko) Ubuntu Chromium/60.0.3112.78"
+        " Chrome/60.0.3112.78 Safari/537.36"
+    )
+    headers = {"User-Agent": user_agent}
+    req = session.get(url, verify=False,  headers=headers)
+
     if req.status_code != requests.codes.ok:
         print(url, " Unreachable")
         return

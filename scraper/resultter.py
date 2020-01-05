@@ -2,7 +2,8 @@ from PyQt5.QtWidgets import *
 
 
 def condition_message(condition):
-    if condition: return "Success"
+    if condition:
+        return "Success"
     return "Error"
 
 
@@ -22,7 +23,7 @@ class Result_displayer(QMainWindow):
         self.tblForm.setHorizontalHeaderLabels(header)
 
         self.tblForm.setItem(0, 0, QTableWidgetItem("Url"))
-        if expected["url_after"] != None:
+        if expected["url_after"] is not None:
             self.tblForm.setItem(0, 1, QTableWidgetItem(expected["url_after"]))
             self.tblForm.setItem(0, 2, QTableWidgetItem(result["url_after"]))
             condition = result["url_after"] == expected["url_after"]
@@ -30,7 +31,7 @@ class Result_displayer(QMainWindow):
             all_condition = all_condition and condition
 
         self.tblForm.setItem(1, 0, QTableWidgetItem("Text"))
-        if expected["text_after"] != None:
+        if expected["text_after"] is not None:
             self.tblForm.setItem(1, 1, QTableWidgetItem(expected["text_after"]))
             self.tblForm.setItem(1, 2, QTableWidgetItem(str(result["text_found"])))
             condition = result["text_found"]
@@ -38,7 +39,7 @@ class Result_displayer(QMainWindow):
             all_condition = all_condition and condition
 
         self.tblForm.setItem(2, 0, QTableWidgetItem("Element"))
-        if expected["element_after"] != None:
+        if expected["element_after"] is not None:
             self.tblForm.setItem(2, 1, QTableWidgetItem(expected["element_after"]))
             self.tblForm.setItem(2, 2, QTableWidgetItem(str(result["element_found"])))
             condition = result["element_found"]
