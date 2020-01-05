@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Program.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Program.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/input_result_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/input_result_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/resultter.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/resultter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/result_report_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/result_report_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scraper/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/report_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/report_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +37,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/util" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -42,20 +47,20 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="MainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Program" />
+    <configuration name="Skreepy" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Skreepy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\kelvi\AppData\Local\Programs\Python\Python38-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -64,11 +69,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.MainWindow" />
-      </list>
-    </recent_temporary>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Skreepy" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\kelvi\AppData\Local\Programs\Python\Python38-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -104,7 +126,10 @@
       <workItem from="1577379809176" duration="949000" />
       <workItem from="1577648073652" duration="1962000" />
       <workItem from="1577652230302" duration="116000" />
-      <workItem from="1578234860606" duration="613000" />
+      <workItem from="1578234860606" duration="3123000" />
+      <workItem from="1578239475294" duration="444000" />
+      <workItem from="1578239932978" duration="498000" />
+      <workItem from="1578240445686" duration="537000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -204,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577651098171</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add gitignore">
+      <created>1578239357307</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1578239357307</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,49 +274,78 @@
     <option name="LAST_COMMIT_MESSAGE" value="add gitignore" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1576571891242">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="414" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578240982532">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="414" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578240982532" />
+    <state x="740" y="249" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1578239546115">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="740" y="249" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578239546115" />
+    <state x="585" y="117" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1578239355767">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576571891242" />
-    <state width="1150" height="234" key="GridCell.Tab.0.bottom" timestamp="1576573110703">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1578239355767" />
+    <state x="740" y="299" key="FileChooserDialogImpl" timestamp="1578240089269">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="740" y="299" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1578240089269" />
+    <state width="931" height="294" key="GridCell.Tab.0.bottom" timestamp="1578240430969">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="811" height="234" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576029040481" />
     <state width="1150" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="1150" height="234" key="GridCell.Tab.0.center" timestamp="1576573110703">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="931" height="294" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1578240430969" />
+    <state width="931" height="294" key="GridCell.Tab.0.center" timestamp="1578240430968">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="811" height="234" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
     <state width="1150" height="234" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="1150" height="234" key="GridCell.Tab.0.left" timestamp="1576573110703">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="931" height="294" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1578240430968" />
+    <state width="931" height="294" key="GridCell.Tab.0.left" timestamp="1578240430968">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="811" height="234" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
     <state width="1150" height="234" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="1150" height="234" key="GridCell.Tab.0.right" timestamp="1576573110703">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="931" height="294" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1578240430968" />
+    <state width="931" height="294" key="GridCell.Tab.0.right" timestamp="1578240430968">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="811" height="234" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
     <state width="1150" height="234" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
+    <state width="931" height="294" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1578240430968" />
+    <state x="184" y="96" key="MergeDialog" timestamp="1578239419167">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="184" y="96" key="MergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578239419167" />
+    <state x="672" y="258" key="MultipleFileMergeDialog" timestamp="1578239440165">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="672" y="258" key="MultipleFileMergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578239440165" />
     <state x="498" y="161" key="SettingsEditor" timestamp="1575880929160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="498" y="161" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1575880929160" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1576571896736">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="552" y="262" key="Vcs.Push.Dialog.v2" timestamp="1578239590223">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576571896736" />
-    <state x="699" y="322" key="git4idea.merge.GitPullDialog" timestamp="1578234870936">
+    <state x="552" y="262" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1578239590223" />
+    <state x="699" y="322" key="git4idea.merge.GitPullDialog" timestamp="1578239579219">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="699" y="310" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576023998040" />
-    <state x="699" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578234870936" />
+    <state x="699" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578239579219" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576024766128">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024766128" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Skreepy$input_result_table.coverage" NAME="Skreepy Coverage Results" MODIFIED="1578239839885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
     <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1577651882596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$Skreepy.coverage" NAME="main Coverage Results" MODIFIED="1578240413045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$main.coverage" NAME="main Coverage Results" MODIFIED="1578240848138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

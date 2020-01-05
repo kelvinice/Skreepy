@@ -1,5 +1,7 @@
 import sys
+
 from PyQt5.QtWidgets import *
+
 import scraper.form_manager
 
 

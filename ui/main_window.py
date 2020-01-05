@@ -3,13 +3,12 @@ from functools import partial
 
 import PyQt5
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, QLabel, \
-    QScrollArea, QLineEdit, QGridLayout
+from PyQt5.QtCore import QSize, QRect
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QSize, QRect, Qt
+from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, \
+    QScrollArea, QLineEdit, QGridLayout
 
 from components.input_result_table import InputResultTable
-from scraper import scraper
 from scraper.scraper import getheader, find_all_form
 
 

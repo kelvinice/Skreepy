@@ -1,13 +1,11 @@
 import sys
+
 from PyQt5.QtWidgets import QApplication
+
 from ui.main_window import MainWindow
-from ui.report_window import ReportWindow
-from faker import Faker
-import scraper.main
 
 
 ############################################
-from util.util import get_today
 
 
 def init():
@@ -20,12 +18,9 @@ def init():
     w = MainWindow(width, height, "Skreepy")
     w.setVisible(True)
 
-    from util.superglobal import SuperGlobal
-
     # print(super_global.expected)
 
     # Initializing database connection
-    from util.connection import Connection
     # Connection()
 
     sys.exit(app.exec_())

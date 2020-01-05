@@ -1,6 +1,5 @@
-import meta
 import uuid
-from faker import Faker
+
 from meta import meta
 
 
