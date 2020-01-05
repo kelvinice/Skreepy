@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="088dc81c-32db-4ee3-b59b-987462e9f8eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ui/setting_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Program.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/input_result_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/input_result_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/result_report_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/components/result_report_table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/report_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/report_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,26 +22,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1TSnPqpLCsUwcSrAZeZqKfo7mQO" />
+  <component name="ProjectId" id="1Vz35Dw8LilQwgcdzNlJTwmCh3x" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Kelvin.DESKTOP-2IHI3E8\PycharmProjects\Skreepy\util" />
-      <recent name="C:\Users\Kelvin.DESKTOP-2IHI3E8\PycharmProjects\Skreepy\meta" />
-    </key>
-  </component>
   <component name="RunManager">
-    <configuration name="Skreepy" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Skreepy" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -55,34 +44,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\kelvi\AppData\Local\Programs\Python\Python38-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="Skreepy" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\kelvi\AppData\Local\Programs\Python\Python38-32\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -109,243 +76,55 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="" />
-      <created>1573462342658</created>
+      <changelist id="088dc81c-32db-4ee3-b59b-987462e9f8eb" name="Default Changelist" comment="" />
+      <created>1578241911160</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1573462342658</updated>
-      <workItem from="1573914784824" duration="8977000" />
-      <workItem from="1574077594252" duration="4610000" />
-      <workItem from="1574138994574" duration="3868000" />
-      <workItem from="1574910599592" duration="103000" />
-      <workItem from="1574910833149" duration="5345000" />
-      <workItem from="1575858163938" duration="8461000" />
-      <workItem from="1575878237225" duration="8970000" />
-      <workItem from="1576553801418" duration="10757000" />
-      <workItem from="1576604613398" duration="2900000" />
-      <workItem from="1577379809176" duration="949000" />
-      <workItem from="1577648073652" duration="1962000" />
-      <workItem from="1577652230302" duration="116000" />
-      <workItem from="1578234860606" duration="3123000" />
-      <workItem from="1578239475294" duration="444000" />
-      <workItem from="1578239932978" duration="498000" />
-      <workItem from="1578240445686" duration="537000" />
+      <updated>1578241911160</updated>
+      <workItem from="1578241917035" duration="578000" />
+      <workItem from="1578242508422" duration="153000" />
+      <workItem from="1578243160476" duration="799000" />
     </task>
-    <task id="LOCAL-00001" summary="edit gitigone and readme">
-      <created>1574077721009</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1574077721009</updated>
-    </task>
-    <task id="LOCAL-00002" summary="delete ide file">
-      <created>1574077802755</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1574077802755</updated>
-    </task>
-    <task id="LOCAL-00003" summary="edit readme">
-      <created>1574078496210</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1574078496210</updated>
-    </task>
-    <task id="LOCAL-00004" summary="adding meta and util">
-      <created>1574152010873</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1574152010873</updated>
-    </task>
-    <task id="LOCAL-00005" summary="adding faker">
-      <created>1574213096300</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1574213096300</updated>
-    </task>
-    <task id="LOCAL-00006" summary="update util">
-      <created>1574239022855</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1574239022855</updated>
-    </task>
-    <task id="LOCAL-00007" summary="workspace">
-      <created>1574911033098</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1574911033098</updated>
-    </task>
-    <task id="LOCAL-00008" summary="edit gitignore">
-      <created>1574911135368</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1574911135368</updated>
-    </task>
-    <task id="LOCAL-00009" summary="edit workspace">
-      <created>1574919124097</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1574919124097</updated>
-    </task>
-    <task id="LOCAL-00010" summary="add scraping tool to ui">
-      <created>1575879361255</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1575879361255</updated>
-    </task>
-    <task id="LOCAL-00011" summary="adding form click">
-      <created>1576050859981</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1576050859981</updated>
-    </task>
-    <task id="LOCAL-00012" summary="input table(on progress)">
-      <created>1576571893375</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1576571893375</updated>
-    </task>
-    <task id="LOCAL-00013" summary="input">
-      <created>1576667749763</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1576667749763</updated>
-    </task>
-    <task id="LOCAL-00014" summary="add gitignore">
-      <created>1577651098171</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1577651098171</updated>
-    </task>
-    <task id="LOCAL-00015" summary="add gitignore">
-      <created>1578239357307</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1578239357307</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="SHOW_UNVERSIONED_FILES_WHILE_COMMIT" value="false" />
-    <MESSAGE value="edit gitigone and readme" />
-    <MESSAGE value="delete ide file" />
-    <MESSAGE value="edit readme" />
-    <MESSAGE value="adding meta and util" />
-    <MESSAGE value="adding faker" />
-    <MESSAGE value="update util" />
-    <MESSAGE value="workspace" />
-    <MESSAGE value="edit gitignore" />
-    <MESSAGE value="edit workspace" />
-    <MESSAGE value="add scraping tool to ui" />
-    <MESSAGE value="adding form click" />
-    <MESSAGE value="input table(on progress)" />
-    <MESSAGE value="input" />
-    <MESSAGE value="add gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add gitignore" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578240982532">
+    <state x="414" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578243767647">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="414" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578240982532" />
-    <state x="740" y="249" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1578239546115">
+    <state x="414" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578243767647" />
+    <state x="740" y="249" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1578242448428">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="249" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578239546115" />
-    <state x="585" y="117" width="1238" height="813" key="CommitChangelistDialog2" timestamp="1578239355767">
+    <state x="740" y="249" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578242448428" />
+    <state x="740" y="299" key="FileChooserDialogImpl" timestamp="1578243766745">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576571891242" />
-    <state x="585" y="117" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1578239355767" />
-    <state x="740" y="299" key="FileChooserDialogImpl" timestamp="1578240089269">
+    <state x="740" y="299" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1578243766745" />
+    <state width="938" height="295" key="GridCell.Tab.0.bottom" timestamp="1578243973156">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="740" y="299" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1578240089269" />
-    <state width="931" height="294" key="GridCell.Tab.0.bottom" timestamp="1578240430969">
+    <state width="938" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1578243973156" />
+    <state width="938" height="295" key="GridCell.Tab.0.center" timestamp="1578243973156">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="811" height="234" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576029040481" />
-    <state width="1150" height="234" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="931" height="294" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1578240430969" />
-    <state width="931" height="294" key="GridCell.Tab.0.center" timestamp="1578240430968">
+    <state width="938" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1578243973156" />
+    <state width="938" height="295" key="GridCell.Tab.0.left" timestamp="1578243973156">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="811" height="234" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
-    <state width="1150" height="234" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="931" height="294" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1578240430968" />
-    <state width="931" height="294" key="GridCell.Tab.0.left" timestamp="1578240430968">
+    <state width="938" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1578243973156" />
+    <state width="938" height="295" key="GridCell.Tab.0.right" timestamp="1578243973156">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="811" height="234" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
-    <state width="1150" height="234" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="931" height="294" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1578240430968" />
-    <state width="931" height="294" key="GridCell.Tab.0.right" timestamp="1578240430968">
+    <state width="938" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1578243973156" />
+    <state x="463" y="186" key="SettingsEditor" timestamp="1578243346473">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="811" height="234" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576029040480" />
-    <state width="1150" height="234" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576573110703" />
-    <state width="931" height="294" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1578240430968" />
-    <state x="184" y="96" key="MergeDialog" timestamp="1578239419167">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="184" y="96" key="MergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578239419167" />
-    <state x="672" y="258" key="MultipleFileMergeDialog" timestamp="1578239440165">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="672" y="258" key="MultipleFileMergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578239440165" />
-    <state x="498" y="161" key="SettingsEditor" timestamp="1575880929160">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="498" y="161" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1575880929160" />
-    <state x="552" y="262" key="Vcs.Push.Dialog.v2" timestamp="1578239590223">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576571896736" />
-    <state x="552" y="262" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1578239590223" />
-    <state x="699" y="322" key="git4idea.merge.GitPullDialog" timestamp="1578239579219">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="699" y="310" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576023998040" />
-    <state x="699" y="322" key="git4idea.merge.GitPullDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578239579219" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576024766128">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024766128" />
+    <state x="463" y="186" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1578243346473" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Skreepy$input_result_table.coverage" NAME="Skreepy Coverage Results" MODIFIED="1578239839885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
-    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1577651882596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Skreepy$Skreepy.coverage" NAME="main Coverage Results" MODIFIED="1578240413045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Skreepy$main.coverage" NAME="main Coverage Results" MODIFIED="1578240848138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$Skreepy.coverage" NAME="main Coverage Results" MODIFIED="1578243973139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
