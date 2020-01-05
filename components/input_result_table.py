@@ -45,13 +45,11 @@ class InputResultTable(QTableWidget):
             print("Timeout")
         finally:
             from util.super_global import super_global
-            print(super_global.expected["text_after"])
             result = {
                 "url_after": scraper.browser.current_url,
                 "text_found": scraper.find_text(super_global.expected["text_after"]),
                 "element_found": scraper.find_element(super_global.expected["element_after"])
             }
-            print("aaa")
             result_window = Result_displayer(url=self.url, expected=super_global.expected, result=result, parent=None)
             result_window.show()
 

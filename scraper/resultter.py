@@ -13,7 +13,6 @@ class Result_displayer(QMainWindow):
         layout = QVBoxLayout()
         urlBeforeLbl = QLabel("Url Before : " + url)
         all_condition = True
-        print("a")
         self.tblForm = QTableWidget()
 
         self.tblForm.setRowCount(3)
