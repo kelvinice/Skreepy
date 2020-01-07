@@ -111,9 +111,10 @@ class ReportWindow(QDialog):
 
         label_additional_desc = QLabel("Additional Description")
         scroll_area_description = QScrollArea()
-        description_text_edit = QTextEdit()
-        description_text_edit.setText(self.data["description"])
-        description_text_edit.setStyleSheet("""
+        self.description_text_edit = QTextEdit()
+        self.description_text_edit.setText(self.data["description"])
+        self.description_text_edit.textChanged.connect(self.change_description)
+        self.description_text_edit.setStyleSheet("""
                     QTextEdit
                     {
                         color: black;
@@ -132,7 +133,7 @@ class ReportWindow(QDialog):
         v_box = QGridLayout()
         v_box.addWidget(form_box, 0, 0)
         v_box.addWidget(label_additional_desc, 1, 0)
-        v_box.addWidget(description_text_edit, 2, 0)
+        v_box.addWidget(self.description_text_edit, 2, 0)
         v_box.addWidget(button_save, 3, 0)
         v_box.addWidget(generate_button, 3, 1)
         self.box_result.setStyleSheet("""
@@ -161,3 +162,7 @@ class ReportWindow(QDialog):
     def click_save(self):
         conn = Connection()
         conn.insert_test(self.data)
+
+    def change_description(self):
+        self.data["description"] = self.description_text_edit.toPlainText()
+
