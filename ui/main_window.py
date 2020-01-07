@@ -7,18 +7,21 @@ from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLay
     QScrollArea, QLineEdit, QGridLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize, QRect, Qt
+from PyQt5.uic.properties import QtGui
+from PyQt5.uic.uiparser import QtWidgets
 
 from components.input_result_table import InputResultTable
 from scraper import scraper
 from scraper.scraper import getheader, find_all_form
+from ui.preferences_window import PreferencesWindow
 
 
 class MainWindow(QMainWindow):
 
     def __init__(self, width, height, title):
         super(MainWindow, self).__init__()
-        self.move((width / 2) / 2, (height / 2) / 2)
-        self.resize(width / 2, height / 2)
+        self.resize(width, height)
+        self.showMaximized()
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon("assets/logoBINUS.png"))
         self.setStyleSheet("background-color : #949494;"
@@ -49,14 +52,24 @@ class MainWindow(QMainWindow):
         if self.tblInput is not None:
             self.tblInput.execute_all_click()
 
+    def open_preferences(self):
+        p = PreferencesWindow(600, 180, self)
+        p.show()
+        pass
+
+
     def init_menu_bar(self):
         menu_bar = self.menuBar()
         setting_menu = menu_bar.addMenu("Settings")
         change_user_action = QAction(QIcon("assets/user.png"), 'Change User', self)
         exit_button = QAction(QIcon("assets/exit.png"), 'Exit', self)
+        preferences_button = QAction(QIcon("assets/exit.png"), 'Preferences', self)
         setting_menu.triggered[QAction].connect(self.setting_listener)
         exit_button.triggered.connect(self.close)
+        preferences_button.triggered.connect(self.open_preferences)
+
         setting_menu.addAction(change_user_action)
+        setting_menu.addAction(preferences_button)
         setting_menu.addAction(exit_button)
 
     def init_toolbar_attribute(self):
@@ -308,6 +321,7 @@ class MainWindow(QMainWindow):
 
         header = ("Method", "Action", "Event")
         self.tblForm.setHorizontalHeaderLabels(header)
+        self.tblForm.horizontalHeader().setSectionResizeMode(3)
 
         self.rowcount = 0
 
@@ -316,6 +330,7 @@ class MainWindow(QMainWindow):
 
         header = ("Method", "Action", "Event")
         self.tblForm.setHorizontalHeaderLabels(header)
+
 
         rowcount = 0
 
@@ -336,6 +351,7 @@ class MainWindow(QMainWindow):
         self.main_scroll_widged.setLayout(self.main_scroll_vbox)
 
         self.right_v_layout.addWidget(self.main_scroll_widged)
+
 
     def click_insert_input_result(self, args=0):
         self.tblForm.setParent(None)

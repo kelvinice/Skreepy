@@ -2,14 +2,22 @@ from meta import meta
 
 
 class SuperGlobal(metaclass=meta.Singleton):
-    expected = {
-        "url_after": None,
-        "text_after": None,
-        "element_after": None
+    setting = {
+        "expected": {
+            "url_after": "",
+            "text_after": "",
+            "element_after": ""
+        },
+        "title": "",
+        "timeout": 1,
+        "close_browser_after_test": False,
+        "tester": "Chen"
     }
-    title = ""
-    timeout = 1
-    close_browser_after_test = True
+
+
+
+
+
 
 
 
