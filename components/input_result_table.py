@@ -54,7 +54,7 @@ class InputResultTable(QTableWidget):
             if SuperGlobal.close_browser_after_test:
                 scraper.browser.close()
             from ui.report_window import ReportWindow
-            o = ReportWindow(1000, 680, data=data, parent=self)
+            o = ReportWindow(1200, 680, data=data, parent=self)
             o.setVisible(True)
 
     def cell_changed_reaction(self, row, col):
@@ -89,6 +89,7 @@ class InputResultTable(QTableWidget):
 
         self.inputs = find_all_input(result) + find_all_button(result) + find_all_textarea(result)
         self.setRowCount(len(self.inputs))
+        self.horizontalHeader().setSectionResizeMode(1)
 
         self.rowcount = 0
         for inp in self.inputs:
@@ -117,3 +118,4 @@ class InputResultTable(QTableWidget):
             self.rowcount += 1
 
         self.cellChanged.connect(self.cell_changed_reaction)
+

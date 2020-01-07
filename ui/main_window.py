@@ -7,6 +7,8 @@ from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLay
     QScrollArea, QLineEdit, QGridLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize, QRect, Qt
+from PyQt5.uic.properties import QtGui
+from PyQt5.uic.uiparser import QtWidgets
 
 from components.input_result_table import InputResultTable
 from scraper import scraper
@@ -51,7 +53,7 @@ class MainWindow(QMainWindow):
             self.tblInput.execute_all_click()
 
     def open_preferences(self):
-        p = PreferencesWindow(600, 400, self)
+        p = PreferencesWindow(600, 180, self)
         p.show()
         pass
 
@@ -319,6 +321,7 @@ class MainWindow(QMainWindow):
 
         header = ("Method", "Action", "Event")
         self.tblForm.setHorizontalHeaderLabels(header)
+        self.tblForm.horizontalHeader().setSectionResizeMode(3)
 
         self.rowcount = 0
 
@@ -327,6 +330,7 @@ class MainWindow(QMainWindow):
 
         header = ("Method", "Action", "Event")
         self.tblForm.setHorizontalHeaderLabels(header)
+
 
         rowcount = 0
 
@@ -347,6 +351,7 @@ class MainWindow(QMainWindow):
         self.main_scroll_widged.setLayout(self.main_scroll_vbox)
 
         self.right_v_layout.addWidget(self.main_scroll_widged)
+
 
     def click_insert_input_result(self, args=0):
         self.tblForm.setParent(None)

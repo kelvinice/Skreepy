@@ -1,4 +1,5 @@
-from PyQt5.QtWidgets import QDialog, QLineEdit, QGridLayout, QLabel, QWidget, QVBoxLayout, QPushButton, QMessageBox
+from PyQt5.QtWidgets import QDialog, QLineEdit, QGridLayout, QLabel, QWidget, QVBoxLayout, QPushButton, QMessageBox, \
+    QFormLayout
 
 from util.superglobal import SuperGlobal
 
@@ -32,7 +33,6 @@ class PreferencesWindow(QDialog):
 
         msg_box.setText("Preferences saved")
         msg_box.setWindowTitle("Save Success")
-        # msgBox.setDetailedText("The details are as follows:")
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.buttonClicked.connect(msgbtn)
         return_value = msg_box.exec()
@@ -40,39 +40,43 @@ class PreferencesWindow(QDialog):
         #     print('OK clicked')
         self.close()
 
-
     def __init__(self, width, height, parent):
         super(PreferencesWindow, self).__init__(parent)
         self.resize(width, height)
-        self.move((width / 2) / 2, (height / 2) / 2)
+        self.move((width / 2), (height / 2))
         self.setWindowTitle("Preferences")
 
-        v_box = QVBoxLayout()
+        master = QVBoxLayout();
+        v_box = QFormLayout()
         self.exUrlLbl = QLineEdit()
         self.exTextLbl = QLineEdit()
         self.exElementLbl = QLineEdit()
 
-        v_box.addWidget(wrap_layout_into_widget(wrap_text_edit_with_label(self.exUrlLbl, "Url Expected")))
-        v_box.addWidget(wrap_layout_into_widget(wrap_text_edit_with_label(self.exTextLbl, "Text Expected")))
-        v_box.addWidget(wrap_layout_into_widget(wrap_text_edit_with_label(self.exElementLbl, "Element Expected")))
+        v_box.addRow("Url Expected", self.exUrlLbl)
+        v_box.addRow("Text Expected", self.exTextLbl)
+        v_box.addRow("Element Expected", self.exElementLbl)
 
         btn_save = QPushButton("Save")
-        v_box.addWidget(btn_save)
 
-        self.setLayout(v_box)
+        master.addWidget(wrap_layout_into_widget(v_box))
+        master.addWidget(btn_save)
+        self.setLayout(master)
 
         btn_save.clicked.connect(self.save_click)
-
-
-
+        self.setStyleSheet("""
+        QLabel{
+            font-size: 18px;
+        }
+        QLineEdit{
+            font-size: 16px;
+        }
+        QPushButton{
+            padding: 5px;
+            font-size: 20px;
+        }
+        """)
 
 
 def msgbtn(i):
     if i.text() == "OK":
         pass
-
-
-
-
-
-
