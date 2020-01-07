@@ -11,14 +11,15 @@ from PyQt5.QtCore import QSize, QRect, Qt
 from components.input_result_table import InputResultTable
 from scraper import scraper
 from scraper.scraper import getheader, find_all_form
+from ui.preferences_window import PreferencesWindow
 
 
 class MainWindow(QMainWindow):
 
     def __init__(self, width, height, title):
         super(MainWindow, self).__init__()
-        self.move((width / 2) / 2, (height / 2) / 2)
-        self.resize(width / 2, height / 2)
+        self.resize(width, height)
+        self.showMaximized()
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon("assets/logoBINUS.png"))
         self.setStyleSheet("background-color : #949494;"
@@ -49,14 +50,24 @@ class MainWindow(QMainWindow):
         if self.tblInput is not None:
             self.tblInput.execute_all_click()
 
+    def open_preferences(self):
+        p = PreferencesWindow(600, 400, self)
+        p.show()
+        pass
+
+
     def init_menu_bar(self):
         menu_bar = self.menuBar()
         setting_menu = menu_bar.addMenu("Settings")
         change_user_action = QAction(QIcon("assets/user.png"), 'Change User', self)
         exit_button = QAction(QIcon("assets/exit.png"), 'Exit', self)
+        preferences_button = QAction(QIcon("assets/exit.png"), 'Preferences', self)
         setting_menu.triggered[QAction].connect(self.setting_listener)
         exit_button.triggered.connect(self.close)
+        preferences_button.triggered.connect(self.open_preferences)
+
         setting_menu.addAction(change_user_action)
+        setting_menu.addAction(preferences_button)
         setting_menu.addAction(exit_button)
 
     def init_toolbar_attribute(self):
