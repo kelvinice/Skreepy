@@ -1,9 +1,7 @@
-from email import header
-
-from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox, QPushButton, QFormLayout, \
-    QTableWidget, QScrollArea, QGridLayout, QWidget, QTextEdit
-from PyQt5.QtGui import QIcon
 from PyQt5 import QtCore
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox, QPushButton, QFormLayout, \
+    QScrollArea, QGridLayout, QTextEdit
 
 from components.result_report_table import ResultReportTable
 from util.connection import Connection
