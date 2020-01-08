@@ -5,8 +5,7 @@ from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QPushButton
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 
-from scraper.resultter import Result_displayer
-from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, find_all_form
+from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader
 from util.util import get_today, get_uuid
 
 

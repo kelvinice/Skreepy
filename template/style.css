@@ -1,0 +1,98 @@
+body{
+    margin: 0;
+    background-color: rgb(255, 213, 149);
+    padding: 0 40px;
+    font-size: 20px;
+}
+.success{
+    color: green;
+}
+.failed{
+    color: red;
+}
+
+h1{
+    text-align: center;
+}
+
+.result-wrapper{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+
+table td:first-child{
+    font-weight: bolder;
+    padding: 0 5px;
+}
+.border-table td:last-child{
+    text-align: center;
+}
+
+.border-table th{
+    color: white;
+    background-color: brown;
+    border-collapse: collapse;
+    padding: 10px 8px;
+}
+
+.border-table td{
+    background-color: rgb(189, 123, 79);
+    border-collapse: collapse;
+    padding: 8px;
+    box-sizing: border-box;
+
+}
+
+center{
+    margin: 50px;
+}
+
+.border-table{
+    border-radius: 5px;
+    padding: 3px;
+    border-collapse: collapse;
+}
+
+.border-table tr{
+    padding: 5px 0;
+}
+
+.border-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.border-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.border-table th:first-child {
+    border-top-left-radius: 10px;
+    padding: 4px;
+}
+
+.border-table th:last-child {
+    border-top-right-radius: 10px;
+    padding: 4px;
+}
+
+.description{
+    border: 1px solid gray;
+    margin: 10px 5px;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.group-title{
+    position: absolute;
+    background-color: brown;
+    border-radius: 5px;
+    top:-20%;
+    left: 10px;
+    padding: 5px;
+    color: white;
+    box-shadow: 2px 3px grey;
+}

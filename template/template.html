@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{title}</title>
+    <style>
+        {css}
+    </style>
+</head>
+
+<body>
+    <h1>TEST REPORT</h1>
+
+    <table>
+        <tr>
+            <td>TEST ID</td>
+            <td>{id}</td>
+        </tr>
+        <tr>
+            <td>DATE</td>
+            <td>{date}</td>
+        </tr>
+        <tr>
+            <td>TEST NAME</td>
+            <td>{title}</td>
+        </tr>
+        <tr>
+            <td>TESTER</td>
+            <td>{tester}</td>
+        </tr>
+    </table>
+
+    <center>
+        <table class="border-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Parameter</th>
+                    <th>Expected</th>
+                    <th>Result</th>
+                    <th>Condition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>URL</td>
+                    <td>{expected_url}</td>
+                    <td>{result_url}</td>
+                    <td>
+                        <script>
+                            if ("{expected_url}" === "{result_url}") document.write("PASS");
+                            else document.write("FAIL");
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Text</td>
+                    <td>{expected_element}</td>
+                    <td>{result_element}</td>
+                    <td>
+                        <script>
+                            if ("False" !== "{result_element}") document.write("PASS");
+                            else document.write("FAIL");
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Element</td>
+                    <td>{expected_text}</td>
+                    <td>{result_text}</td>
+                    <td>
+                        <script>
+                            if ("False" !== "{result_element}") document.write("PASS");
+                            else document.write("FAIL");
+                        </script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <div class="description">
+        <span class="group-title">Description</span>
+        <br>
+        <script>
+            document.write(`{description}`.replace("\n","<br>"))
+        </script>
+    </div>
+
+    <div class="result-wrapper">
+        {overall_result}
+    </div>
+
+</body>
+
+</html>

@@ -3,15 +3,12 @@ from functools import partial
 
 import PyQt5
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, QLabel, \
-    QScrollArea, QLineEdit, QGridLayout
+from PyQt5.QtCore import QSize, QRect
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QSize, QRect, Qt
-from PyQt5.uic.properties import QtGui
-from PyQt5.uic.uiparser import QtWidgets
+from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, \
+    QScrollArea, QLineEdit, QGridLayout
 
 from components.input_result_table import InputResultTable
-from scraper import scraper
 from scraper.scraper import getheader, find_all_form
 from ui.preferences_window import PreferencesWindow
 
@@ -48,6 +45,13 @@ class MainWindow(QMainWindow):
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
 
+
+        # datas = Connection().get_tests()
+        # for data in datas:
+        #     export_to_html(data)
+            # o = ReportWindow(800, 680, data=data, parent=self)
+            # o.setVisible(True)
+
     def execute_click(self):
         if self.tblInput is not None:
             self.tblInput.execute_all_click()
@@ -55,8 +59,6 @@ class MainWindow(QMainWindow):
     def open_preferences(self):
         p = PreferencesWindow(600, 180, self)
         p.show()
-        pass
-
 
     def init_menu_bar(self):
         menu_bar = self.menuBar()
@@ -331,7 +333,6 @@ class MainWindow(QMainWindow):
         header = ("Method", "Action", "Event")
         self.tblForm.setHorizontalHeaderLabels(header)
 
-
         rowcount = 0
 
         for f in self.forms:
@@ -352,14 +353,12 @@ class MainWindow(QMainWindow):
 
         self.right_v_layout.addWidget(self.main_scroll_widged)
 
-
     def click_insert_input_result(self, args=0):
         self.tblForm.setParent(None)
 
         self.tblInput = InputResultTable(self.url, self.forms[int(args)], self)
 
         self.main_scroll_vbox.addWidget(self.tblInput)
-
 
         # self.main_scroll_vbox.addWidget()
         # dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)
