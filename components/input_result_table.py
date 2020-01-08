@@ -19,7 +19,7 @@ class InputResultTable(QTableWidget):
 
         scraper.browser = scraper.dive_plus(self.url, self.list_of_input)
 
-        wait = WebDriverWait(scraper.browser, SuperGlobal.timeout)
+        wait = WebDriverWait(scraper.browser, SuperGlobal.setting["timeout"])
         try:
             page_loaded = wait.until_not(
                 lambda browser: browser.current_url == self.url
@@ -39,21 +39,22 @@ class InputResultTable(QTableWidget):
         finally:
             result = {
                 "url_after": scraper.browser.current_url,
-                "text_found": scraper.find_text(SuperGlobal.expected["text_after"]),
-                "element_found": scraper.find_element(SuperGlobal.expected["element_after"])
+                "text_found": scraper.find_text(SuperGlobal.setting["expected"]["text_after"]),
+                "element_found": scraper.find_element(SuperGlobal.setting["expected"]["element_after"])
             }
             data = {
                 "result": result,
-                "expected": SuperGlobal.expected,
+                "expected": SuperGlobal.setting["expected"],
                 "id": str(get_uuid()),
                 "date": get_today(),
                 "title": "Skreepy",
-                "description": description
+                "description": description,
+                "tester": SuperGlobal.setting["tester"]
             }
-            if SuperGlobal.close_browser_after_test:
+            if SuperGlobal.setting["close_browser_after_test"]:
                 scraper.browser.close()
             from ui.report_window import ReportWindow
-            o = ReportWindow(1000, 680, data=data, parent=self)
+            o = ReportWindow(800, 680, data=data, parent=self)
             o.setVisible(True)
 
     def cell_changed_reaction(self, row, col):
@@ -88,6 +89,7 @@ class InputResultTable(QTableWidget):
 
         self.inputs = find_all_input(result) + find_all_button(result) + find_all_textarea(result)
         self.setRowCount(len(self.inputs))
+        self.horizontalHeader().setSectionResizeMode(1)
 
         self.rowcount = 0
         for inp in self.inputs:
@@ -116,3 +118,4 @@ class InputResultTable(QTableWidget):
             self.rowcount += 1
 
         self.cellChanged.connect(self.cell_changed_reaction)
+

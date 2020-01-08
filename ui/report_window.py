@@ -4,12 +4,13 @@ from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox
     QScrollArea, QGridLayout, QTextEdit
 
 from components.result_report_table import ResultReportTable
+from util.connection import Connection
 
 
 class ReportWindow(QDialog):
     def __init__(self, width, height, data, parent):
         super(ReportWindow, self).__init__(parent)
-        self.resize(width / 2, height)
+        self.resize(width, height)
         self.move((width / 2) / 2, (height / 2) / 2)
         self.setWindowTitle("Report " + data["title"])
         self.setWindowIcon(QIcon("assets/report.png"))
@@ -18,10 +19,11 @@ class ReportWindow(QDialog):
         self.box_header = QGroupBox("Description")
         self.box_table = QScrollArea()
         self.box_result = QGroupBox()
+        self.data = data
 
-        self.init_title_description(data=data)
+        self.init_title_description()
         self.init_main_table(data["expected"], data["result"])
-        self.init_result(data=data)
+        self.init_result()
 
         v_box = QVBoxLayout()
         v_box.addWidget(self.box_title)
@@ -32,8 +34,8 @@ class ReportWindow(QDialog):
         self.setLayout(v_box)
         self.show()
 
-    def init_title_description(self, data):
-        title = QLabel("Report of test " + data["title"])
+    def init_title_description(self):
+        title = QLabel("Report of test " + self.data["title"])
         title.setStyleSheet("""
             QLabel
             {
@@ -47,16 +49,16 @@ class ReportWindow(QDialog):
         h_title_layout.addWidget(title)
         self.box_title.setLayout(h_title_layout)
 
-        print(data)
         form_layout = QFormLayout()
         label_test_id = QLabel("Test ID")
-        test_id = QLabel(data['id'])
+        test_id = QLabel(self.data['id'])
         label_date = QLabel("Date")
-        date = QLabel(data["date"])
+        date = QLabel(self.data["date"])
         label_test_name = QLabel("Test Name")
-        name = QLabel(data["title"])
+        name = QLabel(self.data["title"])
         label_tester = QLabel("Tester")
-        tester = QLabel("FJDSKLJFDKLSFSD")
+
+        tester = QLabel(self.data["tester"])
         form_layout.addRow(label_test_id, test_id)
         form_layout.addRow(label_date, date)
         form_layout.addRow(label_test_name, name)
@@ -79,10 +81,11 @@ class ReportWindow(QDialog):
         pass
         h_box = QHBoxLayout()
         self.main_table = ResultReportTable(expected=expected, result=result, parent=self)
+        self.data["overall_result"] = self.main_table.get_overall_result()
         h_box.addWidget(self.main_table)
         self.box_table.setLayout(h_box)
 
-    def init_result(self, data):
+    def init_result(self):
         self.box_result.setStyleSheet("""
             QGroupBox
             {
@@ -106,9 +109,10 @@ class ReportWindow(QDialog):
 
         label_additional_desc = QLabel("Additional Description")
         scroll_area_description = QScrollArea()
-        description_text_edit = QTextEdit()
-        description_text_edit.setText(data["description"])
-        description_text_edit.setStyleSheet("""
+        self.description_text_edit = QTextEdit()
+        self.description_text_edit.setText(self.data["description"])
+        self.description_text_edit.textChanged.connect(self.change_description)
+        self.description_text_edit.setStyleSheet("""
                     QTextEdit
                     {
                         color: black;
@@ -122,10 +126,12 @@ class ReportWindow(QDialog):
         button_save = QPushButton("Save Test Result")
         generate_button = QPushButton("Generate Test Result")
 
+        button_save.clicked.connect(self.click_save)
+
         v_box = QGridLayout()
         v_box.addWidget(form_box, 0, 0)
         v_box.addWidget(label_additional_desc, 1, 0)
-        v_box.addWidget(description_text_edit, 2, 0)
+        v_box.addWidget(self.description_text_edit, 2, 0)
         v_box.addWidget(button_save, 3, 0)
         v_box.addWidget(generate_button, 3, 1)
         self.box_result.setStyleSheet("""
@@ -150,3 +156,11 @@ class ReportWindow(QDialog):
                 }
         """)
         self.box_result.setLayout(v_box)
+
+    def click_save(self):
+        conn = Connection()
+        conn.insert_test(self.data)
+
+    def change_description(self):
+        self.data["description"] = self.description_text_edit.toPlainText()
+
