@@ -146,7 +146,7 @@
       <workItem from="1577933997964" duration="88000" />
       <workItem from="1577934606040" duration="289000" />
       <workItem from="1577934920145" duration="52163000" />
-      <workItem from="1578442341621" duration="2840000" />
+      <workItem from="1578442341621" duration="2909000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -330,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578444384786</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="workspace.xml">
+      <created>1578448623028</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1578448623028</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +381,8 @@
     <MESSAGE value="bikin table fit" />
     <MESSAGE value="workspace" />
     <MESSAGE value="adding more preferences setting" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding more preferences setting" />
+    <MESSAGE value="workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="21" key="#SQL_Dialects" timestamp="1577940172760">
@@ -394,10 +402,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1577962195813" />
-    <state x="585" y="113" width="749" height="583" key="CommitChangelistDialog2" timestamp="1578444382335">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="466" y="115" width="749" height="583" key="CommitChangelistDialog2" timestamp="1578448660664">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="466" y="115" width="749" height="583" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1578383932280" />
+    <state x="466" y="115" width="749" height="583" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1578448660664" />
     <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444382335" />
     <state x="505" y="137" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578049529695" />
     <state x="740" y="245" key="FileChooserDialogImpl" timestamp="1578443946639">
@@ -446,10 +454,10 @@
     <state x="393" y="176" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1578383935783" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444581838" />
     <state x="552" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578049526055" />
-    <state x="699" y="310" key="git4idea.merge.GitPullDialog" timestamp="1578442492691">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="497" y="217" key="git4idea.merge.GitPullDialog" timestamp="1578448667270">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="497" y="217" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1577939876817" />
+    <state x="497" y="217" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1578448667270" />
     <state x="699" y="310" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578442492691" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576024766128">
       <screen x="0" y="0" width="1920" height="1040" />
