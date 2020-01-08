@@ -1,9 +1,7 @@
 import json
 import os
-
-import meta
 import uuid
-from faker import Faker
+
 from meta import meta
 from util.superglobal import SuperGlobal
 

@@ -3,20 +3,14 @@ from functools import partial
 
 import PyQt5
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, QLabel, \
-    QScrollArea, QLineEdit, QGridLayout
+from PyQt5.QtCore import QSize, QRect
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QSize, QRect, Qt
-from PyQt5.uic.properties import QtGui
-from PyQt5.uic.uiparser import QtWidgets
+from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, \
+    QScrollArea, QLineEdit, QGridLayout
 
 from components.input_result_table import InputResultTable
-from scraper import scraper
 from scraper.scraper import getheader, find_all_form
 from ui.preferences_window import PreferencesWindow
-from ui.report_window import ReportWindow
-from util.connection import Connection
-from util.util import export_to_html
 
 
 class MainWindow(QMainWindow):
