@@ -35,6 +35,7 @@ table td:first-child{
     color: white;
     background-color: brown;
     border-collapse: collapse;
+    padding: 10px 8px;
 }
 
 .border-table td{
@@ -55,7 +56,7 @@ center{
     border-collapse: collapse;
 }
 
-.border-table tr,.border-table th{
+.border-table tr{
     padding: 5px 0;
 }
 

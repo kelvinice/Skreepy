@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test</title>
+    <title>Skreepy</title>
     <style>
         body{
     margin: 0;
@@ -44,6 +44,7 @@ table td:first-child{
     color: white;
     background-color: brown;
     border-collapse: collapse;
+    padding: 10px 8px;
 }
 
 .border-table td{
@@ -114,11 +115,11 @@ center{
     <table>
         <tr>
             <td>TEST ID</td>
-            <td>178eaa21-5869-45d0-b9d4-9bec6f2b2795</td>
+            <td>1b25cee0-3d12-4f32-9488-b8001738be4d</td>
         </tr>
         <tr>
             <td>DATE</td>
-            <td>08-Jan-2020 15:09:43</td>
+            <td>08-Jan-2020 17:40:24</td>
         </tr>
         <tr>
             <td>TEST NAME</td>
@@ -146,10 +147,10 @@ center{
                     <td>1</td>
                     <td>URL</td>
                     <td>https://industry.socs.binus.ac.id/learning-plan/</td>
-                    <td>https://industry.socs.binus.ac.id/learning-plan/</td>
+                    <td>https://industry.socs.binus.ac.id/learning-plan/auth/login</td>
                     <td>
                         <script>
-                            if ("https://industry.socs.binus.ac.id/learning-plan/" === "https://industry.socs.binus.ac.id/learning-plan/") document.write("PASS");
+                            if ("https://industry.socs.binus.ac.id/learning-plan/" === "https://industry.socs.binus.ac.id/learning-plan/auth/login") document.write("PASS");
                             else document.write("FAIL");
                         </script>
                     </td>
@@ -158,10 +159,10 @@ center{
                     <td>2</td>
                     <td>Text</td>
                     <td>inverted</td>
-                    <td>True</td>
+                    <td>False</td>
                     <td>
                         <script>
-                            if ("False" !== "True") document.write("PASS");
+                            if ("False" !== "False") document.write("PASS");
                             else document.write("FAIL");
                         </script>
                     </td>
@@ -170,10 +171,10 @@ center{
                     <td>3</td>
                     <td>Element</td>
                     <td>Home</td>
-                    <td>True</td>
+                    <td>False</td>
                     <td>
                         <script>
-                            if ("False" !== "True") document.write("PASS");
+                            if ("False" !== "False") document.write("PASS");
                             else document.write("FAIL");
                         </script>
                     </td>
@@ -185,12 +186,13 @@ center{
         <span class="group-title">Description</span>
         <br>
         <script>
-            document.write(`Sukses`.replace("\n","<br>"))
+            document.write(`Timeout
+`.replace("\n","<br>"))
         </script>
     </div>
 
     <div class="result-wrapper">
-        <div class="success">PASSED</div>
+        <div class="failed">FAILED</div>
     </div>
 
 </body>
