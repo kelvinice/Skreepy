@@ -49,10 +49,12 @@ class MainWindow(QMainWindow):
         widget = QWidget()
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
-        datas = Connection().get_tests()
-        for data in datas:
-            o = ReportWindow(800, 680, data=data, parent=self)
-            o.setVisible(True)
+
+
+        # datas = Connection().get_tests()
+        # for data in datas:
+        #     o = ReportWindow(800, 680, data=data, parent=self)
+        #     o.setVisible(True)
 
     def execute_click(self):
         if self.tblInput is not None:
