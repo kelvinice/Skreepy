@@ -19,7 +19,7 @@ def get_today():
 
 def load_setting():
     cwd = os.getcwd()
-    file = open(cwd+"\\config\\setting.json", "r")
+    file = open(cwd + "\\config\\setting.json", "r")
 
     setting = json.load(file)
     SuperGlobal.setting = setting
@@ -35,7 +35,12 @@ def save_setting():
     file.close()
 
 
+def to_bool(i):
+    if int(i) == 0:
+        return False
+    return True
+
+
 class Util(metaclass=meta.Singleton):
     def fake(self, type):
         pass
-

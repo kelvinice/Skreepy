@@ -14,6 +14,8 @@ from components.input_result_table import InputResultTable
 from scraper import scraper
 from scraper.scraper import getheader, find_all_form
 from ui.preferences_window import PreferencesWindow
+from ui.report_window import ReportWindow
+from util.connection import Connection
 
 
 class MainWindow(QMainWindow):
@@ -47,6 +49,10 @@ class MainWindow(QMainWindow):
         widget = QWidget()
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
+        datas = Connection().get_tests()
+        for data in datas:
+            o = ReportWindow(800, 680, data=data, parent=self)
+            o.setVisible(True)
 
     def execute_click(self):
         if self.tblInput is not None:
@@ -55,8 +61,6 @@ class MainWindow(QMainWindow):
     def open_preferences(self):
         p = PreferencesWindow(600, 180, self)
         p.show()
-        pass
-
 
     def init_menu_bar(self):
         menu_bar = self.menuBar()
@@ -331,7 +335,6 @@ class MainWindow(QMainWindow):
         header = ("Method", "Action", "Event")
         self.tblForm.setHorizontalHeaderLabels(header)
 
-
         rowcount = 0
 
         for f in self.forms:
@@ -352,14 +355,12 @@ class MainWindow(QMainWindow):
 
         self.right_v_layout.addWidget(self.main_scroll_widged)
 
-
     def click_insert_input_result(self, args=0):
         self.tblForm.setParent(None)
 
         self.tblInput = InputResultTable(self.url, self.forms[int(args)], self)
 
         self.main_scroll_vbox.addWidget(self.tblInput)
-
 
         # self.main_scroll_vbox.addWidget()
         # dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)

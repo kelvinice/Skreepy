@@ -1,5 +1,6 @@
 import sqlite3
 from meta.meta import Singleton
+from util.util import to_bool
 
 
 class Connection(metaclass=Singleton):
@@ -44,13 +45,14 @@ class Connection(metaclass=Singleton):
 
         self.close_connection()
 
-    def insert_test(self,data):
+    def insert_test(self, data):
         result = data["result"]
         expected = data["expected"]
-        tuple = (data["id"], data["date"],data["tester"],data["title"],data["description"], data["overall_result"]
-                 ,result["url_after"],result["text_found"],result["element_found"]
-                 ,expected["url_after"],expected["text_after"],expected["element_after"])
-        print(tuple)
+        tuple_data = (
+            data["id"], data["date"], data["tester"], data["title"], data["description"], data["overall_result"]
+            , result["url_after"], result["text_found"], result["element_found"]
+            , expected["url_after"], expected["text_after"], expected["element_after"])
+
         sql = """
             INSERT INTO tests(id ,test_date,
                tester_name,
@@ -67,7 +69,7 @@ class Connection(metaclass=Singleton):
         """
         self.open_connection()
         cursor = self.get_cursor()
-        cursor.execute(sql,tuple)
+        cursor.execute(sql, tuple_data)
         self.commit()
         cursor.close()
         self.close_connection()
@@ -76,4 +78,39 @@ class Connection(metaclass=Singleton):
         sql = """
             SELECT * FROM tests
         """
+        self.open_connection()
 
+        cursor = self.get_cursor()
+
+        res = cursor.execute(sql)
+        rows = res.fetchall()
+        datas = []
+
+        for row in rows:
+            result = {
+                "url_after": row[6],
+                "text_found": to_bool(row[7]),
+                "element_found": to_bool(row[8])
+            }
+            expected = {
+                "url_after": row[9],
+                "text_after": row[10],
+                "element_after": row[11]
+            }
+
+            data = {
+                "result": result,
+                "expected": expected,
+                "id": row[0],
+                "date": row[1],
+                "title": row[3],
+                "description": row[4],
+                "tester": row[2],
+                "overall_result": to_bool(row[5])
+            }
+            datas.append(data)
+
+        cursor.close()
+
+        self.close_connection()
+        return datas

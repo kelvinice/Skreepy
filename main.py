@@ -30,7 +30,6 @@ def init():
     Connection()
 
 
-
     sys.exit(app.exec_())
 
 

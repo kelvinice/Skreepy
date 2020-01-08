@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="72675782-05d2-4f0c-8b29-443f62b26fe1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/skreepyDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/skreepyDB.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +40,13 @@
         <item name="skreepyDB" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="skreepyDB" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
+        <item name="tests: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -146,7 +158,7 @@
       <workItem from="1577933997964" duration="88000" />
       <workItem from="1577934606040" duration="289000" />
       <workItem from="1577934920145" duration="52163000" />
-      <workItem from="1578442341621" duration="2909000" />
+      <workItem from="1578442341621" duration="5956000" />
     </task>
     <task id="LOCAL-00001" summary="edit gitigone and readme">
       <created>1574077721009</created>
@@ -337,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578448623028</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="workspace">
+      <created>1578448692214</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1578448692214</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,10 +398,10 @@
     <MESSAGE value="report window data 2" />
     <MESSAGE value="Preferences window" />
     <MESSAGE value="bikin table fit" />
-    <MESSAGE value="workspace" />
     <MESSAGE value="adding more preferences setting" />
     <MESSAGE value="workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml" />
+    <MESSAGE value="workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="21" key="#SQL_Dialects" timestamp="1577940172760">
@@ -402,38 +421,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1577962195813" />
-    <state x="466" y="115" width="749" height="583" key="CommitChangelistDialog2" timestamp="1578448660664">
+    <state x="466" y="115" width="749" height="583" key="CommitChangelistDialog2" timestamp="1578448690437">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="466" y="115" width="749" height="583" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1578448660664" />
+    <state x="466" y="115" width="749" height="583" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1578448690437" />
     <state x="585" y="113" width="1238" height="813" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444382335" />
     <state x="505" y="137" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578049529695" />
     <state x="740" y="245" key="FileChooserDialogImpl" timestamp="1578443946639">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="245" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578443946639" />
-    <state width="1877" height="164" key="GridCell.Tab.0.bottom" timestamp="1578444359706">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="905" height="179" key="GridCell.Tab.0.bottom" timestamp="1578451713151">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="164" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1578383845921" />
+    <state width="905" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1578451713151" />
     <state width="1877" height="164" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444359706" />
     <state width="1877" height="164" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578049398547" />
-    <state width="1877" height="164" key="GridCell.Tab.0.center" timestamp="1578444359705">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="905" height="179" key="GridCell.Tab.0.center" timestamp="1578451713151">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="164" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1578383845921" />
+    <state width="905" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1578451713151" />
     <state width="1877" height="164" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444359705" />
     <state width="1877" height="164" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578049398546" />
-    <state width="1877" height="164" key="GridCell.Tab.0.left" timestamp="1578444359705">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="905" height="179" key="GridCell.Tab.0.left" timestamp="1578451713151">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="164" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1578383845920" />
+    <state width="905" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1578451713151" />
     <state width="1877" height="164" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444359705" />
     <state width="1877" height="164" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578049398546" />
-    <state width="1877" height="164" key="GridCell.Tab.0.right" timestamp="1578444359706">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="905" height="179" key="GridCell.Tab.0.right" timestamp="1578451713151">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="164" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1578383845921" />
+    <state width="905" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1578451713151" />
     <state width="1877" height="164" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444359706" />
     <state width="1877" height="164" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578049398547" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1578443928181">
@@ -448,16 +467,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="95" y="169" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1577934902144" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578444581838">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="393" y="176" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1578383935783" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444581838" />
-    <state x="552" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578049526055" />
-    <state x="497" y="217" key="git4idea.merge.GitPullDialog" timestamp="1578448667270">
+    <state x="393" y="176" key="Vcs.Push.Dialog.v2" timestamp="1578448706927">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="497" y="217" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1578448667270" />
+    <state x="393" y="176" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1578448706927" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578444581838" />
+    <state x="552" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578049526055" />
+    <state x="497" y="217" key="git4idea.merge.GitPullDialog" timestamp="1578448698630">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="497" y="217" key="git4idea.merge.GitPullDialog/0.0.1366.728@0.0.1366.728" timestamp="1578448698630" />
     <state x="699" y="310" key="git4idea.merge.GitPullDialog/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1578442492691" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576024766128">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -465,6 +484,6 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1576024766128" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1578444359687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1578451713122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
