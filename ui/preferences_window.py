@@ -31,7 +31,6 @@ class PreferencesWindow(QDialog):
         SuperGlobal.setting["timeout"] = int(self.timeoutLbl.text())
         SuperGlobal.setting["tester"] = self.tester.text()
 
-
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Information)
 
@@ -51,7 +50,7 @@ class PreferencesWindow(QDialog):
         self.move((width / 2), (height / 2))
         self.setWindowTitle("Preferences")
 
-        master = QVBoxLayout();
+        master = QVBoxLayout()
         v_box = QFormLayout()
         self.exUrlLbl = QLineEdit()
         self.exTextLbl = QLineEdit()

@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox
 
 from components.result_report_table import ResultReportTable
 from util.connection import Connection
+from util.util import export_to_html
 
 
 class ReportWindow(QDialog):
@@ -125,6 +126,7 @@ class ReportWindow(QDialog):
         scroll_area_description.setStyleSheet("background: white;")
         button_save = QPushButton("Save Test Result")
         generate_button = QPushButton("Generate Test Result")
+        generate_button.clicked.connect(self.report_click)
 
         button_save.clicked.connect(self.click_save)
 
@@ -164,3 +166,5 @@ class ReportWindow(QDialog):
     def change_description(self):
         self.data["description"] = self.description_text_edit.toPlainText()
 
+    def report_click(self):
+        export_to_html(self.data)

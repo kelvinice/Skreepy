@@ -16,6 +16,7 @@ from scraper.scraper import getheader, find_all_form
 from ui.preferences_window import PreferencesWindow
 from ui.report_window import ReportWindow
 from util.connection import Connection
+from util.util import export_to_html
 
 
 class MainWindow(QMainWindow):
@@ -53,8 +54,9 @@ class MainWindow(QMainWindow):
 
         # datas = Connection().get_tests()
         # for data in datas:
-        #     o = ReportWindow(800, 680, data=data, parent=self)
-        #     o.setVisible(True)
+        #     export_to_html(data)
+            # o = ReportWindow(800, 680, data=data, parent=self)
+            # o.setVisible(True)
 
     def execute_click(self):
         if self.tblInput is not None:

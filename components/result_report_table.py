@@ -11,7 +11,6 @@ class ResultReportTable(QTableWidget):
         self.all_condition = True
         header = ("Parameter", "Expected", "Result", "Condition")
 
-
         self.setRowCount(3)
         self.setColumnCount(4)
         self.horizontalHeader().setSectionResizeMode(3)
@@ -41,7 +40,6 @@ class ResultReportTable(QTableWidget):
             condition = result["element_found"]
             self.setItem(2, 3, QTableWidgetItem(condition_message(condition)))
             self.all_condition = self.all_condition and condition
-
 
     def get_condition_label(self):
         if self.all_condition:
