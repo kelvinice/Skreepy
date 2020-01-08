@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QDialog, QLineEdit, QGridLayout, QLabel, QWidget, QV
     QFormLayout
 
 from util.superglobal import SuperGlobal
+from util.util import save_setting
 
 
 def wrap_layout_into_widget(layout):
@@ -21,12 +22,13 @@ def wrap_text_edit_with_label(q_line_edit, text):
 
 class PreferencesWindow(QDialog):
     def save_click(self):
+        print(SuperGlobal.setting["expected"])
         if self.exUrlLbl.text() != "":
-            SuperGlobal.expected["url_after"] = self.exUrlLbl.text()
+            SuperGlobal.setting["expected"]["url_after"] = self.exUrlLbl.text()
         if self.exTextLbl.text() != "":
-            SuperGlobal.expected["text_after"] = self.exTextLbl.text()
+            SuperGlobal.setting["expected"]["text_after"] = self.exTextLbl.text()
         if self.exElementLbl.text() != "":
-            SuperGlobal.expected["element_after"] = self.exElementLbl.text()
+            SuperGlobal.setting["expected"]["element_after"] = self.exElementLbl.text()
 
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Information)
@@ -36,6 +38,7 @@ class PreferencesWindow(QDialog):
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.buttonClicked.connect(msgbtn)
         return_value = msg_box.exec()
+        save_setting()
         # if return_value == QMessageBox.Ok:
         #     print('OK clicked')
         self.close()
@@ -51,6 +54,10 @@ class PreferencesWindow(QDialog):
         self.exUrlLbl = QLineEdit()
         self.exTextLbl = QLineEdit()
         self.exElementLbl = QLineEdit()
+
+        self.exUrlLbl.setText(SuperGlobal.setting["expected"]["url_after"])
+        self.exTextLbl.setText(SuperGlobal.setting["expected"]["text_after"])
+        self.exElementLbl.setText(SuperGlobal.setting["expected"]["element_after"])
 
         v_box.addRow("Url Expected", self.exUrlLbl)
         v_box.addRow("Text Expected", self.exTextLbl)

@@ -7,7 +7,7 @@ import scraper.main
 
 
 ############################################
-from util.util import get_today
+from util.util import get_today, load_setting
 
 
 def init():
@@ -15,6 +15,7 @@ def init():
     width = app.desktop().screenGeometry().width()
     height = app.desktop().screenGeometry().height()
 
+    load_setting()
     # fake = Faker()
     # print(fake.address())
     w = MainWindow(width, height, "Skreepy")
@@ -27,6 +28,8 @@ def init():
     # Initializing database connection
     from util.connection import Connection
     # Connection()
+
+
 
     sys.exit(app.exec_())
 
