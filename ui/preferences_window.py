@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QDialog, QLineEdit, QGridLayout, QLabel, QWidget, QVBoxLayout, QPushButton, QMessageBox, \
-    QFormLayout
+    QFormLayout, QCheckBox
 
 from util.superglobal import SuperGlobal
 from util.util import save_setting
@@ -22,13 +22,15 @@ def wrap_text_edit_with_label(q_line_edit, text):
 
 class PreferencesWindow(QDialog):
     def save_click(self):
-        print(SuperGlobal.setting["expected"])
-        if self.exUrlLbl.text() != "":
-            SuperGlobal.setting["expected"]["url_after"] = self.exUrlLbl.text()
-        if self.exTextLbl.text() != "":
-            SuperGlobal.setting["expected"]["text_after"] = self.exTextLbl.text()
-        if self.exElementLbl.text() != "":
-            SuperGlobal.setting["expected"]["element_after"] = self.exElementLbl.text()
+        SuperGlobal.setting["expected"]["url_after"] = self.exUrlLbl.text()
+        SuperGlobal.setting["expected"]["text_after"] = self.exTextLbl.text()
+        SuperGlobal.setting["expected"]["element_after"] = self.exElementLbl.text()
+
+        SuperGlobal.setting["close_browser_after_test"] = self.closeBrowser.isChecked()
+
+        SuperGlobal.setting["timeout"] = int(self.timeoutLbl.text())
+        SuperGlobal.setting["tester"] = self.tester.text()
+
 
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Information)
@@ -54,14 +56,23 @@ class PreferencesWindow(QDialog):
         self.exUrlLbl = QLineEdit()
         self.exTextLbl = QLineEdit()
         self.exElementLbl = QLineEdit()
+        self.closeBrowser = QCheckBox()
+        self.timeoutLbl = QLineEdit()
+        self.tester = QLineEdit()
 
         self.exUrlLbl.setText(SuperGlobal.setting["expected"]["url_after"])
         self.exTextLbl.setText(SuperGlobal.setting["expected"]["text_after"])
         self.exElementLbl.setText(SuperGlobal.setting["expected"]["element_after"])
+        self.closeBrowser.setChecked(SuperGlobal.setting["close_browser_after_test"])
+        self.timeoutLbl.setText(str(SuperGlobal.setting["timeout"]))
+        self.tester.setText(str(SuperGlobal.setting["tester"]))
 
         v_box.addRow("Url Expected", self.exUrlLbl)
         v_box.addRow("Text Expected", self.exTextLbl)
         v_box.addRow("Element Expected", self.exElementLbl)
+        v_box.addRow("Close Browser After Test", self.closeBrowser)
+        v_box.addRow("Time Out", self.timeoutLbl)
+        v_box.addRow("Tester", self.tester)
 
         btn_save = QPushButton("Save")
 
@@ -80,6 +91,10 @@ class PreferencesWindow(QDialog):
         QPushButton{
             padding: 5px;
             font-size: 20px;
+        }
+        QCheckBox{
+            spacing: 5px;
+            font-size:25px;  
         }
         """)
 

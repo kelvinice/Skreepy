@@ -24,7 +24,7 @@ class Connection(metaclass=Singleton):
 
         cursor = self.get_cursor()
 
-        sql = ('CREATE TABLE IF NOT EXISTS test('
+        sql = ('CREATE TABLE IF NOT EXISTS tests('
                'id TEXT PRIMARY_KEY,'
                'test_date TEXT,'
                'tester_name TEXT,'
@@ -45,7 +45,6 @@ class Connection(metaclass=Singleton):
         self.close_connection()
 
     def insert_test(self,data):
-        print(data)
         result = data["result"]
         expected = data["expected"]
         tuple = (data["id"], data["date"],data["tester"],data["title"],data["description"], data["overall_result"]
@@ -53,7 +52,7 @@ class Connection(metaclass=Singleton):
                  ,expected["url_after"],expected["text_after"],expected["element_after"])
         print(tuple)
         sql = """
-            INSERT INTO test(id ,test_date,
+            INSERT INTO tests(id ,test_date,
                tester_name,
                test_title,
                description,
@@ -72,4 +71,9 @@ class Connection(metaclass=Singleton):
         self.commit()
         cursor.close()
         self.close_connection()
+
+    def get_tests(self):
+        sql = """
+            SELECT * FROM tests
+        """
 

@@ -27,7 +27,7 @@ def init():
 
     # Initializing database connection
     from util.connection import Connection
-    # Connection()
+    Connection()
 
 
 
