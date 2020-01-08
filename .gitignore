@@ -112,4 +112,5 @@ geckodriver.log
 
 .idea/workspace.xml
 .idea/*
+.idea/misc.xml
 
