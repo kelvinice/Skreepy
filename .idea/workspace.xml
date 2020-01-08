@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="088dc81c-32db-4ee3-b59b-987462e9f8eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ui/setting_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Program.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/setting_window.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,12 +82,25 @@
       <updated>1578241911160</updated>
       <workItem from="1578241917035" duration="578000" />
       <workItem from="1578242508422" duration="153000" />
-      <workItem from="1578243160476" duration="799000" />
+      <workItem from="1578243160476" duration="863000" />
+      <workItem from="1578445594013" duration="117000" />
     </task>
+    <task id="LOCAL-00001" summary="adding preferences menu">
+      <created>1578244011945</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578244011945</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding preferences menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding preferences menu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578243767647">
@@ -99,26 +111,30 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="249" key="#com.intellij.ide.macro.MacrosDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1578242448428" />
+    <state x="598" y="139" key="CommitChangelistDialog2" timestamp="1578244010755">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="598" y="139" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1578244010755" />
     <state x="740" y="299" key="FileChooserDialogImpl" timestamp="1578243766745">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="299" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1578243766745" />
-    <state width="938" height="295" key="GridCell.Tab.0.bottom" timestamp="1578243973156">
+    <state width="938" height="295" key="GridCell.Tab.0.bottom" timestamp="1578244036579">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="938" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1578243973156" />
-    <state width="938" height="295" key="GridCell.Tab.0.center" timestamp="1578243973156">
+    <state width="938" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1578244036579" />
+    <state width="938" height="295" key="GridCell.Tab.0.center" timestamp="1578244036577">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="938" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1578243973156" />
-    <state width="938" height="295" key="GridCell.Tab.0.left" timestamp="1578243973156">
+    <state width="938" height="295" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1578244036577" />
+    <state width="938" height="295" key="GridCell.Tab.0.left" timestamp="1578244036577">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="938" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1578243973156" />
-    <state width="938" height="295" key="GridCell.Tab.0.right" timestamp="1578243973156">
+    <state width="938" height="295" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1578244036577" />
+    <state width="938" height="295" key="GridCell.Tab.0.right" timestamp="1578244036579">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="938" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1578243973156" />
+    <state width="938" height="295" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1578244036579" />
     <state x="463" y="186" key="SettingsEditor" timestamp="1578243346473">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -126,5 +142,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Skreepy$Skreepy.coverage" NAME="main Coverage Results" MODIFIED="1578243973139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Skreepy$main.coverage" NAME="main Coverage Results" MODIFIED="1578445701334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

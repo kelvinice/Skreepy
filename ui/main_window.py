@@ -48,8 +48,6 @@ class MainWindow(QMainWindow):
         if self.tblInput is not None:
             self.tblInput.execute_all_click()
 
-    def preferences(self):
-        print("pref")
 
     def init_menu_bar(self):
         menu_bar = self.menuBar()
@@ -58,11 +56,8 @@ class MainWindow(QMainWindow):
         exit_button = QAction(QIcon("assets/exit.png"), 'Exit', self)
         setting_menu.triggered[QAction].connect(self.setting_listener)
         exit_button.triggered.connect(self.close)
-        preferences = QAction(QIcon("assets/exit.png"), 'Preferences', self)
-        preferences.triggered.connect(self.preferences)
 
         setting_menu.addAction(change_user_action)
-        setting_menu.addAction(preferences)
         setting_menu.addAction(exit_button)
 
 
