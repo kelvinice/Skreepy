@@ -136,6 +136,7 @@ class ReportWindow(QDialog):
         v_box.addWidget(self.description_text_edit, 2, 0)
         v_box.addWidget(button_save, 3, 0)
         v_box.addWidget(generate_button, 3, 1)
+
         self.box_result.setStyleSheet("""
             QPushButton
             {
