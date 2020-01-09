@@ -2,6 +2,8 @@ import json
 import os
 import uuid
 
+from PyQt5.QtWidgets import QMessageBox
+
 from meta import meta
 from util.superglobal import SuperGlobal
 
@@ -83,6 +85,16 @@ def save_setting():
     data = SuperGlobal.setting
     json.dump(data, file)
     file.close()
+
+
+def show_message_window(title, text):
+    msg_box = QMessageBox()
+    msg_box.setIcon(QMessageBox.Information)
+
+    msg_box.setText(text)
+    msg_box.setWindowTitle(title)
+    msg_box.setStandardButtons(QMessageBox.Ok)
+    msg_box.exec()
 
 
 def to_bool(i):

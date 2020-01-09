@@ -46,6 +46,34 @@ class Connection(metaclass=Singleton):
 
         self.close_connection()
 
+    def test_already_exist(self, id):
+        sql = """
+            SELECT * FROM tests WHERE id = ?
+        """
+        self.open_connection()
+        cursor = self.get_cursor()
+
+        tuple_data = (id,)
+        res = cursor.execute(sql, tuple_data)
+        row = res.fetchone()
+        self.close_connection()
+
+        return row is not None
+
+    def update_test(self, data):
+        sql = """
+            UPDATE tests
+            SET description = ?
+            WHERE id = ?
+        """
+        tuple_data = (data["description"], data["id"])
+        self.open_connection()
+        cursor = self.get_cursor()
+        cursor.execute(sql, tuple_data)
+        self.commit()
+        cursor.close()
+        self.close_connection()
+
     def insert_test(self, data):
         result = data["result"]
         expected = data["expected"]

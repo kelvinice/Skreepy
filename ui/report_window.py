@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox
 
 from components.result_report_table import ResultReportTable
 from util.connection import Connection
-from util.util import export_to_html
+from util.util import export_to_html, show_message_window
 
 
 class ReportWindow(QDialog):
@@ -161,7 +161,13 @@ class ReportWindow(QDialog):
 
     def click_save(self):
         conn = Connection()
-        conn.insert_test(self.data)
+
+        if conn.test_already_exist(self.data["id"]):
+            conn.update_test(self.data)
+            show_message_window("Saved", "Your Test has Updated")
+        else:
+            conn.insert_test(self.data)
+            show_message_window("Saved", "Your Test has been saved")
 
     def change_description(self):
         self.data["description"] = self.description_text_edit.toPlainText()
