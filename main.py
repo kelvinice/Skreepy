@@ -17,14 +17,8 @@ def init():
     w = MainWindow(width, height, "Skreepy")
     w.setVisible(True)
 
-    # print(super_global.expected)
-
-
-
-
     sys.exit(app.exec_())
 
 
 if __name__ == '__main__':
     init()
-    # scraper.main.legacy_main()
