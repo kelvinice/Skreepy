@@ -2,7 +2,7 @@ from functools import partial
 
 import PyQt5.QtWidgets
 
-import main
+import __init__
 import scraper.automator
 import scraper.input_manager
 
@@ -72,4 +72,4 @@ class form_manager(PyQt5.QtWidgets.QMainWindow):
 
 
 if __name__ == "__main__":
-    main.main()
+    __init__.main()
