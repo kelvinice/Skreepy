@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QLabel
-from PyQt5.uic.uiparser import QtWidgets
 
 from scraper.resultter import condition_message
 
@@ -10,7 +9,6 @@ class ResultReportTable(QTableWidget):
 
         self.all_condition = True
         header = ("Parameter", "Expected", "Result", "Condition")
-
 
         self.setRowCount(3)
         self.setColumnCount(4)
@@ -42,7 +40,6 @@ class ResultReportTable(QTableWidget):
             self.setItem(2, 3, QTableWidgetItem(condition_message(condition)))
             self.all_condition = self.all_condition and condition
 
-
     def get_condition_label(self):
         if self.all_condition:
             result = QLabel("SUCCESS")
@@ -51,9 +48,6 @@ class ResultReportTable(QTableWidget):
             result = QLabel("FAILED")
             result.setStyleSheet("color : red;")
         return result
-
-    def save_all(self):
-        pass
 
     def get_overall_result(self):
         return self.all_condition

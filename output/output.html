@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Skreepy</title>
+    <style>
+        body{
+    margin: 0;
+    background-color: rgb(255, 213, 149);
+    padding: 0 40px;
+    font-size: 20px;
+}
+.success{
+    color: green;
+}
+.failed{
+    color: red;
+}
+
+h1{
+    text-align: center;
+}
+
+.result-wrapper{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+
+table td:first-child{
+    font-weight: bolder;
+    padding: 0 5px;
+}
+.border-table td:last-child{
+    text-align: center;
+}
+
+.border-table th{
+    color: white;
+    background-color: brown;
+    border-collapse: collapse;
+    padding: 10px 8px;
+}
+
+.border-table td{
+    background-color: rgb(189, 123, 79);
+    border-collapse: collapse;
+    padding: 8px;
+    box-sizing: border-box;
+
+}
+
+center{
+    margin: 50px;
+}
+
+.border-table{
+    border-radius: 5px;
+    padding: 3px;
+    border-collapse: collapse;
+}
+
+.border-table tr,.border-table th{
+    padding: 5px 0;
+}
+
+.border-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.border-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+.border-table th:first-child {
+    border-top-left-radius: 10px;
+    padding: 4px;
+}
+
+.border-table th:last-child {
+    border-top-right-radius: 10px;
+    padding: 4px;
+}
+
+.description{
+    border: 1px solid gray;
+    margin: 10px 5px;
+    padding: 5px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.group-title{
+    position: absolute;
+    background-color: brown;
+    border-radius: 5px;
+    top:-20%;
+    left: 10px;
+    padding: 5px;
+    color: white;
+    box-shadow: 2px 3px grey;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>TEST REPORT</h1>
+
+    <table>
+        <tr>
+            <td>TEST ID</td>
+            <td>1b25cee0-3d12-4f32-9488-b8001738be4d</td>
+        </tr>
+        <tr>
+            <td>DATE</td>
+            <td>08-Jan-2020 17:40:24</td>
+        </tr>
+        <tr>
+            <td>TEST NAME</td>
+            <td>Skreepy</td>
+        </tr>
+        <tr>
+            <td>TESTER</td>
+            <td>John Cen a</td>
+        </tr>
+    </table>
+
+    <center>
+        <table class="border-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Parameter</th>
+                    <th>Expected</th>
+                    <th>Result</th>
+                    <th>Condition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>URL</td>
+                    <td>https://industry.socs.binus.ac.id/learning-plan/</td>
+                    <td>https://industry.socs.binus.ac.id/learning-plan/auth/login</td>
+                    <td>
+                        <script>
+                            if ("https://industry.socs.binus.ac.id/learning-plan/" === "https://industry.socs.binus.ac.id/learning-plan/auth/login") document.write("PASS");
+                            else document.write("FAIL");
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Text</td>
+                    <td>inverted</td>
+                    <td>False</td>
+                    <td>
+                        <script>
+                            if ("False" !== "False") document.write("PASS");
+                            else document.write("FAIL");
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Element</td>
+                    <td>Home</td>
+                    <td>False</td>
+                    <td>
+                        <script>
+                            if ("False" !== "False") document.write("PASS");
+                            else document.write("FAIL");
+                        </script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <div class="description">
+        <span class="group-title">Description</span>
+        <br>
+        <script>
+            document.write(`Timeout
+`.replace("\n","<br>"))
+        </script>
+    </div>
+
+    <div class="result-wrapper">
+        <div class="failed">FAILED</div>
+    </div>
+
+</body>
+
+</html>

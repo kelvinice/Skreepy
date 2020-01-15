@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import *
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 
-import main
+import __init__
 from scraper.resultter import Result_displayer
 
 
@@ -205,4 +205,4 @@ class input_manager(QMainWindow):
 
 
 if __name__ == "__main__":
-    main.main()
+    __init__.main()
