@@ -56,8 +56,8 @@ def innerHTML(element):
     return element.encode_contents()
 
 
-def getheader(htmldata):
-    header = {}
+def getheader(htmldata) -> dict:
+    header = dict
     header["id"] = "None"
     header["class"] = "None"
 
