@@ -4,8 +4,8 @@ import uuid
 
 from PyQt5.QtWidgets import QMessageBox
 
-from meta import meta
-from util.globalpreferences import GlobalPreferences
+from meta import singleton
+from general.globalpreferences import GlobalPreferences
 
 
 def get_uuid():
@@ -103,6 +103,6 @@ def to_bool(i):
     return True
 
 
-class Util(metaclass=meta.Singleton):
+class Util(metaclass=singleton.Singleton):
     def fake(self, type):
         pass

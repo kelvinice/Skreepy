@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QDialog, QLineEdit, QGridLayout, QLabel, QWidget, QVBoxLayout, QPushButton, QMessageBox, \
     QFormLayout, QCheckBox
 
-from util.globalpreferences import GlobalPreferences
-from util.util import save_setting
+from general.globalpreferences import GlobalPreferences
+from general.util import save_setting
 
 
 def wrap_layout_into_widget(layout):

@@ -1,7 +1,8 @@
 import sqlite3
+from typing import List, Dict, Union, Any
 
-from meta.meta import Singleton
-from util.util import to_bool
+from meta.singleton import Singleton
+from general.util import to_bool
 
 
 class Connection(metaclass=Singleton):
@@ -46,14 +47,14 @@ class Connection(metaclass=Singleton):
 
         self.close_connection()
 
-    def test_already_exist(self, id):
+    def test_already_exist(self, test_id) -> bool:
         sql = """
             SELECT * FROM tests WHERE id = ?
         """
         self.open_connection()
         cursor = self.get_cursor()
 
-        tuple_data = (id,)
+        tuple_data = (test_id,)
         res = cursor.execute(sql, tuple_data)
         row = res.fetchone()
         self.close_connection()
@@ -103,7 +104,7 @@ class Connection(metaclass=Singleton):
         cursor.close()
         self.close_connection()
 
-    def get_tests(self):
+    def get_tests(self) -> List[Dict[str, Union[Dict[str, Any], Any]]]:
         sql = """
             SELECT * FROM tests
         """

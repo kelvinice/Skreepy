@@ -129,6 +129,15 @@ def dive_plus(url, listofinputed):
     browsers = get_browser()
     if browsers == None:
         browsers = webdriver.Firefox()
+    else:
+        from selenium.common.exceptions import WebDriverException
+
+        try:
+            browsers.title
+        except WebDriverException:
+            browsers = webdriver.Firefox()
+            print("Reopen Browser")
+
     browsers.get(url)
 
     for inputed in listofinputed:
