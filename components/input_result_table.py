@@ -15,11 +15,11 @@ class InputResultTable(QTableWidget):
         description = ""
 
         from scraper import scraper
-        from util.superglobal import SuperGlobal
+        from util.globalpreferences import GlobalPreferences
 
         scraper.browser = scraper.dive_plus(self.url, self.list_of_input)
 
-        wait = WebDriverWait(scraper.browser, SuperGlobal.setting["timeout"])
+        wait = WebDriverWait(scraper.browser, GlobalPreferences.setting["timeout"])
         try:
             page_loaded = wait.until_not(
                 lambda browser: browser.current_url == self.url
@@ -39,19 +39,19 @@ class InputResultTable(QTableWidget):
         finally:
             result = {
                 "url_after": scraper.browser.current_url,
-                "text_found": scraper.find_text(SuperGlobal.setting["expected"]["text_after"]),
-                "element_found": scraper.find_element(SuperGlobal.setting["expected"]["element_after"])
+                "text_found": scraper.find_text(GlobalPreferences.setting["expected"]["text_after"]),
+                "element_found": scraper.find_element(GlobalPreferences.setting["expected"]["element_after"])
             }
             data = {
                 "result": result,
-                "expected": SuperGlobal.setting["expected"],
+                "expected": GlobalPreferences.setting["expected"],
                 "id": str(get_uuid()),
                 "date": get_today(),
                 "title": "Skreepy",
                 "description": description,
-                "tester": SuperGlobal.setting["tester"]
+                "tester": GlobalPreferences.setting["tester"]
             }
-            if SuperGlobal.setting["close_browser_after_test"]:
+            if GlobalPreferences.setting["close_browser_after_test"]:
                 scraper.browser.close()
             from ui.report_window import ReportWindow
             o = ReportWindow(800, 680, data=data, parent=self)
