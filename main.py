@@ -6,6 +6,7 @@ from ui.main_window import MainWindow
 from util.connection import Connection
 from util.util import load_setting
 
+
 class Main:
     def __init__(self):
         app = QApplication(sys.argv)
