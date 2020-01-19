@@ -1,7 +1,7 @@
-from meta import meta
+from meta import singleton
 
 
-class SuperGlobal(metaclass=meta.Singleton):
+class GlobalPreferences(metaclass=singleton.Singleton):
     setting = {
         "expected": {
             "url_after": "",

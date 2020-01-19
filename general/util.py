@@ -4,8 +4,8 @@ import uuid
 
 from PyQt5.QtWidgets import QMessageBox
 
-from meta import meta
-from util.superglobal import SuperGlobal
+from meta import singleton
+from general.globalpreferences import GlobalPreferences
 
 
 def get_uuid():
@@ -74,7 +74,7 @@ def load_setting():
     file = open(cwd + "\\config\\setting.json", "r")
 
     setting = json.load(file)
-    SuperGlobal.setting = setting
+    GlobalPreferences.setting = setting
     file.close()
 
 
@@ -82,7 +82,7 @@ def save_setting():
     cwd = os.getcwd()
     file = open(cwd + "\\config\\setting.json", "w+")
 
-    data = SuperGlobal.setting
+    data = GlobalPreferences.setting
     json.dump(data, file)
     file.close()
 
@@ -103,6 +103,6 @@ def to_bool(i):
     return True
 
 
-class Util(metaclass=meta.Singleton):
+class Util(metaclass=singleton.Singleton):
     def fake(self, type):
         pass

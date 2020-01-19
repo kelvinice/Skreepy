@@ -1,7 +1,7 @@
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 
-import main
+import __init__
 from scraper.resultter import Result_displayer
 from scraper.scraper import getheader, find_all_input, find_all_button, find_all_textarea
 
@@ -95,4 +95,4 @@ class Automator():
 
 
 if __name__ == "__main__":
-    main.main()
+    __init__.main()

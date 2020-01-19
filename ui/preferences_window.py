@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QDialog, QLineEdit, QGridLayout, QLabel, QWidget, QVBoxLayout, QPushButton, QMessageBox, \
     QFormLayout, QCheckBox
 
-from util.superglobal import SuperGlobal
-from util.util import save_setting
+from general.globalpreferences import GlobalPreferences
+from general.util import save_setting
 
 
 def wrap_layout_into_widget(layout):
@@ -22,14 +22,14 @@ def wrap_text_edit_with_label(q_line_edit, text):
 
 class PreferencesWindow(QDialog):
     def save_click(self):
-        SuperGlobal.setting["expected"]["url_after"] = self.exUrlLbl.text()
-        SuperGlobal.setting["expected"]["text_after"] = self.exTextLbl.text()
-        SuperGlobal.setting["expected"]["element_after"] = self.exElementLbl.text()
+        GlobalPreferences.setting["expected"]["url_after"] = self.exUrlLbl.text()
+        GlobalPreferences.setting["expected"]["text_after"] = self.exTextLbl.text()
+        GlobalPreferences.setting["expected"]["element_after"] = self.exElementLbl.text()
 
-        SuperGlobal.setting["close_browser_after_test"] = self.closeBrowser.isChecked()
+        GlobalPreferences.setting["close_browser_after_test"] = self.closeBrowser.isChecked()
 
-        SuperGlobal.setting["timeout"] = int(self.timeoutLbl.text())
-        SuperGlobal.setting["tester"] = self.tester.text()
+        GlobalPreferences.setting["timeout"] = int(self.timeoutLbl.text())
+        GlobalPreferences.setting["tester"] = self.tester.text()
 
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Information)
@@ -59,12 +59,12 @@ class PreferencesWindow(QDialog):
         self.timeoutLbl = QLineEdit()
         self.tester = QLineEdit()
 
-        self.exUrlLbl.setText(SuperGlobal.setting["expected"]["url_after"])
-        self.exTextLbl.setText(SuperGlobal.setting["expected"]["text_after"])
-        self.exElementLbl.setText(SuperGlobal.setting["expected"]["element_after"])
-        self.closeBrowser.setChecked(SuperGlobal.setting["close_browser_after_test"])
-        self.timeoutLbl.setText(str(SuperGlobal.setting["timeout"]))
-        self.tester.setText(str(SuperGlobal.setting["tester"]))
+        self.exUrlLbl.setText(GlobalPreferences.setting["expected"]["url_after"])
+        self.exTextLbl.setText(GlobalPreferences.setting["expected"]["text_after"])
+        self.exElementLbl.setText(GlobalPreferences.setting["expected"]["element_after"])
+        self.closeBrowser.setChecked(GlobalPreferences.setting["close_browser_after_test"])
+        self.timeoutLbl.setText(str(GlobalPreferences.setting["timeout"]))
+        self.tester.setText(str(GlobalPreferences.setting["tester"]))
 
         v_box.addRow("Url Expected", self.exUrlLbl)
         v_box.addRow("Text Expected", self.exTextLbl)
