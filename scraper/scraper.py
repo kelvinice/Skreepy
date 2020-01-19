@@ -83,7 +83,16 @@ list_of_input = []
 
 
 def get_browser():
-    return browser
+    b = browser
+    if b == None:
+        b = webdriver.Firefox()
+    from selenium.common.exceptions import WebDriverException
+    try:
+        b.title
+    except WebDriverException:
+        b = webdriver.Firefox()
+        print("Reopen Browser")
+    return b
 
 
 def dive(url, listofinputed):
@@ -127,16 +136,7 @@ def find_element(element):
 
 def dive_plus(url, listofinputed):
     browsers = get_browser()
-    if browsers == None:
-        browsers = webdriver.Firefox()
-    else:
-        from selenium.common.exceptions import WebDriverException
 
-        try:
-            browsers.title
-        except WebDriverException:
-            browsers = webdriver.Firefox()
-            print("Reopen Browser")
 
     browsers.get(url)
 
