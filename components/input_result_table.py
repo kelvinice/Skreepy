@@ -10,6 +10,10 @@ from util.util import get_today, get_uuid
 
 
 class InputResultTable(QTableWidget):
+    def execute_alternate(self):
+        # TODO
+        pass
+
     def execute_all_click(self):
         print("executed")
         description = ""
@@ -56,6 +60,8 @@ class InputResultTable(QTableWidget):
             from ui.report_window import ReportWindow
             o = ReportWindow(800, 680, data=data, parent=self)
             o.setVisible(True)
+
+
 
     def cell_changed_reaction(self, row, col):
         # Value changed

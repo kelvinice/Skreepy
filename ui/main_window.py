@@ -56,6 +56,10 @@ class MainWindow(QMainWindow):
         if self.tblInput is not None:
             self.tblInput.execute_all_click()
 
+    def execute_alter(self):
+        if self.tblInput is not None:
+            self.tblInput.execute_alternate()
+
     def open_preferences(self):
         p = PreferencesWindow(600, 180, self)
         p.show()
@@ -86,6 +90,7 @@ class MainWindow(QMainWindow):
         home_button = QPushButton()
         report_button = QPushButton()
         execute_button = QPushButton("Execute")
+        execute_alternative_scenario_button = QPushButton("Execute with Alternative Scenario")
         prev_button.setIcon(QIcon("assets/prev.png"))
         prev_button.setStyleSheet("""
                     QPushButton
@@ -182,12 +187,37 @@ class MainWindow(QMainWindow):
 
         report_button.setIconSize(QSize(40, 40))
 
+        execute_alternative_scenario_button.setStyleSheet("""
+                            QPushButton
+                            {
+                                background-color: #5b5c5e;
+                                padding: 2px;
+                                min-height: 45px;
+                                min-width: 45px;
+                                border-radius: 10px;
+                                border-bottom: 1.5px solid black;
+                                border-right: 1px solid black;
+                                margin-left:100%;
+                            }
+                            QPushButton:hover:!pressed
+                                {
+                                  background-color: #4d4d4d;
+                                }
+                            QPushButton:pressed
+                                {
+                                  background-color: #5b5c5e;
+                                  border: 1px solid black;
+                                }
+                        """)
+
         execute_button.clicked.connect(self.execute_click)
+        execute_alternative_scenario_button.clicked.connect(self.execute_alter)
 
         toolbar_h_box_layout.addWidget(prev_button)
         toolbar_h_box_layout.addWidget(home_button)
         toolbar_h_box_layout.addWidget(report_button)
         toolbar_h_box_layout.addWidget(execute_button)
+        toolbar_h_box_layout.addWidget(execute_alternative_scenario_button)
         self.toolbar_group_box.setLayout(toolbar_h_box_layout)
 
     def init_top_attribute(self):

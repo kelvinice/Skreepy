@@ -7,7 +7,7 @@ class ResultReportTable(QTableWidget):
     def __init__(self, expected, result, parent=None):
         super(ResultReportTable, self).__init__(parent)
 
-        self.all_condition = True
+        self.final_condition = True
         header = ("Parameter", "Expected", "Result", "Condition")
 
         self.setRowCount(3)
@@ -22,7 +22,7 @@ class ResultReportTable(QTableWidget):
             self.setItem(0, 2, QTableWidgetItem(result["url_after"]))
             condition = result["url_after"] == expected["url_after"]
             self.setItem(0, 3, QTableWidgetItem(condition_message(condition)))
-            self.all_condition = self.all_condition and condition
+            self.final_condition = self.final_condition and condition
 
         self.setItem(1, 0, QTableWidgetItem("Text"))
         if expected["text_after"] is not None:
@@ -30,7 +30,7 @@ class ResultReportTable(QTableWidget):
             self.setItem(1, 2, QTableWidgetItem(str(result["text_found"])))
             condition = result["text_found"]
             self.setItem(1, 3, QTableWidgetItem(condition_message(condition)))
-            self.all_condition = self.all_condition and condition
+            self.final_condition = self.final_condition and condition
 
         self.setItem(2, 0, QTableWidgetItem("Element"))
         if expected["element_after"] is not None:
@@ -38,10 +38,10 @@ class ResultReportTable(QTableWidget):
             self.setItem(2, 2, QTableWidgetItem(str(result["element_found"])))
             condition = result["element_found"]
             self.setItem(2, 3, QTableWidgetItem(condition_message(condition)))
-            self.all_condition = self.all_condition and condition
+            self.final_condition = self.final_condition and condition
 
     def get_condition_label(self):
-        if self.all_condition:
+        if self.final_condition:
             result = QLabel("SUCCESS")
             result.setStyleSheet("color : green;")
         else:
@@ -50,4 +50,4 @@ class ResultReportTable(QTableWidget):
         return result
 
     def get_overall_result(self):
-        return self.all_condition
+        return self.final_condition
