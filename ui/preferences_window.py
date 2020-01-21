@@ -22,14 +22,14 @@ def wrap_text_edit_with_label(q_line_edit, text):
 
 class PreferencesWindow(QDialog):
     def save_click(self):
-        GlobalPreferences.setting["expected"]["url_after"] = self.exUrlLbl.text()
-        GlobalPreferences.setting["expected"]["text_after"] = self.exTextLbl.text()
-        GlobalPreferences.setting["expected"]["element_after"] = self.exElementLbl.text()
+        GlobalPreferences.setting["expected"]["url_after"] = self.exUrlEdt.text()
+        GlobalPreferences.setting["expected"]["text_after"] = self.exTextEdt.text()
+        GlobalPreferences.setting["expected"]["element_after"] = self.exElementEdt.text()
 
-        GlobalPreferences.setting["close_browser_after_test"] = self.closeBrowser.isChecked()
+        GlobalPreferences.setting["close_browser_after_test"] = self.closeBrowserChk.isChecked()
 
-        GlobalPreferences.setting["timeout"] = int(self.timeoutLbl.text())
-        GlobalPreferences.setting["tester"] = self.tester.text()
+        GlobalPreferences.setting["timeout"] = int(self.timeoutEdt.text())
+        GlobalPreferences.setting["tester"] = self.testerEdt.text()
 
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Information)
@@ -52,26 +52,26 @@ class PreferencesWindow(QDialog):
 
         master = QVBoxLayout()
         v_box = QFormLayout()
-        self.exUrlLbl = QLineEdit()
-        self.exTextLbl = QLineEdit()
-        self.exElementLbl = QLineEdit()
-        self.closeBrowser = QCheckBox()
-        self.timeoutLbl = QLineEdit()
-        self.tester = QLineEdit()
+        self.exUrlEdt = QLineEdit()
+        self.exTextEdt = QLineEdit()
+        self.exElementEdt = QLineEdit()
+        self.closeBrowserChk = QCheckBox()
+        self.timeoutEdt = QLineEdit()
+        self.testerEdt = QLineEdit()
 
-        self.exUrlLbl.setText(GlobalPreferences.setting["expected"]["url_after"])
-        self.exTextLbl.setText(GlobalPreferences.setting["expected"]["text_after"])
-        self.exElementLbl.setText(GlobalPreferences.setting["expected"]["element_after"])
-        self.closeBrowser.setChecked(GlobalPreferences.setting["close_browser_after_test"])
-        self.timeoutLbl.setText(str(GlobalPreferences.setting["timeout"]))
-        self.tester.setText(str(GlobalPreferences.setting["tester"]))
+        self.exUrlEdt.setText(GlobalPreferences.setting["expected"]["url_after"])
+        self.exTextEdt.setText(GlobalPreferences.setting["expected"]["text_after"])
+        self.exElementEdt.setText(GlobalPreferences.setting["expected"]["element_after"])
+        self.closeBrowserChk.setChecked(GlobalPreferences.setting["close_browser_after_test"])
+        self.timeoutEdt.setText(str(GlobalPreferences.setting["timeout"]))
+        self.testerEdt.setText(str(GlobalPreferences.setting["tester"]))
 
-        v_box.addRow("Url Expected", self.exUrlLbl)
-        v_box.addRow("Text Expected", self.exTextLbl)
-        v_box.addRow("Element Expected", self.exElementLbl)
-        v_box.addRow("Close Browser After Test", self.closeBrowser)
-        v_box.addRow("Time Out", self.timeoutLbl)
-        v_box.addRow("Tester", self.tester)
+        v_box.addRow("Url Expected", self.exUrlEdt)
+        v_box.addRow("Text Expected", self.exTextEdt)
+        v_box.addRow("Element Expected", self.exElementEdt)
+        v_box.addRow("Close Browser After Test", self.closeBrowserChk)
+        v_box.addRow("Time Out", self.timeoutEdt)
+        v_box.addRow("Tester", self.testerEdt)
 
         btn_save = QPushButton("Save")
 

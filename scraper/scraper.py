@@ -150,12 +150,12 @@ def dive_plus(url, listofinputed):
                 classname = ".".join(inputed["class"])
                 print("using css", classname)
                 if inputed["tag"] == "input":
-                    print("pake input")
+                    # print("pake input")
                     submit = browsers.find_element_by_css_selector('input.' + classname)
                 else:
-                    print("pake button")
+                    # print("pake button")
                     submit = browsers.find_element_by_css_selector('button.' + classname)
-                    print("bbb")
+                    # print("bbb")
             submit.click()
 
         elif inputed["id"] != None:
