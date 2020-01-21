@@ -3,7 +3,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 
 # url = 'https://thin-skinned-passes.000webhostapp.com/login.php'
@@ -22,7 +22,7 @@ def scrape(url):
         " Chrome/60.0.3112.78 Safari/537.36"
     )
     headers = {"User-Agent": user_agent}
-    req = session.get(url, verify=False,  headers=headers)
+    req = session.get(url, verify=False, headers=headers)
 
     if req.status_code != requests.codes.ok:
         print(url, " Unreachable")
@@ -128,7 +128,8 @@ def find_element(element):
         res_class = browsers.find_elements_by_xpath("//*[contains(@class,'" + element + "')]")
         print(res_id)
         print(res_class)
-        if len(res_id) == 0 and len(res_class) == 0: return False
+        if len(res_id) == 0 and len(res_class) == 0:
+            return False
         return True
     except:
         return False
@@ -136,7 +137,6 @@ def find_element(element):
 
 def dive_plus(url, listofinputed):
     browsers = get_browser()
-
 
     browsers.get(url)
 
@@ -266,4 +266,85 @@ def main():
 if __name__ == "__main__":
     main()
 
+
 # baru
+
+class Scraper:
+    def __init__(self):
+        self.url = 'http://industry.socs.binus.ac.id/learning-plan/auth/login'
+        self.session = requests.Session()
+        self.browser = None
+
+    def browser_is_close(self):
+        if self.browser is None:
+            return False
+        try:
+            self.browser.title
+        except WebDriverException:
+            return False
+        return True
+
+    def get_browser(self):
+        if self.browser_is_close():
+            print("Reopen Browser")
+        return self.browser
+
+    def set_cookies(self):
+        cookies = self.browser.get_cookies()
+
+        for cookie in cookies:
+            self.session.cookies.set(cookie['name'], cookie['value'])
+        return cookies
+
+    def get_cookies(self):
+        return self.get_browser().get_cookies()
+
+    def get_url(self):
+        return self.url
+
+    def dive_plus(self, url, listofinputed):
+        self.browser = get_browser()
+        self.browser.get(url)
+        for inputed in listofinputed:
+            if inputed["value"] == "{button.click}":
+                submit = None
+                if inputed["id"] is not None:
+                    submit = self.browser.find_element_by_id(inputed["id"])
+                elif inputed["class"] is not None:
+                    classname = ".".join(inputed["class"])
+                    if inputed["tag"] == "input":
+                        submit = self.browser.find_element_by_css_selector('input.' + classname)
+                    else:
+                        submit = self.browser.find_element_by_css_selector('button.' + classname)
+                if submit is not None:
+                    submit.click()
+            elif inputed["id"] is not None:
+                input_inputed = self.browser.find_element_by_id(inputed["id"])
+                input_inputed.send_keys(inputed["value"])
+            else:
+                input_inputed = self.browser.find_element_by_name(inputed["name"])
+                input_inputed.send_keys(inputed["value"])
+
+        return self.browser
+
+    def find_text_in_browser(self, text):
+        if self.browser_is_close():
+            return False
+        try:
+            res = self.browser.find_elements_by_xpath("//*[contains(text(), '" + text + "')]")
+            if len(res) == 0: return False
+            return True
+        except:
+            return False
+
+    def find_element_in_browser(self, element):
+        if self.browser_is_close():
+            return False
+        try:
+            res_id = self.browser.find_elements_by_xpath("//*[@id='" + element + "']")
+            res_class = self.browser.find_elements_by_xpath("//*[contains(@class,'" + element + "')]")
+            if len(res_id) == 0 and len(res_class) == 0:
+                return False
+            return True
+        except:
+            return False

@@ -1,26 +1,64 @@
 from functools import partial
-
+import time
 import PyQt5
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QPushButton
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 
-from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader
+from general.combination import Combination
+from general.globalpreferences import GlobalPreferences
+from scraper import scraper
+from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, Scraper
 from general.util import get_today, get_uuid
 
 
 class InputResultTable(QTableWidget):
     def execute_alternate(self):
-        # TODO
-        pass
+        input_combinations = Combination(data_set=self.list_of_input).get_result_reversed()
+        master_data = []
+        for com in input_combinations:
+            description = ""
+            scr = Scraper()
+            browser = scr.dive_plus(self.url, com)
+            wait = WebDriverWait(browser, GlobalPreferences.setting["timeout"])
+            try:
+                page_loaded = wait.until_not(
+                    lambda browser: browser.current_url == self.url
+                )
+            except TimeoutException:
+                print("Timeout")
+                description = "Timeout\n"
+            finally:
+                result = {
+                    "url_after": browser.current_url,
+                    "text_found": scr.find_text_in_browser(GlobalPreferences.setting["expected"]["text_after"]),
+                    "element_found": scr.find_element_in_browser(GlobalPreferences.setting["expected"]["element_after"])
+                }
+                data = {
+                    "result": result,
+                    "expected": GlobalPreferences.setting["expected"],
+                    "id": str(get_uuid()),
+                    "date": get_today(),
+                    "title": "Skreepy",
+                    "description": description,
+                    "tester": GlobalPreferences.setting["tester"]
+                }
+                master_data.append(data)
+                browser.close()
+        for d in master_data:
+            print(d)
+
+
+        # scr.dive_plus(self.url, self.list_of_input)
+
+
 
     def execute_all_click(self):
         print("executed")
         description = ""
 
         from scraper import scraper
-        from general.globalpreferences import GlobalPreferences
-
+        print(self.list_of_input)
         scraper.browser = scraper.dive_plus(self.url, self.list_of_input)
 
         wait = WebDriverWait(scraper.browser, GlobalPreferences.setting["timeout"])

@@ -2,10 +2,10 @@ import sys
 
 from PyQt5.QtWidgets import QApplication
 
+from general.combination import Combination
 from ui.main_window import MainWindow
 from general.connection import Connection
 from general.util import load_setting
-
 
 
 class Main:
@@ -20,8 +20,6 @@ class Main:
         w.setVisible(True)
 
         sys.exit(app.exec_())
-
-
 
 
 if __name__ == '__main__':

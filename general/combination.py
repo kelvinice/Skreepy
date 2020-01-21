@@ -62,3 +62,9 @@ class Combination:
         com = self.combinations.copy()
         self.combinations.clear()
         return com
+
+    def get_result_reversed(self):
+        com = self.combinations.copy()
+        com.reverse()
+        self.combinations.clear()
+        return com
