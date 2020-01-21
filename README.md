@@ -8,4 +8,4 @@ https://github.com/mozilla/geckodriver/releases
 http://go.microsoft.com/fwlink/?LinkId=691126&fixForIE=.exe.
 
 ### Generate Class Diagram
-pyreverse -o png -p [Folder Path]
+pyreverse -o png -p skreepy [Folder Path]

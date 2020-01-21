@@ -6,7 +6,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 
 from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader
-from util.util import get_today, get_uuid
+from general.util import get_today, get_uuid
 
 
 class InputResultTable(QTableWidget):
@@ -19,7 +19,7 @@ class InputResultTable(QTableWidget):
         description = ""
 
         from scraper import scraper
-        from util.globalpreferences import GlobalPreferences
+        from general.globalpreferences import GlobalPreferences
 
         scraper.browser = scraper.dive_plus(self.url, self.list_of_input)
 

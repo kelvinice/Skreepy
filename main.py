@@ -3,8 +3,9 @@ import sys
 from PyQt5.QtWidgets import QApplication
 
 from ui.main_window import MainWindow
-from util.connection import Connection
-from util.util import load_setting
+from general.connection import Connection
+from general.util import load_setting
+
 
 
 class Main:

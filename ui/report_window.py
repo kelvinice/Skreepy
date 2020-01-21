@@ -4,8 +4,8 @@ from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox
     QScrollArea, QGridLayout, QTextEdit
 
 from components.result_report_table import ResultReportTable
-from util.connection import Connection
-from util.util import export_to_html, show_message_window
+from general.connection import Connection
+from general.util import export_to_html, show_message_window
 
 
 class ReportWindow(QDialog):
