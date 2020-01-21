@@ -104,7 +104,7 @@ class Connection(metaclass=Singleton):
         cursor.close()
         self.close_connection()
 
-    def get_tests(self) -> List[Dict[str, Union[Dict[str, Any], Any]]]:
+    def get_tests(self):
         sql = """
             SELECT * FROM tests
         """
@@ -139,7 +139,7 @@ class Connection(metaclass=Singleton):
                 "overall_result": to_bool(row[5])
             }
             datas.append(data)
-
+        # TODO tambahin inputs
         cursor.close()
 
         self.close_connection()

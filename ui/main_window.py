@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLay
     QScrollArea, QLineEdit, QGridLayout
 
 from components.input_result_table import InputResultTable
+from components.input_table import InputTable
 from scraper.scraper import getheader, find_all_form
 from ui.preferences_window import PreferencesWindow
 
@@ -21,10 +22,9 @@ class MainWindow(QMainWindow):
         self.showMaximized()
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon("assets/logoBINUS.png"))
-        self.setStyleSheet("background-color : #949494;"
-                           "color: white;")
+        self.setStyleSheet("background-color : #949494;")
 
-        self.tblInput = None
+        self.input_result_table = None
         self.default_url_text = "https://industry.socs.binus.ac.id/learning-plan/auth/login"
 
         self.top_group_box = QGroupBox("Scrapper")
@@ -45,20 +45,19 @@ class MainWindow(QMainWindow):
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
 
-
         # datas = Connection().get_tests()
         # for data in datas:
         #     export_to_html(data)
-            # o = ReportWindow(800, 680, data=data, parent=self)
-            # o.setVisible(True)
+        # o = ReportWindow(800, 680, data=data, parent=self)
+        # o.setVisible(True)
 
     def execute_click(self):
-        if self.tblInput is not None:
-            self.tblInput.execute_all_click()
+        if self.input_result_table is not None:
+            self.input_result_table.execute_all_click()
 
     def execute_alter(self):
-        if self.tblInput is not None:
-            self.tblInput.execute_alternate()
+        if self.input_result_table is not None:
+            self.input_result_table.execute_alternate()
 
     def open_preferences(self):
         p = PreferencesWindow(600, 180, self)
@@ -386,10 +385,15 @@ class MainWindow(QMainWindow):
     def click_insert_input_result(self, args=0):
         self.tblForm.setParent(None)
 
-        self.tblInput = InputResultTable(self.url, self.forms[int(args)], self)
+        self.input_result_table = InputResultTable(self.url, self.forms[int(args)], self)
+        self.input_table = InputTable([], self)
 
-        self.main_scroll_vbox.addWidget(self.tblInput)
+        self.main_scroll_vbox.addWidget(self.input_result_table)
+        self.main_scroll_vbox.addWidget(self.input_table)
 
         # self.main_scroll_vbox.addWidget()
         # dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)
         # dialog.show()
+
+    def set_input_table(self, data):
+        self.input_table.insert_data(data)

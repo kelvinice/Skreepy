@@ -57,6 +57,7 @@ class Combination:
 
         for r in range(0, n):
             self.print_combination(data_set, n, r)
+        self.combinations.append(data_set)
 
     def get_result(self):
         com = self.combinations.copy()

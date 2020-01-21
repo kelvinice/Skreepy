@@ -3,6 +3,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog, QHBoxLayout, QVBoxLayout, QLabel, QGroupBox, QPushButton, QFormLayout, \
     QScrollArea, QGridLayout, QTextEdit
 
+from components.input_table import InputTable
 from components.result_report_table import ResultReportTable
 from general.connection import Connection
 from general.util import export_to_html, show_message_window
@@ -11,7 +12,7 @@ from general.util import export_to_html, show_message_window
 class ReportWindow(QDialog):
     def __init__(self, width, height, data, parent):
         super(ReportWindow, self).__init__(parent)
-        self.resize(width, height)
+        self.resize(900, 850)
         self.move((width / 2) / 2, (height / 2) / 2)
         self.setWindowTitle("Report " + data["title"])
         self.setWindowIcon(QIcon("assets/report.png"))
@@ -21,6 +22,8 @@ class ReportWindow(QDialog):
         self.box_table = QScrollArea()
         self.box_result = QGroupBox()
         self.data = data
+        self.inputs = data["inputs"]
+        print(self.inputs)
 
         self.init_title_description()
         self.init_main_table(data["expected"], data["result"])
@@ -79,11 +82,12 @@ class ReportWindow(QDialog):
         self.box_header.setLayout(form_layout)
 
     def init_main_table(self, expected, result):
-        pass
-        h_box = QHBoxLayout()
+        h_box = QVBoxLayout()
         self.main_table = ResultReportTable(expected=expected, result=result, parent=self)
         self.data["overall_result"] = self.main_table.get_overall_result()
         h_box.addWidget(self.main_table)
+        self.inputs_table = InputTable(self.inputs, self)
+        h_box.addWidget(self.inputs_table)
         self.box_table.setLayout(h_box)
 
     def init_result(self):

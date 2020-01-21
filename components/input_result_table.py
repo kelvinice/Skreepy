@@ -10,6 +10,7 @@ from general.globalpreferences import GlobalPreferences
 from scraper import scraper
 from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, Scraper
 from general.util import get_today, get_uuid
+from ui.master_report_window import MasterReportWindow
 
 
 class InputResultTable(QTableWidget):
@@ -41,24 +42,18 @@ class InputResultTable(QTableWidget):
                     "date": get_today(),
                     "title": "Skreepy",
                     "description": description,
-                    "tester": GlobalPreferences.setting["tester"]
+                    "tester": GlobalPreferences.setting["tester"],
+                    "inputs": com
                 }
                 master_data.append(data)
                 browser.close()
-        for d in master_data:
-            print(d)
-
-
-        # scr.dive_plus(self.url, self.list_of_input)
-
-
+        MasterReportWindow(800, 600, master_data, self).show()
 
     def execute_all_click(self):
         print("executed")
         description = ""
 
         from scraper import scraper
-        print(self.list_of_input)
         scraper.browser = scraper.dive_plus(self.url, self.list_of_input)
 
         wait = WebDriverWait(scraper.browser, GlobalPreferences.setting["timeout"])
@@ -91,7 +86,8 @@ class InputResultTable(QTableWidget):
                 "date": get_today(),
                 "title": "Skreepy",
                 "description": description,
-                "tester": GlobalPreferences.setting["tester"]
+                "tester": GlobalPreferences.setting["tester"],
+                "inputs": self.list_of_input
             }
             if GlobalPreferences.setting["close_browser_after_test"]:
                 scraper.browser.close()
@@ -99,30 +95,37 @@ class InputResultTable(QTableWidget):
             o = ReportWindow(800, 680, data=data, parent=self)
             o.setVisible(True)
 
-
-
     def cell_changed_reaction(self, row, col):
+
         # Value changed
         if col == 3:
             print("Value Change To : " + str(self.item(row, col).text()))
             from scraper import scraper
             text = str(self.item(row, col).text())
-            self.list_of_input.append(
-                {"tag": scraper.getheader(self.inputs[row])["tag"], "id": scraper.getheader(self.inputs[row])["id"],
+            data = {"tag": scraper.getheader(self.inputs[row])["tag"], "id": scraper.getheader(self.inputs[row])["id"],
                  "class": scraper.getheader(self.inputs[row])["class"],
-                 "name": scraper.getheader(self.inputs[row])["name"], "value": text})
+                 "name": scraper.getheader(self.inputs[row])["name"], "value": text,
+                 "innerHTML": scraper.getheader(self.inputs[row])["innerHTML"],
+                 "original_value": scraper.getheader(self.inputs[row])["value"],
+                 }
+            self.list_of_input.append(data)
+            self.parentWindow.set_input_table(data)
 
     def on_click(self, args=0):
         # TODO VALIDASI JIKA BUTTON
         from scraper import scraper
-        self.list_of_input.append(
-            {"tag": scraper.getheader(self.inputs[args])["tag"], "id": scraper.getheader(self.inputs[args])["id"],
+        data = {"tag": scraper.getheader(self.inputs[args])["tag"], "id": scraper.getheader(self.inputs[args])["id"],
              "class": scraper.getheader(self.inputs[args])["class"],
-             "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}"})
+             "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}",
+             "innerHTML": scraper.getheader(self.inputs[args])["innerHTML"],
+             "original_value": scraper.getheader(self.inputs[args])["value"],
+             }
+        self.list_of_input.append(data)
+        self.parentWindow.set_input_table(data)
 
     def __init__(self, url, result, parent=None):
         super(InputResultTable, self).__init__(parent)
-
+        self.parentWindow = parent
         self.url = url
         self.list_of_input = []
 
@@ -162,4 +165,3 @@ class InputResultTable(QTableWidget):
             self.rowcount += 1
 
         self.cellChanged.connect(self.cell_changed_reaction)
-

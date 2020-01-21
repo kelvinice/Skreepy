@@ -286,6 +286,7 @@ class Scraper:
 
     def get_browser(self):
         if self.browser_is_close():
+            self.browser = webdriver.Firefox()
             print("Reopen Browser")
         return self.browser
 
@@ -328,8 +329,8 @@ class Scraper:
         return self.browser
 
     def find_text_in_browser(self, text):
-        if self.browser_is_close():
-            return False
+        # if self.browser_is_close():
+        #     return False
         try:
             res = self.browser.find_elements_by_xpath("//*[contains(text(), '" + text + "')]")
             if len(res) == 0: return False
@@ -338,8 +339,8 @@ class Scraper:
             return False
 
     def find_element_in_browser(self, element):
-        if self.browser_is_close():
-            return False
+        # if self.browser_is_close():
+        #     return False
         try:
             res_id = self.browser.find_elements_by_xpath("//*[@id='" + element + "']")
             res_class = self.browser.find_elements_by_xpath("//*[contains(@class,'" + element + "')]")

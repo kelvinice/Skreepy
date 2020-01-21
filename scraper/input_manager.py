@@ -47,8 +47,6 @@ class input_manager(QMainWindow):
         if self.exElementLbl.text() != "":
             self.expected["element_after"] = self.exElementLbl.text()
 
-        print(self.expected)
-
         import scraper
         scraper.browser = scraper.dive_plus(self.url, self.listofinputed)
         wait = WebDriverWait(scraper.browser, 5)

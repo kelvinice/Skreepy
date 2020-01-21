@@ -25,6 +25,20 @@ def read_from_file(path):
     return content
 
 
+def get_overall_result(expected, result):
+    final_condition = True
+    if expected["url_after"] is not None:
+        condition = result["url_after"] == expected["url_after"]
+        final_condition = final_condition and condition
+    if expected["text_after"] is not None:
+        condition = result["text_found"]
+        final_condition = final_condition and condition
+    if expected["element_after"] is not None:
+        condition = result["element_found"]
+        final_condition = final_condition and condition
+    return final_condition
+
+
 def write_to_file(path, content):
     cwd = os.getcwd()
     file = open(cwd + path, "w+")

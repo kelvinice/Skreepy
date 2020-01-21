@@ -9,7 +9,6 @@ import scraper.input_manager
 
 class form_manager(PyQt5.QtWidgets.QMainWindow):
     def on_click(self, args=0):
-
         if self.comboAuto.currentText() == "Manual":
             dialog = scraper.input_manager.input_manager(url=self.url, result=self.forms[int(args)], parent=self)
             dialog.show()
