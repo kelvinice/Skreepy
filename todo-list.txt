@@ -1,3 +1,5 @@
+# TODO SETTING BUTTON dipindah ke bawah
+# TODO Tambahin List Input/Action
 # TODO Save Inputted Value
 # TODO Save Test Url
 # TODO Report History List
