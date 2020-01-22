@@ -27,8 +27,15 @@ class Connection(metaclass=Singleton):
 
         cursor = self.get_cursor()
 
+        sql = ('CREATE TABLE IF NOT EXISTS master_tests('
+               'id TEXT PRIMARY_KEY'
+               ')'
+               )
+        cursor.execute(sql)
+
         sql = ('CREATE TABLE IF NOT EXISTS tests('
                'id TEXT PRIMARY_KEY,'
+               'master_test_id TEXT,'
                'test_date TEXT,'
                'tester_name TEXT,'
                'test_title TEXT,'
@@ -39,10 +46,26 @@ class Connection(metaclass=Singleton):
                'element_result TEXT,'
                'url_expected TEXT,'
                'text_expected TEXT,'
-               'element_expected TEXT'
+               'element_expected TEXT,'
+               'FOREIGN KEY(master_test_id) REFERENCES master_tests(id)'
                ')'
                )
         cursor.execute(sql)
+
+        sql = ('CREATE TABLE IF NOT EXISTS test_inputs('
+               'id TEXT PRIMARY_KEY,'
+               'test_id TEXT,'
+               'tag TEXT,'
+               'input_id TEXT,'
+               'name TEXT,'
+               'inner_html TEXT,'
+               'original_value TEXT,'
+               'value TEXT,'
+               'FOREIGN KEY(test_id) REFERENCES tests(id)'
+               ')'
+               )
+        cursor.execute(sql)
+
         cursor.close()
 
         self.close_connection()

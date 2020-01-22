@@ -10,3 +10,4 @@
 # TODO Test with different Browser
 # TODO https://pythonspot.com/pyqt5-input-dialog/
 # TODO https://stackoverflow.com/questions/4511908/connect-double-click-event-of-qlistview-with-method-in-pyqt4
+# TODO https://stackoverflow.com/questions/39471097/selecting-a-combobox-option-with-a-div-tag-using-selenium-and-python
