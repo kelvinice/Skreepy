@@ -1,3 +1,4 @@
+# TODO Overall Result jadiin Success atau Failed
 # TODO SETTING BUTTON dipindah ke bawah
 # TODO Save Inputted Value TO DB
 # TODO Save Inputted Value
