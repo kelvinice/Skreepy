@@ -5,9 +5,10 @@ from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QPushButton
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 
+from general import util
 from general.combination import Combination
 from general.globalpreferences import GlobalPreferences
-from general.util import get_today, get_uuid
+from general.util import get_today, get_uuid, normalize_string
 from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, Scraper
 from ui.master_report_window import MasterReportWindow
 
@@ -42,7 +43,8 @@ class InputResultTable(QTableWidget):
                     "title": "Skreepy",
                     "description": description,
                     "tester": GlobalPreferences.setting["tester"],
-                    "inputs": com
+                    "inputs": com,
+                    "master_test_id": normalize_string(util.get_uuid())
                 }
                 master_data.append(data)
                 browser.close()

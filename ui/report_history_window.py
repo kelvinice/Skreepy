@@ -15,9 +15,9 @@ class ReportHistoryWindow(QDialog):
         self.resize(self.window_width, self.window_height)
         self.move((self.window_width / 2) / 2, (self.window_height / 2) / 2)
         self.setStyleSheet("background-color :  #949494;")
+        self.setWindowTitle("Report History")
         scroll = QScrollArea()
         scroll.setMinimumWidth(self.window_width)
-        # scroll.setHorizontalScrollBarPolicy()
         v_box = QVBoxLayout(self)
         inner = QVBoxLayout()
 

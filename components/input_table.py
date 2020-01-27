@@ -26,13 +26,12 @@ class InputTable(QTableWidget):
         self.setItem(rowPosition, 5, item_original_value)
         self.setItem(rowPosition, 6, QTableWidgetItem(data["value"]))
 
-
     def __init__(self, input_list, parent=None):
         super(InputTable, self).__init__(parent)
 
         self.setColumnCount(7)
 
-        header = ("Tag", "Id", "Name","Class", "innerHTML", "Original Value", "Value")
+        header = ("Tag", "Id", "Name", "Class", "innerHTML", "Original Value", "Value")
         self.setHorizontalHeaderLabels(header)
         self.setRowCount(len(input_list))
         self.horizontalHeader().setSectionResizeMode(1)
@@ -43,7 +42,7 @@ class InputTable(QTableWidget):
             itemid = QTableWidgetItem(inp["id"])
             itemname = QTableWidgetItem(inp["name"])
             itemhtml = QTableWidgetItem(inp["innerHTML"])
-            item_class = QTableWidgetItem(inp["class"])
+            item_class = QTableWidgetItem(normalize_string(inp["class"]))
             item_original_value = QTableWidgetItem(inp["original_value"])
             itemtype.setFlags(itemtype.flags() & ~PyQt5.QtCore.Qt.ItemIsEditable & ~PyQt5.QtCore.Qt.TextEditable)
             itemid.setFlags(itemtype.flags() & ~PyQt5.QtCore.Qt.ItemIsEditable & ~PyQt5.QtCore.Qt.TextEditable)

@@ -23,8 +23,6 @@ class Main:
 
         # m = MasterReportWindow(a,w)
 
-        r = ReportHistoryWindow(w)
-        r.setVisible(True)
         sys.exit(app.exec_())
 
 

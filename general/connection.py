@@ -135,7 +135,8 @@ class Connection(metaclass=Singleton):
 
     def insert_inputs(self, test_id, input_data):
         sql = """
-        INSERT INTO test_inputs(id, test_id, tag, input_id,name,inner_html,original_value,value,class) VALUES (?,?,?,?,?,?,?,?,?)
+        INSERT INTO test_inputs(id, test_id, tag, input_id,name,inner_html,original_value,value,class) 
+        VALUES (?,?,?,?,?,?,?,?,?)
         """
 
         tuple_data = (
@@ -159,11 +160,11 @@ class Connection(metaclass=Singleton):
 
     def get_input(self, text_id):
         sql = """
-            SELECT * FROM test_inputs
+            SELECT * FROM test_inputs WHERE test_id = ?
         """
         cursor = self.get_cursor()
 
-        res = cursor.execute(sql)
+        res = cursor.execute(sql, (text_id,))
         rows = res.fetchall()
         datas = []
 

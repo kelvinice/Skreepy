@@ -6,7 +6,7 @@
 # TODO Report History List
 # TODO Faker JSON
 # TODO Save as run-script
-# TODO Back Button
+# TODO Back Buttosn
 # TODO Save URL
 # TODO Test with different Browser
 # TODO https://pythonspot.com/pyqt5-input-dialog/
