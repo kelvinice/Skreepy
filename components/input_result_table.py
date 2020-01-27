@@ -1,5 +1,5 @@
 from functools import partial
-import time
+
 import PyQt5
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QPushButton
 from selenium.common.exceptions import TimeoutException
@@ -7,9 +7,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from general.combination import Combination
 from general.globalpreferences import GlobalPreferences
-from scraper import scraper
-from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, Scraper
 from general.util import get_today, get_uuid
+from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, Scraper
 from ui.master_report_window import MasterReportWindow
 
 
@@ -47,7 +46,7 @@ class InputResultTable(QTableWidget):
                 }
                 master_data.append(data)
                 browser.close()
-        MasterReportWindow(800, 600, master_data, self).show()
+        MasterReportWindow(master_data, self).show()
 
     def execute_all_click(self):
         print("executed")
@@ -87,7 +86,8 @@ class InputResultTable(QTableWidget):
                 "title": "Skreepy",
                 "description": description,
                 "tester": GlobalPreferences.setting["tester"],
-                "inputs": self.list_of_input
+                "inputs": self.list_of_input,
+                "master_test_id": ""
             }
             if GlobalPreferences.setting["close_browser_after_test"]:
                 scraper.browser.close()

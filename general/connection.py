@@ -1,8 +1,8 @@
 import sqlite3
-from typing import List, Dict, Union, Any
 
+from general import util
+from general.util import to_bool, normalize_string
 from meta.singleton import Singleton
-from general.util import to_bool
 
 
 class Connection(metaclass=Singleton):
@@ -61,6 +61,7 @@ class Connection(metaclass=Singleton):
                'inner_html TEXT,'
                'original_value TEXT,'
                'value TEXT,'
+               'class TEXT,'
                'FOREIGN KEY(test_id) REFERENCES tests(id)'
                ')'
                )
@@ -104,7 +105,7 @@ class Connection(metaclass=Singleton):
         tuple_data = (
             data["id"], data["date"], data["tester"], data["title"], data["description"], data["overall_result"]
             , result["url_after"], result["text_found"], result["element_found"]
-            , expected["url_after"], expected["text_after"], expected["element_after"])
+            , expected["url_after"], expected["text_after"], expected["element_after"], data["master_test_id"])
 
         sql = """
             INSERT INTO tests(id ,test_date,
@@ -117,15 +118,68 @@ class Connection(metaclass=Singleton):
                element_result,
                 url_expected,
                text_expected,
-               element_expected)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+               element_expected,master_test_id)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
         """
+
         self.open_connection()
         cursor = self.get_cursor()
         cursor.execute(sql, tuple_data)
         self.commit()
+
         cursor.close()
         self.close_connection()
+
+        for i in data["inputs"]:
+            self.insert_inputs(data["id"], i)
+
+    def insert_inputs(self, test_id, input_data):
+        sql = """
+        INSERT INTO test_inputs(id, test_id, tag, input_id,name,inner_html,original_value,value,class) VALUES (?,?,?,?,?,?,?,?,?)
+        """
+
+        tuple_data = (
+            normalize_string(util.get_uuid()),
+            normalize_string(test_id),
+            normalize_string(input_data["tag"]),
+            normalize_string(input_data["id"]),
+            normalize_string(input_data["name"]),
+            normalize_string(input_data["innerHTML"]),
+            normalize_string(input_data["original_value"]),
+            normalize_string(input_data["value"]),
+            normalize_string(input_data["class"]),
+        )
+        self.open_connection()
+        cursor = self.get_cursor()
+        cursor.execute(sql, tuple_data)
+        self.commit()
+
+        cursor.close()
+        self.close_connection()
+
+    def get_input(self, text_id):
+        sql = """
+            SELECT * FROM test_inputs
+        """
+        cursor = self.get_cursor()
+
+        res = cursor.execute(sql)
+        rows = res.fetchall()
+        datas = []
+
+        cursor.close()
+
+        for row in rows:
+            data = {"tag": row[2],
+                    "id": row[3],
+                    "class": row[8],
+                    "name": row[4], "value": row[7],
+                    "innerHTML": row[5],
+                    "original_value": row[6],
+                    }
+            datas.append(data)
+
+        return datas
 
     def get_tests(self):
         sql = """
@@ -139,31 +193,36 @@ class Connection(metaclass=Singleton):
         rows = res.fetchall()
         datas = []
 
+        cursor.close()
+
         for row in rows:
+            inp = self.get_input(row[0])
+
             result = {
-                "url_after": row[6],
-                "text_found": to_bool(row[7]),
-                "element_found": to_bool(row[8])
+                "url_after": row[7],
+                "text_found": to_bool(row[8]),
+                "element_found": to_bool(row[9])
             }
             expected = {
-                "url_after": row[9],
-                "text_after": row[10],
-                "element_after": row[11]
+                "url_after": row[10],
+                "text_after": row[11],
+                "element_after": row[12]
             }
 
             data = {
                 "result": result,
                 "expected": expected,
                 "id": row[0],
-                "date": row[1],
-                "title": row[3],
-                "description": row[4],
-                "tester": row[2],
-                "overall_result": to_bool(row[5])
+                "master_test_id": row[1],
+                "date": row[2],
+                "title": row[4],
+                "description": row[5],
+                "inputs": inp,
+                "tester": row[3],
+                "overall_result": to_bool(row[6])
             }
             datas.append(data)
         # TODO tambahin inputs
-        cursor.close()
 
         self.close_connection()
         return datas

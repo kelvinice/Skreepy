@@ -4,8 +4,8 @@ import uuid
 
 from PyQt5.QtWidgets import QMessageBox
 
-from meta import singleton
 from general.globalpreferences import GlobalPreferences
+from meta import singleton
 
 
 def get_uuid():
@@ -36,7 +36,10 @@ def get_overall_result(expected, result):
     if expected["element_after"] is not None:
         condition = result["element_found"]
         final_condition = final_condition and condition
-    return final_condition
+
+    if final_condition:
+        return "Success"
+    return "Failed"
 
 
 def write_to_file(path, content):
@@ -116,6 +119,11 @@ def to_bool(i):
         return False
     return True
 
+
+def normalize_string(val):
+    if val is None:
+        return ''
+    return str(val)
 
 class Util(metaclass=singleton.Singleton):
     def fake(self, type):
