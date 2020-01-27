@@ -1,4 +1,3 @@
-import sys
 from functools import partial
 
 import PyQt5
@@ -107,8 +106,6 @@ class MainWindow(QMainWindow):
                                           border: 1px solid black;
                                         }
                                 """)
-
-
 
         execute_alternative_scenario_button.setStyleSheet("""
                                     QPushButton
@@ -390,16 +387,6 @@ class MainWindow(QMainWindow):
         main_h_layout.setColumnStretch(1, 1)
 
         self.main_h_layout.setLayout(main_h_layout)
-
-    def setting_listener(self, q):
-        if q.text() == "Change User":
-            print("Change User")
-            return
-        if q.text() == "Exit":
-            sys.exit()
-            return
-
-        return
 
     def click_insert_form_result(self):
         self.url = self.url_line_edit.text()
