@@ -1,12 +1,7 @@
-# TODO Overall Result jadiin Success atau Failed
-# TODO SETTING BUTTON dipindah ke bawah
-# TODO Save Inputted Value TO DB
-# TODO Save Inputted Value
-# TODO Save Test Url
-# TODO Report History List
+# TODO Master Report History
 # TODO Faker JSON
 # TODO Save as run-script
-# TODO Back Buttosn
+# TODO Home Button
 # TODO Save URL
 # TODO Test with different Browser
 # TODO https://pythonspot.com/pyqt5-input-dialog/
