@@ -158,13 +158,13 @@ class Connection(metaclass=Singleton):
         cursor.close()
         self.close_connection()
 
-    def get_input(self, text_id):
+    def get_input(self, test_id):
         sql = """
             SELECT * FROM test_inputs WHERE test_id = ?
         """
         cursor = self.get_cursor()
 
-        res = cursor.execute(sql, (text_id,))
+        res = cursor.execute(sql, (test_id,))
         rows = res.fetchall()
         datas = []
 
