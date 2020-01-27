@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QScrollArea
 
 from components.alternate_table import AlternateTable
-from components.master_report_table import MasterReportTable
 from general.connection import Connection
 
 
