@@ -10,7 +10,7 @@ class ReportHistoryWindow(QDialog):
 
     def __init__(self, parent):
         super(ReportHistoryWindow, self).__init__(parent)
-        self.window_width = 800
+        self.window_width = 546
         self.window_height = 600
         self.resize(self.window_width, self.window_height)
         self.move((self.window_width / 2) / 2, (self.window_height / 2) / 2)

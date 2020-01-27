@@ -8,7 +8,6 @@ from ui.report_window import ReportWindow
 
 class MasterReportTable(QTableWidget):
     def click_report(self, args=0):
-        print(self.report_list[args])
         ReportWindow(800, 680, data=self.report_list[args], parent=self).show()
 
     def __init__(self, report_list, parent=None):
