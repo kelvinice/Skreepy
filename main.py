@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QApplication
 
 from general.connection import Connection
 from general.util import load_setting
+from ui.alternate_report_result_window import AlternateReportResultWindow
 from ui.main_window import MainWindow
 from ui.report_history_window import ReportHistoryWindow
 
@@ -18,10 +19,6 @@ class Main:
         load_setting()  # Load Setting from config
         w = MainWindow(width, height, "Skreepy")
         w.setVisible(True)
-
-
-
-        # m = MasterReportWindow(a,w)
 
         sys.exit(app.exec_())
 

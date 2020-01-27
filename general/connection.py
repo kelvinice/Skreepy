@@ -120,8 +120,7 @@ class Connection(metaclass=Singleton):
             data["id"], data["description"], data["overall_result"]
             , result["url_after"], result["text_found"], result["element_found"]
             , expected["url_after"], expected["text_after"], expected["element_after"], data["master_test_id"])
-        print(tuple_data)
-        print("a")
+
         sql = """
             INSERT INTO tests(id,
                description,
@@ -131,7 +130,9 @@ class Connection(metaclass=Singleton):
                element_result,
                 url_expected,
                text_expected,
-               element_expected,master_test_id)
+               element_expected,
+               master_test_id
+               )
                VALUES (?,?,?,?,?,?,?,?,?,?)
         """
 
@@ -152,10 +153,10 @@ class Connection(metaclass=Singleton):
         )
 
         sql = """
-                    INSERT INTO master_tests(id ,
-                        test_date, tester_name, test_title
-                        )
-                       VALUES (?,?,?,?)
+                INSERT INTO master_tests(id ,
+                    test_date, tester_name, test_title
+                    )
+                   VALUES (?,?,?,?)
                 """
 
         self.open_connection()
@@ -194,7 +195,6 @@ class Connection(metaclass=Singleton):
     def get_input(self, test_id):
         sql = """
             SELECT * FROM test_inputs 
-            
             WHERE test_id = ?
         """
         cursor = self.get_cursor()
@@ -217,7 +217,32 @@ class Connection(metaclass=Singleton):
 
         return datas
 
-    def get_tests(self):
+    def get_master_tests(self):
+        sql = """
+        SELECT id,test_date,tester_name,test_title FROM master_tests
+        """
+        self.open_connection()
+        cursor = self.get_cursor()
+
+        res = cursor.execute(sql)
+        rows = res.fetchall()
+        data_list = []
+
+        cursor.close()
+
+        for row in rows:
+            data = {
+                "id": normalize_string(row[0]),
+                "test_date": normalize_string(row[1]),
+                "tester_name": normalize_string(row[2]),
+                "test_title": normalize_string(row[3])
+            }
+            data_list.append(data)
+
+        self.close_connection()
+        return data_list
+
+    def get_tests(self, master_test_id=''):
         sql = """
             SELECT 
             t.id,
@@ -238,12 +263,13 @@ class Connection(metaclass=Singleton):
             element_expected
             FROM tests t JOIN master_tests mt
             on t.master_test_id = mt.id
+            WHERE t.master_test_id like ?
         """
         self.open_connection()
 
         cursor = self.get_cursor()
-
-        res = cursor.execute(sql)
+        tuple_data = ('%%'+master_test_id+'%%',)
+        res = cursor.execute(sql, tuple_data)
         rows = res.fetchall()
         datas = []
 

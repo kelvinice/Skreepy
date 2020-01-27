@@ -5,12 +5,13 @@ import PyQt5
 from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, QRect
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, \
+from PyQt5.QtWidgets import QWidget, QMainWindow, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, \
     QScrollArea, QLineEdit, QGridLayout
 
 from components.input_result_table import InputResultTable
 from components.input_table import InputTable
 from scraper.scraper import getheader, find_all_form
+from ui.alternate_report_result_window import AlternateReportResultWindow
 from ui.preferences_window import PreferencesWindow
 from ui.report_history_window import ReportHistoryWindow
 
@@ -70,19 +71,9 @@ class MainWindow(QMainWindow):
         r = ReportHistoryWindow(self)
         r.setVisible(True)
 
-    def init_menu_bar(self):
-        menu_bar = self.menuBar()
-        setting_menu = menu_bar.addMenu("Settings")
-        change_user_action = QAction(QIcon("assets/user.png"), 'Change User', self)
-        exit_button = QAction(QIcon("assets/exit.png"), 'Exit', self)
-        preferences_button = QAction(QIcon("assets/exit.png"), 'Preferences', self)
-        setting_menu.triggered[QAction].connect(self.setting_listener)
-        exit_button.triggered.connect(self.close)
-        preferences_button.triggered.connect(self.open_preferences)
-
-        setting_menu.addAction(change_user_action)
-        setting_menu.addAction(preferences_button)
-        setting_menu.addAction(exit_button)
+    def open_alternate(self):
+        m = AlternateReportResultWindow(self)
+        m.show()
 
     def init_action_attribute(self):
         action_h_box_layout = QHBoxLayout()
@@ -160,6 +151,7 @@ class MainWindow(QMainWindow):
         home_button = QPushButton()
         report_button = QPushButton()
         setting_button = QPushButton()
+        alternate_button = QPushButton()
         setting_button.setIcon(QIcon("assets/setting.png"))
         setting_button.setStyleSheet("""
                     QPushButton
@@ -255,15 +247,40 @@ class MainWindow(QMainWindow):
                         }
                 """)
 
-        report_button.setIconSize(QSize(40, 40))
-        report_button.clicked.connect(self.open_history_report)
+        alternate_button.setIcon(QIcon("assets/alternate.png"))
+        alternate_button.setStyleSheet("""
+                            QPushButton
+                            {
+                                background-color: #5b5c5e;
+                                padding: 2px;
+                                min-height: 45px;
+                                min-width: 45px;
+                                border-radius: 10px;
+                                border-bottom: 1.5px solid black;
+                                border-right: 1px solid black;
+                            }
+                            QPushButton:hover:!pressed
+                                {
+                                  background-color: #4d4d4d;
+                                }
+                            QPushButton:pressed
+                                {
+                                  background-color: #5b5c5e;
+                                  border: 1px solid black;
+                                }
+                        """)
 
+        report_button.setIconSize(QSize(40, 40))
+        alternate_button.setIconSize(QSize(40, 40))
+        report_button.clicked.connect(self.open_history_report)
         setting_button.clicked.connect(self.open_preferences)
+        alternate_button.clicked.connect(self.open_alternate)
 
         # toolbar_h_box_layout.addWidget(prev_button)
         toolbar_h_box_layout.addWidget(home_button)
         toolbar_h_box_layout.addWidget(report_button)
         toolbar_h_box_layout.addWidget(setting_button)
+        toolbar_h_box_layout.addWidget(alternate_button)
         self.toolbar_group_box.setLayout(toolbar_h_box_layout)
 
     def init_top_attribute(self):
