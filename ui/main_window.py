@@ -54,12 +54,6 @@ class MainWindow(QMainWindow):
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
 
-        # datas = Connection().get_tests()
-        # for data in datas:
-        #     export_to_html(data)
-        # o = ReportWindow(800, 680, data=data, parent=self)
-        # o.setVisible(True)
-
     def execute_click(self):
         if self.input_result_table is not None:
             self.input_result_table.execute_all_click()

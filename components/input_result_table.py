@@ -17,6 +17,7 @@ class InputResultTable(QTableWidget):
     def execute_alternate(self):
         input_combinations = Combination(data_set=self.list_of_input).get_result_reversed()
         master_data = []
+        master_id = normalize_string(util.get_uuid())
         for com in input_combinations:
             description = ""
             scr = Scraper()
@@ -44,7 +45,7 @@ class InputResultTable(QTableWidget):
                     "description": description,
                     "tester": GlobalPreferences.setting["tester"],
                     "inputs": com,
-                    "master_test_id": normalize_string(util.get_uuid())
+                    "master_test_id": master_id
                 }
                 master_data.append(data)
                 browser.close()
@@ -89,7 +90,7 @@ class InputResultTable(QTableWidget):
                 "description": description,
                 "tester": GlobalPreferences.setting["tester"],
                 "inputs": self.list_of_input,
-                "master_test_id": ""
+                "master_test_id": normalize_string(util.get_uuid())
             }
             if GlobalPreferences.setting["close_browser_after_test"]:
                 scraper.browser.close()
@@ -105,11 +106,11 @@ class InputResultTable(QTableWidget):
             from scraper import scraper
             text = str(self.item(row, col).text())
             data = {"tag": scraper.getheader(self.inputs[row])["tag"], "id": scraper.getheader(self.inputs[row])["id"],
-                 "class": scraper.getheader(self.inputs[row])["class"],
-                 "name": scraper.getheader(self.inputs[row])["name"], "value": text,
-                 "innerHTML": scraper.getheader(self.inputs[row])["innerHTML"],
-                 "original_value": scraper.getheader(self.inputs[row])["value"],
-                 }
+                    "class": scraper.getheader(self.inputs[row])["class"],
+                    "name": scraper.getheader(self.inputs[row])["name"], "value": text,
+                    "innerHTML": scraper.getheader(self.inputs[row])["innerHTML"],
+                    "original_value": scraper.getheader(self.inputs[row])["value"],
+                    }
             self.list_of_input.append(data)
             self.parentWindow.set_input_table(data)
 
@@ -117,11 +118,11 @@ class InputResultTable(QTableWidget):
         # TODO VALIDASI JIKA BUTTON
         from scraper import scraper
         data = {"tag": scraper.getheader(self.inputs[args])["tag"], "id": scraper.getheader(self.inputs[args])["id"],
-             "class": scraper.getheader(self.inputs[args])["class"],
-             "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}",
-             "innerHTML": scraper.getheader(self.inputs[args])["innerHTML"],
-             "original_value": scraper.getheader(self.inputs[args])["value"],
-             }
+                "class": scraper.getheader(self.inputs[args])["class"],
+                "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}",
+                "innerHTML": scraper.getheader(self.inputs[args])["innerHTML"],
+                "original_value": scraper.getheader(self.inputs[args])["value"],
+                }
         self.list_of_input.append(data)
         self.parentWindow.set_input_table(data)
 

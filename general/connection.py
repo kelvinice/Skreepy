@@ -28,7 +28,10 @@ class Connection(metaclass=Singleton):
         cursor = self.get_cursor()
 
         sql = ('CREATE TABLE IF NOT EXISTS master_tests('
-               'id TEXT PRIMARY_KEY'
+               'id TEXT PRIMARY_KEY,'
+               'test_date TEXT,'
+               'tester_name TEXT,'
+               'test_title TEXT'
                ')'
                )
         cursor.execute(sql)
@@ -36,9 +39,6 @@ class Connection(metaclass=Singleton):
         sql = ('CREATE TABLE IF NOT EXISTS tests('
                'id TEXT PRIMARY_KEY,'
                'master_test_id TEXT,'
-               'test_date TEXT,'
-               'tester_name TEXT,'
-               'test_title TEXT,'
                'description TEXT,'
                'overall_result TEXT,'
                'url_result TEXT,'
@@ -70,6 +70,20 @@ class Connection(metaclass=Singleton):
         cursor.close()
 
         self.close_connection()
+
+    def master_test_already_exist(self, master_test_id) -> bool:
+        sql = """
+            SELECT * FROM master_tests WHERE id = ?
+        """
+        self.open_connection()
+        cursor = self.get_cursor()
+
+        tuple_data = (master_test_id,)
+        res = cursor.execute(sql, tuple_data)
+        row = res.fetchone()
+        self.close_connection()
+
+        return row is not None
 
     def test_already_exist(self, test_id) -> bool:
         sql = """
@@ -103,14 +117,13 @@ class Connection(metaclass=Singleton):
         result = data["result"]
         expected = data["expected"]
         tuple_data = (
-            data["id"], data["date"], data["tester"], data["title"], data["description"], data["overall_result"]
+            data["id"], data["description"], data["overall_result"]
             , result["url_after"], result["text_found"], result["element_found"]
             , expected["url_after"], expected["text_after"], expected["element_after"], data["master_test_id"])
-
+        print(tuple_data)
+        print("a")
         sql = """
-            INSERT INTO tests(id ,test_date,
-               tester_name,
-               test_title,
+            INSERT INTO tests(id,
                description,
                overall_result,
                url_result,
@@ -119,7 +132,7 @@ class Connection(metaclass=Singleton):
                 url_expected,
                text_expected,
                element_expected,master_test_id)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+               VALUES (?,?,?,?,?,?,?,?,?,?)
         """
 
         self.open_connection()
@@ -132,6 +145,26 @@ class Connection(metaclass=Singleton):
 
         for i in data["inputs"]:
             self.insert_inputs(data["id"], i)
+
+    def insert_master(self, data):
+        tuple_data = (
+            data["master_test_id"], data["date"], data["tester"], data["title"],
+        )
+
+        sql = """
+                    INSERT INTO master_tests(id ,
+                        test_date, tester_name, test_title
+                        )
+                       VALUES (?,?,?,?)
+                """
+
+        self.open_connection()
+        cursor = self.get_cursor()
+        cursor.execute(sql, tuple_data)
+        self.commit()
+
+        cursor.close()
+        self.close_connection()
 
     def insert_inputs(self, test_id, input_data):
         sql = """
@@ -160,7 +193,9 @@ class Connection(metaclass=Singleton):
 
     def get_input(self, test_id):
         sql = """
-            SELECT * FROM test_inputs WHERE test_id = ?
+            SELECT * FROM test_inputs 
+            
+            WHERE test_id = ?
         """
         cursor = self.get_cursor()
 
@@ -184,7 +219,25 @@ class Connection(metaclass=Singleton):
 
     def get_tests(self):
         sql = """
-            SELECT * FROM tests
+            SELECT 
+            t.id,
+            t.master_test_id,
+            mt.test_date,
+            mt.tester_name,
+            mt.test_title,
+            description,
+            overall_result,
+            url_result,
+            text_result,
+            element_result,
+            url_result,
+            text_result,
+            element_result,
+            url_expected,
+            text_expected,
+            element_expected
+            FROM tests t JOIN master_tests mt
+            on t.master_test_id = mt.id
         """
         self.open_connection()
 
@@ -223,7 +276,6 @@ class Connection(metaclass=Singleton):
                 "overall_result": to_bool(row[6])
             }
             datas.append(data)
-        # TODO tambahin inputs
 
         self.close_connection()
         return datas
