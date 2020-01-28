@@ -132,8 +132,8 @@ class MainWindow(QMainWindow):
         execute_button.clicked.connect(self.execute_click)
         execute_alternative_scenario_button.clicked.connect(self.execute_alter)
 
-        action_h_box_layout.addWidget(execute_button)
         action_h_box_layout.addWidget(execute_alternative_scenario_button)
+        action_h_box_layout.addWidget(execute_button)
         self.action_group_box.setLayout(action_h_box_layout)
 
     def init_toolbar_attribute(self):
@@ -276,8 +276,8 @@ class MainWindow(QMainWindow):
         # toolbar_h_box_layout.addWidget(prev_button)
         toolbar_h_box_layout.addWidget(home_button)
         toolbar_h_box_layout.addWidget(report_button)
-        toolbar_h_box_layout.addWidget(setting_button)
         toolbar_h_box_layout.addWidget(alternate_button)
+        toolbar_h_box_layout.addWidget(setting_button)
         self.toolbar_group_box.setLayout(toolbar_h_box_layout)
 
     def init_top_attribute(self):

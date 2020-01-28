@@ -11,6 +11,7 @@ class MasterReportWindow(QDialog):
         self.resize(self.window_width, self.window_height)
         self.move((self.window_width / 2) / 2, (self.window_height / 2) / 2)
         self.setStyleSheet("background-color :  #949494;")
+        self.setWindowTitle("Alternate Report List")
         v_box = QVBoxLayout()
 
         self.master_report_table = MasterReportTable(report_list, self)
