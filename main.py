@@ -15,7 +15,7 @@ class Main:
         width = app.desktop().screenGeometry().width()
         height = app.desktop().screenGeometry().height()
 
-        a = Connection().get_tests()  # Initializing database connection
+        Connection()  # Initializing database connection
         load_setting()  # Load Setting from config
         w = MainWindow(width, height, "Skreepy")
         w.setVisible(True)
