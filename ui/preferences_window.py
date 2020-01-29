@@ -66,11 +66,11 @@ class PreferencesWindow(QDialog):
         self.timeoutEdt.setText(str(GlobalPreferences.setting["timeout"]))
         self.testerEdt.setText(str(GlobalPreferences.setting["tester"]))
 
-        v_box.addRow("Url Expected", self.exUrlEdt)
-        v_box.addRow("Text Expected", self.exTextEdt)
-        v_box.addRow("Element Expected", self.exElementEdt)
+        v_box.addRow("Expected URL", self.exUrlEdt)
+        v_box.addRow("Expected Text ", self.exTextEdt)
+        v_box.addRow("Expected Element", self.exElementEdt)
         v_box.addRow("Close Browser After Test", self.closeBrowserChk)
-        v_box.addRow("Time Out", self.timeoutEdt)
+        v_box.addRow("Time Out(seconds)", self.timeoutEdt)
         v_box.addRow("Tester", self.testerEdt)
 
         btn_save = QPushButton("Save")

@@ -1,4 +1,5 @@
-# TODO ganti preference label kebalik2
+# TODO error message preference not integer
+# TODO sorting table
 # TODO Master Report History
 # TODO Faker JSON
 # TODO Save as run-script
