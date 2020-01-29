@@ -36,6 +36,7 @@ class InputTable(QTableWidget):
         self.setRowCount(len(input_list))
         self.horizontalHeader().setSectionResizeMode(1)
         self.rowcount = 0
+        # self.setStyleSheet("font-size:30px;")
 
         for inp in input_list:
             itemtype = QTableWidgetItem(inp["tag"])
