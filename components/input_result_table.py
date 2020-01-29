@@ -15,7 +15,7 @@ from ui.master_report_window import MasterReportWindow
 
 class InputResultTable(QTableWidget):
     def execute_alternate(self):
-        input_combinations = Combination(data_set=self.list_of_input).get_result_reversed()
+        input_combinations = Combination(self.list_of_input).get_result_reversed()
         master_data = []
         master_id = normalize_string(util.get_uuid())
         for com in input_combinations:
