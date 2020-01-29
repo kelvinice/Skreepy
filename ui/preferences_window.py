@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QLineEdit, QGridLayout, QLabel, QWidget, QVBoxLayout, QPushButton, QMessageBox, \
     QFormLayout, QCheckBox
 
+from general import util
 from general.globalpreferences import GlobalPreferences
 from general.util import save_setting
 
@@ -27,8 +28,11 @@ class PreferencesWindow(QDialog):
         GlobalPreferences.setting["expected"]["element_after"] = self.exElementEdt.text()
 
         GlobalPreferences.setting["close_browser_after_test"] = self.closeBrowserChk.isChecked()
-
-        GlobalPreferences.setting["timeout"] = int(self.timeoutEdt.text())
+        try:
+            GlobalPreferences.setting["timeout"] = int(self.timeoutEdt.text())
+        except:
+            util.show_message_window("Invalid Setting","Timeout must be a numeric")
+            return
         GlobalPreferences.setting["tester"] = self.testerEdt.text()
 
         msg_box = QMessageBox()
