@@ -15,6 +15,7 @@ class MasterReportTable(QTableWidget):
         self.report_list = report_list
         self.setColumnCount(4)
         self.horizontalHeader().setSectionResizeMode(3)
+        self.setSortingEnabled(True)
         header = ("Test ID", "Date", "Overall Result", "Action")
         self.setHorizontalHeaderLabels(header)
         self.rowcount = 0
