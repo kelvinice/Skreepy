@@ -95,11 +95,28 @@ def load_setting():
     file.close()
 
 
+def load_url():
+    cwd = os.getcwd()
+    file = open(cwd + "\\config\\url.json", "r")
+
+    url = json.load(file)
+    GlobalPreferences.url_list = url
+    file.close()
+
+
 def save_setting():
     cwd = os.getcwd()
     file = open(cwd + "\\config\\setting.json", "w+")
 
     data = GlobalPreferences.setting
+    json.dump(data, file)
+    file.close()
+
+def save_url_list():
+    cwd = os.getcwd()
+    file = open(cwd + "\\config\\url.json", "w+")
+
+    data = GlobalPreferences.url_list
     json.dump(data, file)
     file.close()
 
@@ -124,6 +141,7 @@ def normalize_string(val):
     if val is None:
         return ''
     return str(val)
+
 
 class Util(metaclass=singleton.Singleton):
     def fake(self, type):

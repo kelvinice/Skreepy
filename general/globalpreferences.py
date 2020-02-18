@@ -13,6 +13,7 @@ class GlobalPreferences(metaclass=singleton.Singleton):
         "close_browser_after_test": False,
         "tester": "Tester"
     }
+    url_list = []
 
 
 

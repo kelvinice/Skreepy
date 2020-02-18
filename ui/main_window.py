@@ -5,10 +5,14 @@ from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, QRect
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget, QMainWindow, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, \
-    QScrollArea, QLineEdit, QGridLayout
+    QScrollArea, QLineEdit, QGridLayout, QInputDialog
 
+from components.custom_list_widget import CustomListWidget
 from components.input_result_table import InputResultTable
 from components.input_table import InputTable
+from general import globalpreferences
+from general.globalpreferences import GlobalPreferences
+from general.util import save_url_list
 from scraper.scraper import getheader, find_all_form
 from ui.alternate_report_result_window import AlternateReportResultWindow
 from ui.preferences_window import PreferencesWindow
@@ -327,8 +331,30 @@ class MainWindow(QMainWindow):
         """)
         top_h_box_layout.addWidget(self.url_line_edit)
         top_h_box_layout.addWidget(get_forms_button)
+
+
+
         self.top_group_box.setLayout(top_h_box_layout)
         get_forms_button.clicked.connect(self.click_insert_form_result)
+
+    def clicked(self, item):
+        self.url_line_edit.setText(item.text())
+
+    def getText(self):
+        text, okPressed = QInputDialog.getText(self, "Save URL", "URL Name:", QLineEdit.Normal, "")
+        if okPressed and text != '':
+            data = {
+                "name": text,
+                "url": self.url_line_edit.text()
+            }
+            globalpreferences.GlobalPreferences().url_list.append(data)
+            self.url_list_widget.addItem(data)
+
+    def save_url_click(self):
+        self.getText()
+        save_url_list()
+
+
 
     def init_bottom_attribute(self):
         main_h_layout = QGridLayout()
@@ -370,6 +396,12 @@ class MainWindow(QMainWindow):
         left_v_layout.addWidget(url_scroll_area)
         left_v_layout.addWidget(button_save_url)
 
+        self.url_list_widget = CustomListWidget()
+        self.url_list_widget.set_item_list(GlobalPreferences.url_list)
+        self.url_list_widget.itemClicked.connect(self.clicked)
+
+        url_scroll_area.setWidget(self.url_list_widget)
+
         box_left.setLayout(left_v_layout)
         main_scroll_area = QScrollArea()
         main_scroll_area.setStyleSheet("""
@@ -385,6 +417,8 @@ class MainWindow(QMainWindow):
         main_h_layout.addWidget(box_left, 0, 0)
         main_h_layout.addWidget(box_right, 0, 1)
         main_h_layout.setColumnStretch(1, 1)
+
+        button_save_url.clicked.connect(self.save_url_click)
 
         self.main_h_layout.setLayout(main_h_layout)
 
