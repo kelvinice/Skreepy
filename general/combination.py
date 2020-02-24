@@ -13,7 +13,7 @@ class Combination:
         data = [0] * r
 
         # Print all combination using
-        # temprary array 'data[]'
+        # temporary array 'data[]'
         self.combination_util(arr, n, r, 0, data, 0)
 
     ''' arr[] ---> Input Array 
@@ -25,8 +25,8 @@ class Combination:
     i     ---> index of current element in arr[]     '''
 
     def combination_util(self, arr, n, r, index, data, i):
-        # Current cobination is ready,
-        # print it
+        # Current combination is ready,
+        # insert into list
         if index == r:
             temp = []
             for j in range(r):
@@ -51,13 +51,13 @@ class Combination:
         self.combination_util(arr, n, r, index,
                               data, i + 1)
 
-    def __init__(self, data_set):
+    def __init__(self, input_set):
         self.combinations = []
-        n = len(data_set)
+        n = len(input_set)
 
         for r in range(0, n):
-            self.print_combination(data_set, n, r)
-        self.combinations.append(data_set)
+            self.print_combination(input_set, n, r)
+        self.combinations.append(input_set)
 
     def get_result(self):
         com = self.combinations.copy()

@@ -171,8 +171,12 @@ class ReportWindow(QDialog):
             conn.update_test(self.data)
             show_message_window("Saved", "Your Test has Updated")
         else:
+            if not conn.master_test_already_exist(self.data["master_test_id"]):
+                conn.insert_master(self.data)
+
             conn.insert_test(self.data)
             show_message_window("Saved", "Your Test has been saved")
+
 
     def change_description(self):
         self.data["description"] = self.description_text_edit.toPlainText()

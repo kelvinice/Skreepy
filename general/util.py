@@ -4,8 +4,8 @@ import uuid
 
 from PyQt5.QtWidgets import QMessageBox
 
-from meta import singleton
 from general.globalpreferences import GlobalPreferences
+from meta import singleton
 
 
 def get_uuid():
@@ -36,7 +36,10 @@ def get_overall_result(expected, result):
     if expected["element_after"] is not None:
         condition = result["element_found"]
         final_condition = final_condition and condition
-    return final_condition
+
+    if final_condition:
+        return "Success"
+    return "Failed"
 
 
 def write_to_file(path, content):
@@ -92,11 +95,28 @@ def load_setting():
     file.close()
 
 
+def load_url():
+    cwd = os.getcwd()
+    file = open(cwd + "\\config\\url.json", "r")
+
+    url = json.load(file)
+    GlobalPreferences.url_list = url
+    file.close()
+
+
 def save_setting():
     cwd = os.getcwd()
     file = open(cwd + "\\config\\setting.json", "w+")
 
     data = GlobalPreferences.setting
+    json.dump(data, file)
+    file.close()
+
+def save_url_list():
+    cwd = os.getcwd()
+    file = open(cwd + "\\config\\url.json", "w+")
+
+    data = GlobalPreferences.url_list
     json.dump(data, file)
     file.close()
 
@@ -115,6 +135,12 @@ def to_bool(i):
     if int(i) == 0:
         return False
     return True
+
+
+def normalize_string(val):
+    if val is None:
+        return ''
+    return str(val)
 
 
 class Util(metaclass=singleton.Singleton):

@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QDialog, QLineEdit, QGridLayout, QLabel, QWidget, QVBoxLayout, QPushButton, QMessageBox, \
     QFormLayout, QCheckBox
 
+from general import util
 from general.globalpreferences import GlobalPreferences
 from general.util import save_setting
 
@@ -27,8 +28,11 @@ class PreferencesWindow(QDialog):
         GlobalPreferences.setting["expected"]["element_after"] = self.exElementEdt.text()
 
         GlobalPreferences.setting["close_browser_after_test"] = self.closeBrowserChk.isChecked()
-
-        GlobalPreferences.setting["timeout"] = int(self.timeoutEdt.text())
+        try:
+            GlobalPreferences.setting["timeout"] = int(self.timeoutEdt.text())
+        except:
+            util.show_message_window("Invalid Setting","Timeout must be a numeric")
+            return
         GlobalPreferences.setting["tester"] = self.testerEdt.text()
 
         msg_box = QMessageBox()
@@ -66,11 +70,11 @@ class PreferencesWindow(QDialog):
         self.timeoutEdt.setText(str(GlobalPreferences.setting["timeout"]))
         self.testerEdt.setText(str(GlobalPreferences.setting["tester"]))
 
-        v_box.addRow("Url Expected", self.exUrlEdt)
-        v_box.addRow("Text Expected", self.exTextEdt)
-        v_box.addRow("Element Expected", self.exElementEdt)
+        v_box.addRow("Expected URL", self.exUrlEdt)
+        v_box.addRow("Expected Text ", self.exTextEdt)
+        v_box.addRow("Expected Element", self.exElementEdt)
         v_box.addRow("Close Browser After Test", self.closeBrowserChk)
-        v_box.addRow("Time Out", self.timeoutEdt)
+        v_box.addRow("Time Out(seconds)", self.timeoutEdt)
         v_box.addRow("Tester", self.testerEdt)
 
         btn_save = QPushButton("Save")

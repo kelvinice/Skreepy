@@ -16,7 +16,7 @@ class ResultReportTable(QTableWidget):
 
         self.setHorizontalHeaderLabels(header)
         self.setItem(0, 0, QTableWidgetItem("Url"))
-        # print(result)
+
         if expected["url_after"] is not None:
             self.setItem(0, 1, QTableWidgetItem(expected["url_after"]))
             self.setItem(0, 2, QTableWidgetItem(result["url_after"]))

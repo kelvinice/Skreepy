@@ -11,8 +11,9 @@ class GlobalPreferences(metaclass=singleton.Singleton):
         "title": "",
         "timeout": 1,
         "close_browser_after_test": False,
-        "tester": "Chen"
+        "tester": "Tester"
     }
+    url_list = []
 
 
 

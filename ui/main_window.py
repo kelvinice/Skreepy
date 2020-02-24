@@ -1,17 +1,22 @@
-import sys
 from functools import partial
 
 import PyQt5
 from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, QRect
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QWidget, QMainWindow, QAction, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, \
-    QScrollArea, QLineEdit, QGridLayout
+from PyQt5.QtWidgets import QWidget, QMainWindow, QPushButton, QHBoxLayout, QVBoxLayout, QGroupBox, \
+    QScrollArea, QLineEdit, QGridLayout, QInputDialog
 
+from components.custom_list_widget import CustomListWidget
 from components.input_result_table import InputResultTable
 from components.input_table import InputTable
+from general import globalpreferences
+from general.globalpreferences import GlobalPreferences
+from general.util import save_url_list
 from scraper.scraper import getheader, find_all_form
+from ui.alternate_report_result_window import AlternateReportResultWindow
 from ui.preferences_window import PreferencesWindow
+from ui.report_history_window import ReportHistoryWindow
 
 
 class MainWindow(QMainWindow):
@@ -29,27 +34,29 @@ class MainWindow(QMainWindow):
 
         self.top_group_box = QGroupBox("Scrapper")
         self.toolbar_group_box = QGroupBox("Menu Bar")
+        self.action_group_box = QGroupBox("Action")
         self.main_h_layout = QGroupBox()
 
-        self.init_menu_bar()
+        # self.init_menu_bar()
         self.init_toolbar_attribute()
         self.init_top_attribute()
         self.init_bottom_attribute()
+        self.init_action_attribute()
 
         v_box = QVBoxLayout()
+        h_box = QHBoxLayout()
+        h_box.addWidget(self.toolbar_group_box)
+        h_box.addWidget(self.action_group_box)
+        h_wid = QWidget()
+        h_wid.setLayout(h_box)
+
         v_box.addWidget(self.top_group_box)
-        v_box.addWidget(self.toolbar_group_box)
+        v_box.addWidget(h_wid)
         v_box.addWidget(self.main_h_layout)
 
         widget = QWidget()
         widget.setLayout(v_box)
         self.setCentralWidget(widget)
-
-        # datas = Connection().get_tests()
-        # for data in datas:
-        #     export_to_html(data)
-        # o = ReportWindow(800, 680, data=data, parent=self)
-        # o.setVisible(True)
 
     def execute_click(self):
         if self.input_result_table is not None:
@@ -63,19 +70,75 @@ class MainWindow(QMainWindow):
         p = PreferencesWindow(600, 180, self)
         p.show()
 
-    def init_menu_bar(self):
-        menu_bar = self.menuBar()
-        setting_menu = menu_bar.addMenu("Settings")
-        change_user_action = QAction(QIcon("assets/user.png"), 'Change User', self)
-        exit_button = QAction(QIcon("assets/exit.png"), 'Exit', self)
-        preferences_button = QAction(QIcon("assets/exit.png"), 'Preferences', self)
-        setting_menu.triggered[QAction].connect(self.setting_listener)
-        exit_button.triggered.connect(self.close)
-        preferences_button.triggered.connect(self.open_preferences)
+    def open_history_report(self):
+        r = ReportHistoryWindow(self)
+        r.setVisible(True)
 
-        setting_menu.addAction(change_user_action)
-        setting_menu.addAction(preferences_button)
-        setting_menu.addAction(exit_button)
+    def open_alternate(self):
+        m = AlternateReportResultWindow(self)
+        m.show()
+
+    def init_action_attribute(self):
+        action_h_box_layout = QHBoxLayout()
+        action_h_box_layout.setGeometry(QRect(0, 0, 0, 0))
+        action_h_box_layout.setAlignment(QtCore.Qt.AlignRight)
+        self.action_group_box.setStyleSheet(
+            "color: white;"
+            "font-size: 20px;"
+        )
+
+        execute_button = QPushButton("Execute")
+        execute_alternative_scenario_button = QPushButton("Execute with Alternative Scenario")
+        execute_button.setStyleSheet("""
+                                    QPushButton
+                                    {
+                                        background-color: #5b5c5e;
+                                        padding: 2px;
+                                        min-height: 45px;
+                                        min-width: 45px;
+                                        border-radius: 10px;
+                                        border-bottom: 1.5px solid black;
+                                        border-right: 1px solid black;
+                                    }
+                                    QPushButton:hover:!pressed
+                                        {
+                                          background-color: #4d4d4d;
+                                        }
+                                    QPushButton:pressed
+                                        {
+                                          background-color: #5b5c5e;
+                                          border: 1px solid black;
+                                        }
+                                """)
+
+        execute_alternative_scenario_button.setStyleSheet("""
+                                    QPushButton
+                                    {
+                                        background-color: #5b5c5e;
+                                        padding: 2px;
+                                        min-height: 45px;
+                                        min-width: 45px;
+                                        border-radius: 10px;
+                                        border-bottom: 1.5px solid black;
+                                        border-right: 1px solid black;
+                                    }
+                                    QPushButton:hover:!pressed
+                                        {
+                                          background-color: #4d4d4d;
+                                        }
+                                    QPushButton:pressed
+                                        {
+                                          background-color: #5b5c5e;
+                                          border: 1px solid black;
+                                        }
+                                """)
+
+        execute_button.clicked.connect(self.execute_click)
+        execute_alternative_scenario_button.clicked.connect(self.execute_alter)
+
+        action_h_box_layout.addWidget(execute_alternative_scenario_button)
+        action_h_box_layout.addWidget(execute_button)
+        self.action_group_box.setLayout(action_h_box_layout)
 
     def init_toolbar_attribute(self):
         self.toolbar_group_box.setStyleSheet(
@@ -88,8 +151,32 @@ class MainWindow(QMainWindow):
         prev_button = QPushButton()
         home_button = QPushButton()
         report_button = QPushButton()
-        execute_button = QPushButton("Execute")
-        execute_alternative_scenario_button = QPushButton("Execute with Alternative Scenario")
+        setting_button = QPushButton()
+        alternate_button = QPushButton()
+        setting_button.setIcon(QIcon("assets/setting.png"))
+        setting_button.setStyleSheet("""
+                    QPushButton
+                    {
+                        background-color: #5b5c5e;
+                        padding: 2px;
+                        min-height: 45px;
+                        min-width: 45px;
+                        border-radius: 10px;
+                        border-bottom: 1.5px solid black;
+                        border-right: 1px solid black;
+                    }
+                    QPushButton:hover:!pressed
+                        {
+                          background-color: #4d4d4d;
+                        }
+                    QPushButton:pressed
+                        {
+                          background-color: #5b5c5e;
+                          border: 1px solid black;
+                        }
+                """)
+        setting_button.setIconSize(QSize(40, 40))
+
         prev_button.setIcon(QIcon("assets/prev.png"))
         prev_button.setStyleSheet("""
                     QPushButton
@@ -105,8 +192,8 @@ class MainWindow(QMainWindow):
                     QPushButton:hover:!pressed
                         {
                           background-color: #4d4d4d;
-                        }pressed
-                    QPushButton:
+                        }
+                    QPushButton:pressed
                         {
                           background-color: #5b5c5e;
                           border: 1px solid black;
@@ -161,7 +248,8 @@ class MainWindow(QMainWindow):
                         }
                 """)
 
-        execute_button.setStyleSheet("""
+        alternate_button.setIcon(QIcon("assets/alternate.png"))
+        alternate_button.setStyleSheet("""
                             QPushButton
                             {
                                 background-color: #5b5c5e;
@@ -171,7 +259,6 @@ class MainWindow(QMainWindow):
                                 border-radius: 10px;
                                 border-bottom: 1.5px solid black;
                                 border-right: 1px solid black;
-                                margin-left:100%;
                             }
                             QPushButton:hover:!pressed
                                 {
@@ -185,38 +272,16 @@ class MainWindow(QMainWindow):
                         """)
 
         report_button.setIconSize(QSize(40, 40))
+        alternate_button.setIconSize(QSize(40, 40))
+        report_button.clicked.connect(self.open_history_report)
+        setting_button.clicked.connect(self.open_preferences)
+        alternate_button.clicked.connect(self.open_alternate)
 
-        execute_alternative_scenario_button.setStyleSheet("""
-                            QPushButton
-                            {
-                                background-color: #5b5c5e;
-                                padding: 2px;
-                                min-height: 45px;
-                                min-width: 45px;
-                                border-radius: 10px;
-                                border-bottom: 1.5px solid black;
-                                border-right: 1px solid black;
-                                margin-left:100%;
-                            }
-                            QPushButton:hover:!pressed
-                                {
-                                  background-color: #4d4d4d;
-                                }
-                            QPushButton:pressed
-                                {
-                                  background-color: #5b5c5e;
-                                  border: 1px solid black;
-                                }
-                        """)
-
-        execute_button.clicked.connect(self.execute_click)
-        execute_alternative_scenario_button.clicked.connect(self.execute_alter)
-
-        toolbar_h_box_layout.addWidget(prev_button)
+        # toolbar_h_box_layout.addWidget(prev_button)
         toolbar_h_box_layout.addWidget(home_button)
         toolbar_h_box_layout.addWidget(report_button)
-        toolbar_h_box_layout.addWidget(execute_button)
-        toolbar_h_box_layout.addWidget(execute_alternative_scenario_button)
+        toolbar_h_box_layout.addWidget(alternate_button)
+        toolbar_h_box_layout.addWidget(setting_button)
         self.toolbar_group_box.setLayout(toolbar_h_box_layout)
 
     def init_top_attribute(self):
@@ -266,8 +331,30 @@ class MainWindow(QMainWindow):
         """)
         top_h_box_layout.addWidget(self.url_line_edit)
         top_h_box_layout.addWidget(get_forms_button)
+
+
+
         self.top_group_box.setLayout(top_h_box_layout)
         get_forms_button.clicked.connect(self.click_insert_form_result)
+
+    def clicked(self, item):
+        self.url_line_edit.setText(item.text())
+
+    def getText(self):
+        text, okPressed = QInputDialog.getText(self, "Save URL", "URL Name:", QLineEdit.Normal, "")
+        if okPressed and text != '':
+            data = {
+                "name": text,
+                "url": self.url_line_edit.text()
+            }
+            globalpreferences.GlobalPreferences().url_list.append(data)
+            self.url_list_widget.addItem(data)
+
+    def save_url_click(self):
+        self.getText()
+        save_url_list()
+
+
 
     def init_bottom_attribute(self):
         main_h_layout = QGridLayout()
@@ -309,6 +396,12 @@ class MainWindow(QMainWindow):
         left_v_layout.addWidget(url_scroll_area)
         left_v_layout.addWidget(button_save_url)
 
+        self.url_list_widget = CustomListWidget()
+        self.url_list_widget.set_item_list(GlobalPreferences.url_list)
+        self.url_list_widget.itemClicked.connect(self.clicked)
+
+        url_scroll_area.setWidget(self.url_list_widget)
+
         box_left.setLayout(left_v_layout)
         main_scroll_area = QScrollArea()
         main_scroll_area.setStyleSheet("""
@@ -325,17 +418,9 @@ class MainWindow(QMainWindow):
         main_h_layout.addWidget(box_right, 0, 1)
         main_h_layout.setColumnStretch(1, 1)
 
+        button_save_url.clicked.connect(self.save_url_click)
+
         self.main_h_layout.setLayout(main_h_layout)
-
-    def setting_listener(self, q):
-        if q.text() == "Change User":
-            print("Change User")
-            return
-        if q.text() == "Exit":
-            sys.exit()
-            return
-
-        return
 
     def click_insert_form_result(self):
         self.url = self.url_line_edit.text()

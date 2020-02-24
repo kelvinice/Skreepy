@@ -1,22 +1,23 @@
 from functools import partial
-import time
+
 import PyQt5
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QPushButton
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 
+from general import util
 from general.combination import Combination
 from general.globalpreferences import GlobalPreferences
-from scraper import scraper
+from general.util import get_today, get_uuid, normalize_string
 from scraper.scraper import find_all_input, find_all_button, find_all_textarea, getheader, Scraper
-from general.util import get_today, get_uuid
 from ui.master_report_window import MasterReportWindow
 
 
 class InputResultTable(QTableWidget):
     def execute_alternate(self):
-        input_combinations = Combination(data_set=self.list_of_input).get_result_reversed()
+        input_combinations = Combination(self.list_of_input).get_result_reversed()
         master_data = []
+        master_id = normalize_string(util.get_uuid())
         for com in input_combinations:
             description = ""
             scr = Scraper()
@@ -43,11 +44,12 @@ class InputResultTable(QTableWidget):
                     "title": "Skreepy",
                     "description": description,
                     "tester": GlobalPreferences.setting["tester"],
-                    "inputs": com
+                    "inputs": com,
+                    "master_test_id": master_id
                 }
                 master_data.append(data)
                 browser.close()
-        MasterReportWindow(800, 600, master_data, self).show()
+        MasterReportWindow(master_data, self).show()
 
     def execute_all_click(self):
         print("executed")
@@ -87,7 +89,8 @@ class InputResultTable(QTableWidget):
                 "title": "Skreepy",
                 "description": description,
                 "tester": GlobalPreferences.setting["tester"],
-                "inputs": self.list_of_input
+                "inputs": self.list_of_input,
+                "master_test_id": normalize_string(util.get_uuid())
             }
             if GlobalPreferences.setting["close_browser_after_test"]:
                 scraper.browser.close()
@@ -103,11 +106,11 @@ class InputResultTable(QTableWidget):
             from scraper import scraper
             text = str(self.item(row, col).text())
             data = {"tag": scraper.getheader(self.inputs[row])["tag"], "id": scraper.getheader(self.inputs[row])["id"],
-                 "class": scraper.getheader(self.inputs[row])["class"],
-                 "name": scraper.getheader(self.inputs[row])["name"], "value": text,
-                 "innerHTML": scraper.getheader(self.inputs[row])["innerHTML"],
-                 "original_value": scraper.getheader(self.inputs[row])["value"],
-                 }
+                    "class": scraper.getheader(self.inputs[row])["class"],
+                    "name": scraper.getheader(self.inputs[row])["name"], "value": text,
+                    "innerHTML": scraper.getheader(self.inputs[row])["innerHTML"],
+                    "original_value": scraper.getheader(self.inputs[row])["value"],
+                    }
             self.list_of_input.append(data)
             self.parentWindow.set_input_table(data)
 
@@ -115,11 +118,11 @@ class InputResultTable(QTableWidget):
         # TODO VALIDASI JIKA BUTTON
         from scraper import scraper
         data = {"tag": scraper.getheader(self.inputs[args])["tag"], "id": scraper.getheader(self.inputs[args])["id"],
-             "class": scraper.getheader(self.inputs[args])["class"],
-             "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}",
-             "innerHTML": scraper.getheader(self.inputs[args])["innerHTML"],
-             "original_value": scraper.getheader(self.inputs[args])["value"],
-             }
+                "class": scraper.getheader(self.inputs[args])["class"],
+                "name": scraper.getheader(self.inputs[args])["name"], "value": "{button.click}",
+                "innerHTML": scraper.getheader(self.inputs[args])["innerHTML"],
+                "original_value": scraper.getheader(self.inputs[args])["value"],
+                }
         self.list_of_input.append(data)
         self.parentWindow.set_input_table(data)
 
