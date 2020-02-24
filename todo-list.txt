@@ -1,10 +1,7 @@
-# TODO error message preference not integer
-# TODO sorting table
-# TODO Master Report History
 # TODO Faker JSON
 # TODO Save as run-script
+# TODO Back Button
 # TODO Home Button
-# TODO Save URL
 # TODO Test with different Browser
 # TODO https://pythonspot.com/pyqt5-input-dialog/
 # TODO https://stackoverflow.com/questions/4511908/connect-double-click-event-of-qlistview-with-method-in-pyqt4
